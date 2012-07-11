@@ -44,6 +44,7 @@ public:
         return model;
     }
 
+    void reset( void);
     void reload( void);
 
 private:

@@ -37,6 +37,17 @@ ModelManager::~ModelManager()
     _modelMap.clear();
 }
 
+void ModelManager::reset( void)
+{
+    XTRACE();
+
+    hash_map< string, Model*, hash<string> >::const_iterator ci;
+    for( ci=_modelMap.begin(); ci!=_modelMap.end(); ci++)
+    {
+        ci->second->reset();
+    }
+}
+
 void ModelManager::reload( void)
 {
     XTRACE();
