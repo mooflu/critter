@@ -1,0 +1,47 @@
+------- Todo...
+
+Maybe...(most likely not):
+Additional soundtracks. Menu soundtrack / in-game soundtrack ?
+Special Effects, Power-ups, ...
+keyboard config, etc.
+Allow zip files as resource paks
+Better model support (textures, animation, etc.) md2?
+Wrapper for tinyxml (generic xml tree traversal)
+LPath implementation: linear access to BezierCurve
+Rework Input.
+Tools: Level editor
+
+------- Source cleanup...
+
+Remove/combine duplicate directory parsing (model loading, path loading, etc.)
+Gather constants (strings, etc.) into Constants.hpp
+
+------- Done...
+
+Menues etc
+LevelPack via file
+StageManager needs some work
+Mouse smoothing
+Base Enemy using/based on LEnemy
+ModelManager
+PatternManager
+Resource file
+A ton of inlines don't have to be...
+Rework Audio
+Skill settings
+Font manager
+Change to use fixed timestep game logic loop
+Nicer menu system, runtime config 
+Leader board
+Fade-in/out music
+Sound/music volume
+Show mounted weapons.
+Online update check + cache content + date
+Multiple resource packs
+Collision detection to use model size.
+Update Readme.html 
+Nicer shield
+Allow vertical ship movement
+Add SDL supported resolutions and filter based on config
+Split Config menu into Audio, Video, etc.
+Add (Boss) level(s).

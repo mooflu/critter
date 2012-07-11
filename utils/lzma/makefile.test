@@ -1,0 +1,33 @@
+LIBRARY=liblzma.a
+PROG = lzma
+CXX = g++ -O2 -fomit-frame-pointer -fno-rtti -pipe -falign-loops=2 -falign-jumps=2 -falign-functions=2 -Wall
+CXX_C = gcc -O2 -Wall
+LIB = -lm
+RM = rm -f
+CFLAGS = -c -I SRC/7zip/Compress/LZMA -fno-exceptions -D_NO_EXCEPTIONS
+
+OBJS = \
+  SRC/7zip/Compress/LZMA/LZMADecoder.o \
+  SRC/7zip/Compress/LZMA/LZMAEncoder.o \
+  SRC/7zip/Common/InBuffer.o \
+  SRC/7zip/Common/OutBuffer.o \
+  SRC/7zip/Compress/LZ/LZInWindow.o \
+  SRC/7zip/Compress/LZ/LZOutWindow.o \
+  SRC/7zip/Compress/RangeCoder/RangeCoderBit.o \
+  SRC/Common/Alloc.o \
+  SRC/Common/CRC.o \
+
+$(LIBRARY): $(OBJS)
+	ar cru $(LIBRARY) $(OBJS) 
+
+all: $(LIBRARY) $(PROG)
+
+$(PROG): $(LIBRARY) testme.o
+	$(CXX) -o $(PROG) $(LDFLAGS) testme.o $(LIBRARY) $(LIB)
+
+%.o: %.cpp
+	$(CXX) $(CFLAGS) $< -o $@
+
+clean:
+	-$(RM) $(PROG) $(LIBRARY) $(OBJS) testme.o
+

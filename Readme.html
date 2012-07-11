@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Critical Mass (aka Critter)</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  <meta name="author" content="Frank Becker"></head>
+<body>
+<table bgcolor="#000000" border="0" cellpadding="1" cellspacing="1" width="100%">
+  <tbody>
+    <tr>
+      <td bgcolor="#c0c0c0" valign="top"><br>
+      <table align="center" bgcolor="#ffffff" border="0" cellpadding="2" cellspacing="3" width="95%">
+        <tbody>
+          <tr>
+            <td bgcolor="#000066" valign="top">
+            <h2><font color="#000000"><font color="#ffffff">Critical
+Mass (aka Critter)<br>
+</font></font></h2>
+            </td>
+          </tr>
+          <tr>
+            <td bgcolor="#ffffff" valign="top">Your world has been infested by
+an aggressive army of space critters. Overrun and
+unprepared, your government was unable to defend
+its precious resources. As a last effort to
+recapture some of the 'goodies', you have been
+placed into a tiny spacecraft and sent after them. <a href="http://criticalmass.sourceforge.net/">Critical Mass</a> (aka
+Critter) is a shoot'em up (smup) similar to Galaxian. The basic idea is simple: you move <span class="newsitem">your ship back and forth at the bottom of the screen, shooting up, while bad guys fly around and shoot at you.<br>
+            <br>
+</span>
+            <h3>Running:</h3>
+If you haven't already done so, just run Critter! A
+config file will be created the first time you exit the game.
+            
+            <h4>Mac OS X<br></h4>
+            <blockquote>The config file is called config.txt and will be
+created in your $(HOME)/.critter/ directory.<br>Double
+clicking on GoConfigDirectory.command will automatically open the
+config directory in the Finder.&nbsp; You can then open the config.txt
+file in your favorite text editor.<br>
+ </blockquote>
+            <h4>
+            </h4>
+
+
+            <h4>Linux</h4><blockquote>The config file is called config.txt and will be
+created in your $(HOME)/.critter/ directory.<br>
+A note about sound in RedHat and FedoraCore: If you find sound to be
+lagging, start Critter with the SDL_AUDIODRIVER set to "alsa" or "dma"
+(for bourne shell: "export SDL_AUDIODRIVER=alsa"). Unfortunately, some
+distributions ship with a patched SDL library that is not game
+friendly. Note the the binary zip package from SourceForge contains all
+the original non-patched libraries.<br>
+ </blockquote>
+            <h4>Windows</h4>
+            <blockquote>
+              <div align="left"> The config file is called config.txt
+and will be created in the directory where Critter is started. </div>
+            </blockquote>
+            <p>You
+can edit the config.txt file to change resolution,
+fullscreen mode, etc. Or you can specify it on the command line. When
+Critter exits it will write the current configuration to the config
+file. Many of the settings can also be changed within the game (See
+Config menu).<br>
+<br>
+            </p><h3>Video Resolution:</h3>You can select the most
+common video resolutions via the in-game config
+menu. It is possible to run Critter at any resolution by editing the
+config.txt file. By default the game will reject resolutions that that
+don't have
+an aspect ration of 4/3 e.g. widescreen displays. Non 4/3 resolutions
+can be enabled in the config menu. The downside is that things may look
+a little
+stretched. In the latest version, the game will automatically add all
+resolutions supported by SDL (OpenGL/fullscreen). To add a new
+resolution, simply add it to the end of the line
+containing "set resolutions =
+1600x1200,1280x960,1152x864,1024x768,800x600,640x480,512x384". After
+saving the file and restarting Critter, the new resolution will be
+available in the in-game config menu. <span style="font-weight: bold;">Be careful not to switch to a resolution you monitor does not support! </span>You have been warned.<br>
+<br>
+            <h3>Keyboard/Mouse Controls:</h3>
+
+The default action bindings are:<br>
+            <br>
+            <table border="0" cellpadding="2" cellspacing="2" width="80%">
+              <tbody>
+                <tr>
+                  <td valign="top"> PrimaryFire <br>
+                  </td>
+                  <td valign="top"> SPACE <br>
+                  </td>
+                  <td valign="top"> Fire!<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">PrimaryFire <br>
+                  </td>
+                  <td valign="top">MOUSEBUTTON1 <br>
+                  </td>
+                  <td valign="top"> Fire! <br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">SecondaryFire</td>
+                  <td style="vertical-align: top;">LALT<br>
+                  </td>
+                  <td style="vertical-align: top;">Fire!</td>
+                </tr>
+                <tr>
+                  <td valign="top">SecondaryFire <br>
+                  </td>
+                  <td valign="top">MOUSEBUTTON2 <br>
+                  </td>
+                  <td valign="top">Fire!<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">TertiaryFire</td>
+                  <td style="vertical-align: top;">LCTRL<br>
+                  </td>
+                  <td style="vertical-align: top;">Fire or Bark!</td>
+                </tr>
+                <tr>
+                  <td valign="top">TertiaryFire <br>
+                  </td>
+                  <td valign="top">MOUSEBUTTON3 <br>
+                  </td>
+                  <td valign="top">Fire or Bark!<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">Motion <br>
+                  </td>
+                  <td valign="top">MOTION <br>
+                  </td>
+                  <td valign="top">Move via Mouse<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">MotionUp <br>
+                  </td>
+                  <td valign="top">UP<br>
+                  </td>
+                  <td valign="top">Move up<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">MotionRight <br>
+                  </td>
+                  <td valign="top">RIGHT<br>
+                  </td>
+                  <td valign="top">Move right<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">Confirm <br>
+                  </td>
+                  <td valign="top">RETURN<br>
+                  </td>
+                  <td valign="top">Confirm selection<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">EscapeAction <br>
+                  </td>
+                  <td valign="top">ESCAPE<br>
+                  </td>
+                  <td valign="top">Cancel selection<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">CritterBoard <br>
+                  </td>
+                  <td valign="top">TAB<br>
+                  </td>
+                  <td valign="top">Show/Hide CritterBoard<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">Snapshot <br>
+                  </td>
+                  <td valign="top">F12<br>
+                  </td>
+                  <td valign="top">Take snapshow (snapNN.png)<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">PauseGame <br>
+                  </td>
+                  <td valign="top">p<br>
+                  </td>
+                  <td valign="top">Pause game<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">ChangeContext <br>
+                  </td>
+                  <td valign="top">c<br>
+                  </td>
+                  <td valign="top">Toggle locked-in / Mouse-look style
+(for developer)<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+<p> Go to <a href="http://criticalmass.sourceforge.net/">http://criticalmass.sourceforge.net/
+            </a>for the latest news, email info, etc.
+            </p>
+            <p>Have fun,<br>
+Frank (crittermail2005 at telus dot net).<br>
+            </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div align="center"><br>
+      <small><small><small><small>Copyright (C) 2001-2005 by Frank
+Becker</small></small></small></small><br>
+      </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</body></html>

@@ -1,0 +1,4385 @@
+<LevelPack Name="CritterPack" Author="Frank Becker" Version="1.0">
+
+    <Level Name="Mouse or Bug?" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac6" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac6" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac6" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac6" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac6" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="3.0">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="3.3">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="3.6">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="3.9">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="4.2">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="6.0">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="6.3">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="6.6">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="6.9">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="7.2">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="9.0">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="9.3">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="9.6">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="9.9">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="10.2">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Dark Angel" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="50.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10a" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="67.0" y="15.0" z="-100.0" />
+            <Home x="40.0" y="35.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10a" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="30.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10a" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="67.0" y="25.0" z="-100.0" />
+            <Home x="20.0" y="25.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10a" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="67.0" y="30.0" z="-100.0" />
+            <Home x="10.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10a" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="67.0" y="15.0" z="-100.0" />
+            <Home x="0.0" y="15.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="67.0" y="15.0" z="-100.0" />
+            <Home x="0.0" y="25.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="67.0" y="15.0" z="-100.0" />
+            <Home x="0.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="67.0" y="5.0" z="-100.0" />
+            <Home x="20.0" y="35.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10a" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="10.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10a" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="-67.0" y="5.0" z="-100.0" />
+            <Home x="-20.0" y="35.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-10.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-50.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="-67.0" y="15.0" z="-100.0" />
+            <Home x="-40.0" y="35.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="-30.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="-67.0" y="25.0" z="-100.0" />
+            <Home x="-20.0" y="25.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DarkAngel"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="-10.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/idle/idle8" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="120 Legs" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec7a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec7a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec7a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec7a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec7a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.0">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec7" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.3">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec7" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.6">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec7" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.9">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec7" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="4.2">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec7" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.0">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.3">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.6">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.9">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="7.2">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.0">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.3">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.6">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.9">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="10.2">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="I got my eye on you!" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="-50.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13a" />
+            <RetreatPath Name="paths/retreat/dc7" />
+            <EntryPath Name="paths/entry/ec14" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="50.0" y="35.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13" />
+            <RetreatPath Name="paths/retreat/dc7a" />
+            <EntryPath Name="paths/entry/ec14a" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+        <Enemy spawnTime="0.2">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="-35.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13a" />
+            <RetreatPath Name="paths/retreat/dc7" />
+            <EntryPath Name="paths/entry/ec14" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+        <Enemy spawnTime="0.2">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="35.0" y="35.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13" />
+            <RetreatPath Name="paths/retreat/dc7a" />
+            <EntryPath Name="paths/entry/ec14a" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+        <Enemy spawnTime="0.4">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="-20.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13a" />
+            <RetreatPath Name="paths/retreat/dc7" />
+            <EntryPath Name="paths/entry/ec14" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+        <Enemy spawnTime="0.4">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="20.0" y="35.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13" />
+            <RetreatPath Name="paths/retreat/dc7a" />
+            <EntryPath Name="paths/entry/ec14a" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="-5.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13a" />
+            <RetreatPath Name="paths/retreat/dc7" />
+            <EntryPath Name="paths/entry/ec14" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="5.0" y="35.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13" />
+            <RetreatPath Name="paths/retreat/dc7a" />
+            <EntryPath Name="paths/entry/ec14a" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+        <Enemy spawnTime="0.8">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="10.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13a" />
+            <RetreatPath Name="paths/retreat/dc7" />
+            <EntryPath Name="paths/entry/ec14" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+        <Enemy spawnTime="0.8">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-10.0" y="35.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13" />
+            <RetreatPath Name="paths/retreat/dc7a" />
+            <EntryPath Name="paths/entry/ec14a" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="25.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13a" />
+            <RetreatPath Name="paths/retreat/dc7" />
+            <EntryPath Name="paths/entry/ec14" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-25.0" y="35.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13" />
+            <RetreatPath Name="paths/retreat/dc7a" />
+            <EntryPath Name="paths/entry/ec14a" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="40.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13a" />
+            <RetreatPath Name="paths/retreat/dc7" />
+            <EntryPath Name="paths/entry/ec14" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="TheEye"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-40.0" y="35.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac13" />
+            <RetreatPath Name="paths/retreat/dc7a" />
+            <EntryPath Name="paths/entry/ec14" />
+            <IdlePath Name="paths/idle/idle18" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Just wing it!" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DoubleWingRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9" />
+            <RetreatPath Name="paths/retreat/dc3" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DoubleWingRed"/>
+
+            <SpawnPoint x="67.0" y="-10.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9" />
+            <RetreatPath Name="paths/retreat/dc3" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="2.0">
+            <Model Name="DoubleWingBlue"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9" />
+            <RetreatPath Name="paths/retreat/dc3" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="2.0">
+            <Model Name="DoubleWingBlue"/>
+
+            <SpawnPoint x="67.0" y="-10.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9" />
+            <RetreatPath Name="paths/retreat/dc3" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DoubleWingRed"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9" />
+            <RetreatPath Name="paths/retreat/dc3" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DoubleWingRed"/>
+
+            <SpawnPoint x="-67.0" y="-10.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9" />
+            <RetreatPath Name="paths/retreat/dc3" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="2.0">
+            <Model Name="DoubleWingBlue"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9" />
+            <RetreatPath Name="paths/retreat/dc3" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="2.0">
+            <Model Name="DoubleWingBlue"/>
+
+            <SpawnPoint x="-67.0" y="-10.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9" />
+            <RetreatPath Name="paths/retreat/dc3" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="4.0">
+            <Model Name="DoubleWingBlue"/>
+
+            <SpawnPoint x="67.0" y="30.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9a" />
+            <RetreatPath Name="paths/retreat/dc3a" />
+            <EntryPath Name="paths/entry/ec4a" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="4.0">
+            <Model Name="DoubleWingBlue"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9a" />
+            <RetreatPath Name="paths/retreat/dc3a" />
+            <EntryPath Name="paths/entry/ec4a" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="6.0">
+            <Model Name="DoubleWingRed"/>
+
+            <SpawnPoint x="67.0" y="30.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9a" />
+            <RetreatPath Name="paths/retreat/dc3a" />
+            <EntryPath Name="paths/entry/ec4a" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="6.0">
+            <Model Name="DoubleWingRed"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9a" />
+            <RetreatPath Name="paths/retreat/dc3a" />
+            <EntryPath Name="paths/entry/ec4a" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="4.0">
+            <Model Name="DoubleWingBlue"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9a" />
+            <RetreatPath Name="paths/retreat/dc3a" />
+            <EntryPath Name="paths/entry/ec4" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="4.0">
+            <Model Name="DoubleWingBlue"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9a" />
+            <RetreatPath Name="paths/retreat/dc3a" />
+            <EntryPath Name="paths/entry/ec4" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="6.0">
+            <Model Name="DoubleWingRed"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9a" />
+            <RetreatPath Name="paths/retreat/dc3a" />
+            <EntryPath Name="paths/entry/ec4" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+        <Enemy spawnTime="6.0">
+            <Model Name="DoubleWingRed"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9a" />
+            <RetreatPath Name="paths/retreat/dc3a" />
+            <EntryPath Name="paths/entry/ec4" />
+            <IdlePath Name="paths/idle/idle9" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Eyes Only" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec3a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec3a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec3a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec3a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec3a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.0">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec3" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.3">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec3" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.6">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec3" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.9">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec3" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="4.2">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec3" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.0">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="67.0" y="30.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec4a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.3">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="67.0" y="30.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec4a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.6">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="67.0" y="30.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec4a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.9">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="67.0" y="30.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec4a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="7.2">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="67.0" y="30.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec4a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.0">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec4" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.3">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec4" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.6">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec4" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.9">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec4" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="10.2">
+            <Model Name="Bug2"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec4" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Pink Buggy" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.0">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.3">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.6">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.9">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.2">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.0">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.3">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.6">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.9">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.2">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Leg Attack" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.0">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.3">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.6">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.9">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="4.2">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.0">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.3">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.6">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.9">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="7.2">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.0">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.3">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.6">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.9">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="10.2">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Evil MiniBug-me" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="1.3">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="1.6">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="1.9">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="2.2">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="2.0">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="67.0" y="-40.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3a" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="2.3">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="67.0" y="-40.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3a" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="2.6">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="67.0" y="-40.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3a" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="2.9">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="67.0" y="-40.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3a" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="3.2">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="67.0" y="-40.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3a" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="3.0">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="-67.0" y="-40.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3a" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="3.3">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="-67.0" y="-40.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3a" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="3.6">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="-67.0" y="-40.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3a" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="3.9">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="-67.0" y="-40.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3a" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+        <Enemy spawnTime="4.2">
+            <Model Name="MiniBug"/>
+
+            <SpawnPoint x="-67.0" y="-40.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac3a" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/idle/idle6" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Mixed Bug Bag" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="10.0" y="50.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec9a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="10.0" y="50.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec9a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="10.0" y="50.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec9a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="10.0" y="50.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec9a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="10.0" y="50.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec9a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.0">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-10.0" y="50.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec9" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.3">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-10.0" y="50.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec9" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.6">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-10.0" y="50.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec9" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.9">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-10.0" y="50.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec9" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="4.2">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-10.0" y="50.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec9" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.0">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.3">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.6">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.9">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="7.2">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.0">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.3">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.6">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.9">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="10.2">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec8" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="BigFoot is afoot" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="67.0" y="-10.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <RetreatPath Name="paths/retreat/dc5" />
+            <EntryPath Name="paths/entry/ec11a" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="67.0" y="-10.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <RetreatPath Name="paths/retreat/dc5" />
+            <EntryPath Name="paths/entry/ec11a" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="67.0" y="-10.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <RetreatPath Name="paths/retreat/dc5" />
+            <EntryPath Name="paths/entry/ec11a" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="67.0" y="-10.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <RetreatPath Name="paths/retreat/dc5" />
+            <EntryPath Name="paths/entry/ec11a" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="67.0" y="-10.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <RetreatPath Name="paths/retreat/dc5" />
+            <EntryPath Name="paths/entry/ec11a" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="-67.0" y="-10.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <RetreatPath Name="paths/retreat/dc5" />
+            <EntryPath Name="paths/entry/ec11" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="1.3">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="-67.0" y="-10.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <RetreatPath Name="paths/retreat/dc5" />
+            <EntryPath Name="paths/entry/ec11" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="1.6">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="-67.0" y="-10.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <RetreatPath Name="paths/retreat/dc5" />
+            <EntryPath Name="paths/entry/ec11" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="1.9">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="-67.0" y="-10.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <RetreatPath Name="paths/retreat/dc5" />
+            <EntryPath Name="paths/entry/ec11" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="2.2">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="-67.0" y="-10.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <RetreatPath Name="paths/retreat/dc5" />
+            <EntryPath Name="paths/entry/ec11" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="3.0">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7a" />
+            <RetreatPath Name="paths/retreat/dc5a" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="3.3">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7a" />
+            <RetreatPath Name="paths/retreat/dc5a" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="3.6">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7a" />
+            <RetreatPath Name="paths/retreat/dc5a" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="3.9">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7a" />
+            <RetreatPath Name="paths/retreat/dc5a" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="4.2">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7a" />
+            <RetreatPath Name="paths/retreat/dc5a" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="4.0">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7a" />
+            <RetreatPath Name="paths/retreat/dc5a" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="4.3">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7a" />
+            <RetreatPath Name="paths/retreat/dc5a" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="4.6">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7a" />
+            <RetreatPath Name="paths/retreat/dc5a" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="4.9">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7a" />
+            <RetreatPath Name="paths/retreat/dc5a" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+        <Enemy spawnTime="5.2">
+            <Model Name="BigFoot"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7a" />
+            <RetreatPath Name="paths/retreat/dc5a" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/idle/idle12" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="No green?" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="SixLegBugBlue"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="SixLegBugBlue"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.0">
+            <Model Name="SixLegBugBlue"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.3">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.6">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.9">
+            <Model Name="SixLegBugYellow"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="4.2">
+            <Model Name="SixLegBugBlue"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.0">
+            <Model Name="Bug1Blue"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec7a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.3">
+            <Model Name="Bug1Blue"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec7a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.6">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec7a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.9">
+            <Model Name="Bug1Blue"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec7a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="7.2">
+            <Model Name="Bug1Blue"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec7a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.0">
+            <Model Name="Bug1Blue"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec7" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.3">
+            <Model Name="Bug1Blue"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec7" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.6">
+            <Model Name="Bug1"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec7" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.9">
+            <Model Name="Bug1Blue"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec7" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="10.2">
+            <Model Name="Bug1Blue"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec7" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Eye caramba!" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.0">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.3">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.6">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.9">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.2">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="67.0" y="-20.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.0">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.3">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.6">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.9">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.2">
+            <Model Name="FourEye"/>
+
+            <SpawnPoint x="-67.0" y="-20.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec2" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Big Mouth" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.0">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.3">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.6">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.9">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="4.2">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec5" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.0">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.3">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.6">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.9">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="7.2">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.0">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.3">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.6">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="9.9">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="10.2">
+            <Model Name="BigMouthBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1a" />
+            <RetreatPath Name="paths/retreat/dc1a" />
+            <EntryPath Name="paths/entry/ec6" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Fly Bug Fly!" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <EntryPath Name="paths/entry/ec10a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <EntryPath Name="paths/entry/ec10a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <EntryPath Name="paths/entry/ec10a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <EntryPath Name="paths/entry/ec10a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac7" />
+            <EntryPath Name="paths/entry/ec10a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.0">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <EntryPath Name="paths/entry/ec10" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.0">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.3">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.6">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.9">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.2">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.0">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9a" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.3">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9a" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.6">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9a" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.9">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9a" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.2">
+            <Model Name="FlyBug"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac9a" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Atomic Buzz" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="1.5">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="1.8">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="2.1">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="2.4">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="2.7">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="5.0">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="5.3">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="5.6">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="5.9">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="6.2">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="6.5">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="6.8">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="7.1">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="7.4">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+        <Enemy spawnTime="7.7">
+            <Model Name="DoubleWing"/>
+
+            <SpawnPoint x="-67.0" y="0.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac2a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle15" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Gone before the dogs..." Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="Doggy"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="-42.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac12" />
+            <RetreatPath Name="paths/retreat/dc8" />
+            <EntryPath Name="paths/entry/ec15" />
+            <IdlePath Name="paths/idle/idle19" />
+        </Enemy>
+
+        <Enemy spawnTime="0.2">
+            <Model Name="Doggy"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-35.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac12a" />
+            <RetreatPath Name="paths/retreat/dc8a" />
+            <EntryPath Name="paths/entry/ec15a" />
+            <IdlePath Name="paths/idle/idle19" />
+        </Enemy>
+
+        <Enemy spawnTime="0.4">
+            <Model Name="Doggy"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="-28.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac12" />
+            <RetreatPath Name="paths/retreat/dc8" />
+            <EntryPath Name="paths/entry/ec15" />
+            <IdlePath Name="paths/idle/idle19" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="Doggy"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-21.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac12a" />
+            <RetreatPath Name="paths/retreat/dc8a" />
+            <EntryPath Name="paths/entry/ec15a" />
+            <IdlePath Name="paths/idle/idle19" />
+        </Enemy>
+
+        <Enemy spawnTime="0.8">
+            <Model Name="Doggy"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="-14.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac12" />
+            <RetreatPath Name="paths/retreat/dc8" />
+            <EntryPath Name="paths/entry/ec15" />
+            <IdlePath Name="paths/idle/idle19" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="Doggy"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-7.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac12a" />
+            <RetreatPath Name="paths/retreat/dc8a" />
+            <EntryPath Name="paths/entry/ec15a" />
+            <IdlePath Name="paths/idle/idle19" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="Doggy"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="0.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac12" />
+            <RetreatPath Name="paths/retreat/dc8" />
+            <EntryPath Name="paths/entry/ec15" />
+            <IdlePath Name="paths/idle/idle19" />
+        </Enemy>
+
+        <Enemy spawnTime="1.4">
+            <Model Name="Doggy"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="7.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac12a" />
+            <RetreatPath Name="paths/retreat/dc8a" />
+            <EntryPath Name="paths/entry/ec15a" />
+            <IdlePath Name="paths/idle/idle19" />
+        </Enemy>
+
+        <Enemy spawnTime="1.6">
+            <Model Name="Doggy"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="14.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac12" />
+            <RetreatPath Name="paths/retreat/dc8" />
+            <EntryPath Name="paths/entry/ec15" />
+            <IdlePath Name="paths/idle/idle19" />
+        </Enemy>
+
+        <Enemy spawnTime="1.8">
+            <Model Name="Doggy"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="21.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac12a" />
+            <RetreatPath Name="paths/retreat/dc8a" />
+            <EntryPath Name="paths/entry/ec15a" />
+            <IdlePath Name="paths/idle/idle19" />
+        </Enemy>
+
+        <Enemy spawnTime="2.0">
+            <Model Name="Doggy"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="28.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac12" />
+            <RetreatPath Name="paths/retreat/dc8" />
+            <EntryPath Name="paths/entry/ec15" />
+            <IdlePath Name="paths/idle/idle19" />
+        </Enemy>
+
+        <Enemy spawnTime="2.2">
+            <Model Name="Doggy"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="35.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac12a" />
+            <RetreatPath Name="paths/retreat/dc8a" />
+            <EntryPath Name="paths/entry/ec15a" />
+            <IdlePath Name="paths/idle/idle19" />
+        </Enemy>
+
+        <Enemy spawnTime="2.4">
+            <Model Name="Doggy"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="42.0" y="45.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac12" />
+            <RetreatPath Name="paths/retreat/dc8" />
+            <EntryPath Name="paths/entry/ec15" />
+            <IdlePath Name="paths/idle/idle19" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Will it end?" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.5">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="1.8">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="2.1">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="2.4">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="2.7">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.0">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.3">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.6">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="3.9">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="4.2">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="4.5">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="4.8">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.1">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.4">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="5.7">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.0">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="45.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.3">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="35.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.6">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="25.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="6.9">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="15.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="7.2">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="5.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="7.5">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-5.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="7.8">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-15.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="8.1">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-25.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="8.4">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-35.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+        <Enemy spawnTime="8.7">
+            <Model Name="SixLegBugRed"/>
+
+            <SpawnPoint x="67.0" y="0.0" z="-100.0" />
+            <Home x="-45.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac1" />
+            <RetreatPath Name="paths/retreat/dc1" />
+            <EntryPath Name="paths/entry/ec1a" />
+            <IdlePath Name="paths/Idle1" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Hello Wiener!" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="1.0">
+            <Model Name="Pumpkin"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="20.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac10" />
+            <EntryPath Name="paths/entry/ec3a" />
+            <IdlePath Name="paths/idle/idle4" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="Pumpkin"/>
+
+            <SpawnPoint x="67.0" y="15.0" z="-100.0" />
+            <Home x="17.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac10" />
+            <EntryPath Name="paths/entry/ec3a" />
+            <IdlePath Name="paths/idle/idle4" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="Pumpkin"/>
+
+            <SpawnPoint x="67.0" y="20.0" z="-100.0" />
+            <Home x="10.0" y="37.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac10" />
+            <EntryPath Name="paths/entry/ec3a" />
+            <IdlePath Name="paths/idle/idle4" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="Pumpkin"/>
+
+            <SpawnPoint x="67.0" y="25.0" z="-100.0" />
+            <Home x="0.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac10" />
+            <EntryPath Name="paths/entry/ec3a" />
+            <IdlePath Name="paths/idle/idle4" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="Pumpkin"/>
+
+            <SpawnPoint x="67.0" y="30.0" z="-100.0" />
+            <Home x="-10.0" y="37.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac10" />
+            <EntryPath Name="paths/entry/ec3a" />
+            <IdlePath Name="paths/idle/idle4" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="Pumpkin"/>
+
+            <SpawnPoint x="67.0" y="35.0" z="-100.0" />
+            <Home x="-17.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac10" />
+            <EntryPath Name="paths/entry/ec3a" />
+            <IdlePath Name="paths/idle/idle4" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="Pumpkin"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-20.0" y="20.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac10a" />
+            <EntryPath Name="paths/entry/ec3" />
+            <IdlePath Name="paths/idle/idle4" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="Pumpkin"/>
+
+            <SpawnPoint x="-67.0" y="15.0" z="-100.0" />
+            <Home x="-17.0" y="10.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac10a" />
+            <EntryPath Name="paths/entry/ec3" />
+            <IdlePath Name="paths/idle/idle4" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="Pumpkin"/>
+
+            <SpawnPoint x="-67.0" y="20.0" z="-100.0" />
+            <Home x="-10.0" y="3.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac10a" />
+            <EntryPath Name="paths/entry/ec3" />
+            <IdlePath Name="paths/idle/idle4" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="Pumpkin"/>
+
+            <SpawnPoint x="-67.0" y="25.0" z="-100.0" />
+            <Home x="0.0" y="0.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac10a" />
+            <EntryPath Name="paths/entry/ec3" />
+            <IdlePath Name="paths/idle/idle4" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="Pumpkin"/>
+
+            <SpawnPoint x="-67.0" y="30.0" z="-100.0" />
+            <Home x="10.0" y="3.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac10a" />
+            <EntryPath Name="paths/entry/ec3" />
+            <IdlePath Name="paths/idle/idle4" />
+        </Enemy>
+
+        <Enemy spawnTime="1.0">
+            <Model Name="Pumpkin"/>
+
+            <SpawnPoint x="-67.0" y="35.0" z="-100.0" />
+            <Home x="17.0" y="10.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac10a" />
+            <EntryPath Name="paths/entry/ec3" />
+            <IdlePath Name="paths/idle/idle4" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="This Fat Lady ain't singing" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0" type=1>
+            <Model Name="Boss1"/>
+
+            <SpawnPoint x="0.0" y="50.0" z="-100.0" />
+            <Home x="0.0" y="0.0" z="-100.0" />
+
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/entryb1" />
+            <IdlePath Name="paths/idle/idleb1" />
+        </Enemy>
+    </Level>
+
+</LevelPack>
