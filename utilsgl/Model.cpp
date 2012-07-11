@@ -320,6 +320,11 @@ void Model::verifyAndAssign( const int newVert, int & currVertVal)
     }
 }
 
+void Model::reset( void)
+{
+    _vbo.reset();
+}
+
 //re-load model
 void Model::reload( void)
 {

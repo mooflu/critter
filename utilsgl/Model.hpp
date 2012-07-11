@@ -49,6 +49,7 @@ public:
     void draw();
     //re-load model (e.g. after toggling fullscreen).
     void reload( void);
+    void reset( void);
 
     //name of model
     const std::string getName( void)
