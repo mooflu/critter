@@ -4,7 +4,7 @@ AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
 
 dnl Setup for automake
-AM_INIT_AUTOMAKE("Critical_Mass",__NO_VERSION__)
+AM_INIT_AUTOMAKE("Critical_Mass","1.5.1a")
 AM_CONFIG_HEADER(defines.h)
 
 AC_EXEEXT
@@ -99,9 +99,11 @@ if test "x$TARGET" = xWIN32; then
 else
     LIBS="-L/usr/local/lib -L/usr/X11R6/lib $LIBS"
     CXXFLAGS="$CXXFLAGS -I/usr/X11R6/include"
-	AC_CHECK_LIB(curl-gnutls, main,, AC_MSG_ERROR(libcurl-gnutls is needed))
+	AC_CHECK_LIB(curl-gnutls, main,,
+                     AC_CHECK_LIB(curl,main,,AC_MSG_ERROR(curl is needed))
+                    )
 	AC_CHECK_LIB(tinyxml, main,, AC_MSG_ERROR(libtinyxml is needed))
-	AC_CHECK_LIB(png, main,, AC_MSG_ERROR(libpng is needed))
+	AC_CHECK_LIB(png, png_get_io_ptr,, AC_MSG_ERROR(libpng is needed))
 	AC_CHECK_LIB(z, main,, AC_MSG_ERROR(libz is needed))
 	if test "x$TARGET" = xUNIX; then
 	    if test "x$enable_dyngl" = xoff; then

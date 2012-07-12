@@ -13,6 +13,7 @@
 // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
 //
 #include "SDL/SDL.h" //needed for SDL_main
+#include <zlib.h>
 
 #include "Trace.hpp"
 #include "Constants.hpp"
@@ -140,7 +141,7 @@ void showInfo()
 {
     LOG_INFO << "----------------------------------" << endl;
     LOG_INFO << GAMETITLE << " " << GAMEVERSION 
-             << " - "__TIME__" "__DATE__
+             << " - " << __TIME__ << " " << __DATE__
              << endl;
     LOG_INFO << "Copyright (C) 2001-2010 by Frank Becker" << endl;
     LOG_INFO << "Visit http://criticalmass.sourceforge.net" << endl;
