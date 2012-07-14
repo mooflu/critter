@@ -1,6 +1,6 @@
 #pragma once
 // Description:
-//   High level infrastructure for game.
+//   Limits the rate of a loop
 //
 // Copyright (C) 2001 Frank Becker
 //
@@ -14,28 +14,33 @@
 // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
 //
 
-#include <Singleton.hpp>
-#include <RateLimiter.hpp>
+#include "SDL/SDL.h"
 
-class Game
+class RateLimiter
 {
-friend class Singleton<Game>;
-public:
-    bool init( void);
-    void run( void);
-    void reset( void);
-    void startNewGame( void);
+  public:
+    RateLimiter();
+    RateLimiter(int rate);
+    ~RateLimiter();
+    void reset(float currTime);
+    void limit(float currTime);
+    void setRate(int rate)
+    {
+      this->timeSlice = 1.0 / rate;
+    }
 
-private:
-    ~Game();
-    Game( void);
-    Game( const Game&);
-    Game &operator=(const Game&);
+    void setEnabled(bool value)
+    {
+      this->enabled = value;
+    }
 
-    void updateOtherLogic( void);
-    void updateInGameLogic( void);
+    bool isEnabled()
+    {
+      return this->enabled;
+    }
 
-    RateLimiter limiter;
+  private:
+    float timeSlice;
+    float sliceStartTime;
+    bool enabled;
 };
-
-typedef Singleton<Game> GameS;

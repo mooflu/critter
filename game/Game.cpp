@@ -12,6 +12,7 @@
 // ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
 //
+#include <unistd.h>
 #include <Trace.hpp>
 
 #include <Game.hpp>
@@ -37,7 +38,8 @@
 #include <MenuManager.hpp>
 #include <ResourceManager.hpp>
 
-Game::Game( void)
+Game::Game( void):
+  limiter()
 {
     XTRACE();
 }
@@ -78,6 +80,18 @@ bool Game::init( void)
 {
     XTRACE();
     bool result = true;
+
+    int temp = 0;
+    ConfigS::instance()->getInteger( "maxRate", temp);
+    if(temp > 0)
+    {
+      this->limiter.setEnabled(true);
+      this->limiter.setRate(temp);
+    }
+    else
+    {
+      this->limiter.setEnabled(false);
+    }
 
     ScoreKeeperS::instance()->load();
 
@@ -256,11 +270,15 @@ void Game::updateInGameLogic( void)
 void Game::run( void)
 {
     XTRACE();
+
+    //static float maxGameLimit = 1.0/100.0;
+    //static float startGameLimit = Timer::getTime();
     
     Audio &audio = *AudioS::instance();
     Video &video = *VideoS::instance();
     Input &input = *InputS::instance();
 
+    this->limiter.reset(Timer::getTime());
 
     while( GameState::isAlive)
     {
@@ -281,5 +299,27 @@ void Game::run( void)
         input.update();
         audio.update();
         video.update();
+
+        this->limiter.limit(Timer::getTime());
+
+#if 0
+        //calculate the game limiter
+        float currentTime = Timer::getTime();
+        float currentDifference = currentTime - startGameLimit;
+        if(currentDifference < maxGameLimit)
+        {
+          //LOG_INFO << "CurrentTime: " << currentTime << " Start time: " << startGameLimit << " Difference: " << currentDifference << endl;
+          if((maxGameLimit - currentDifference) > 0.0)
+          {
+            usleep((uint32_t)((maxGameLimit - currentDifference) * 1000000.0));
+          }
+          startGameLimit += maxGameLimit;
+        }
+        else
+        {
+          //we took to long so just restart
+          startGameLimit = Timer::getTime();
+        }
+#endif
     }
 }

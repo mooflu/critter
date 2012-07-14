@@ -9,6 +9,7 @@ libutils_a_SOURCES = \
 	FPS.cpp \
 	RectanglePacker.cpp \
 	Random.cpp \
+        RateLimiter.cpp \
 	R250.cpp \
 	ResourceManager.cpp \
 	Trace.cpp \
