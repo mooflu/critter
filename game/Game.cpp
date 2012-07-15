@@ -271,9 +271,6 @@ void Game::run( void)
 {
     XTRACE();
 
-    //static float maxGameLimit = 1.0/100.0;
-    //static float startGameLimit = Timer::getTime();
-    
     Audio &audio = *AudioS::instance();
     Video &video = *VideoS::instance();
     Input &input = *InputS::instance();
@@ -301,25 +298,5 @@ void Game::run( void)
         video.update();
 
         this->limiter.limit(Timer::getTime());
-
-#if 0
-        //calculate the game limiter
-        float currentTime = Timer::getTime();
-        float currentDifference = currentTime - startGameLimit;
-        if(currentDifference < maxGameLimit)
-        {
-          //LOG_INFO << "CurrentTime: " << currentTime << " Start time: " << startGameLimit << " Difference: " << currentDifference << endl;
-          if((maxGameLimit - currentDifference) > 0.0)
-          {
-            usleep((uint32_t)((maxGameLimit - currentDifference) * 1000000.0));
-          }
-          startGameLimit += maxGameLimit;
-        }
-        else
-        {
-          //we took to long so just restart
-          startGameLimit = Timer::getTime();
-        }
-#endif
     }
 }
