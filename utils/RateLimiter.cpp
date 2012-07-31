@@ -26,8 +26,8 @@ RateLimiter::RateLimiter():
 }
 
 RateLimiter::RateLimiter(int rate):
-    timeSlice(1.0/rate),
-    sliceStartTime(0.0)
+    _timeSlice(1.0/rate),
+    _sliceStartTime(0.0)
 {
     XTRACE();
 }
@@ -39,26 +39,26 @@ RateLimiter::~RateLimiter()
 
 void RateLimiter::reset(float currTime)
 {
-    this->sliceStartTime = currTime;
+    this->_sliceStartTime = currTime;
 }
 
 void RateLimiter::limit(float currTime)
 {
-    if(!this->enabled)
+    if(!this->_enabled)
     {
         return;
     }
   
-    float currentDifference = currTime - this->sliceStartTime;
+    float currentDifference = currTime - this->_sliceStartTime;
   
-    if((this->timeSlice - currentDifference) > 0.0)
+    if((this->_timeSlice - currentDifference) > 0.0)
     {
-        Timer::sleep(this->timeSlice - currentDifference);
-        this->sliceStartTime += this->timeSlice;
+        Timer::sleep(this->_timeSlice - currentDifference);
+        this->_sliceStartTime += this->_timeSlice;
     }
     else
     {
         //we are behind so use the currTime as the start time and don't delay
-        this->sliceStartTime = currTime;
+        this->_sliceStartTime = currTime;
     }
 }

@@ -24,21 +24,21 @@ class RateLimiter
         void limit(float currTime);
         void setRate(int rate)
         {
-            this->timeSlice = 1.0 / rate;
+            this->_timeSlice = 1.0 / rate;
         }
   
         void setEnabled(bool value)
         {
-            this->enabled = value;
+            this->_enabled = value;
         }
   
         bool isEnabled()
         {
-            return this->enabled;
+            return this->_enabled;
         }
 
     private:
-      float timeSlice;
-      float sliceStartTime;
-      bool enabled;
+      float _timeSlice;
+      float _sliceStartTime;
+      bool _enabled;
 };

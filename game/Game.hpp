@@ -35,7 +35,7 @@ private:
     void updateOtherLogic( void);
     void updateInGameLogic( void);
 
-    RateLimiter limiter;
+    RateLimiter _limiter;
 };
 
 typedef Singleton<Game> GameS;

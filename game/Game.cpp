@@ -38,7 +38,7 @@
 #include <ResourceManager.hpp>
 
 Game::Game( void):
-    limiter()
+    _limiter()
 {
     XTRACE();
 }
@@ -84,12 +84,12 @@ bool Game::init( void)
     ConfigS::instance()->getInteger( "maxRate", temp);
     if(temp > 0)
     {
-      this->limiter.setEnabled(true);
-      this->limiter.setRate(temp);
+      this->_limiter.setEnabled(true);
+      this->_limiter.setRate(temp);
     }
     else
     {
-      this->limiter.setEnabled(false);
+      this->_limiter.setEnabled(false);
     }
 
     ScoreKeeperS::instance()->load();
@@ -274,7 +274,7 @@ void Game::run( void)
     Video &video = *VideoS::instance();
     Input &input = *InputS::instance();
 
-    this->limiter.reset(Timer::getTime());
+    this->_limiter.reset(Timer::getTime());
 
     while( GameState::isAlive)
     {
@@ -296,6 +296,6 @@ void Game::run( void)
         audio.update();
         video.update();
 
-        this->limiter.limit(Timer::getTime());
+        this->_limiter.limit(Timer::getTime());
     }
 }
