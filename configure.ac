@@ -4,7 +4,7 @@ AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
 
 dnl Setup for automake
-AM_INIT_AUTOMAKE("Critical_Mass","1.5.1a")
+AM_INIT_AUTOMAKE("Critical_Mass",__NO_VERSION__)
 AM_CONFIG_HEADER(defines.h)
 
 AC_EXEEXT

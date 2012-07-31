@@ -2,7 +2,7 @@
 // Description:
 //   Limits the rate of a loop
 //
-// Copyright (C) 2001 Frank Becker
+// Copyright (C) 2012 Adam Winsor
 //
 // This program is free software; you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -14,33 +14,31 @@
 // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
 //
 
-#include "SDL/SDL.h"
-
 class RateLimiter
 {
-  public:
-    RateLimiter();
-    RateLimiter(int rate);
-    ~RateLimiter();
-    void reset(float currTime);
-    void limit(float currTime);
-    void setRate(int rate)
-    {
-      this->timeSlice = 1.0 / rate;
-    }
+    public:
+        RateLimiter();
+        RateLimiter(int rate);
+        ~RateLimiter();
+        void reset(float currTime);
+        void limit(float currTime);
+        void setRate(int rate)
+        {
+            this->timeSlice = 1.0 / rate;
+        }
+  
+        void setEnabled(bool value)
+        {
+            this->enabled = value;
+        }
+  
+        bool isEnabled()
+        {
+            return this->enabled;
+        }
 
-    void setEnabled(bool value)
-    {
-      this->enabled = value;
-    }
-
-    bool isEnabled()
-    {
-      return this->enabled;
-    }
-
-  private:
-    float timeSlice;
-    float sliceStartTime;
-    bool enabled;
+    private:
+      float timeSlice;
+      float sliceStartTime;
+      bool enabled;
 };

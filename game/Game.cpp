@@ -12,7 +12,6 @@
 // ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
 //
-#include <unistd.h>
 #include <Trace.hpp>
 
 #include <Game.hpp>
@@ -39,7 +38,7 @@
 #include <ResourceManager.hpp>
 
 Game::Game( void):
-  limiter()
+    limiter()
 {
     XTRACE();
 }

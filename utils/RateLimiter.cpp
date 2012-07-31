@@ -1,7 +1,7 @@
 // Description:
 //   Limits the rate of a loop
 //
-// Copyright (C) 2001 Frank Becker
+// Copyright (C) 2012 Adam Winsor
 //
 // This program is free software; you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -20,45 +20,45 @@
 #define DEFAULT_RATE_LIMIT (100.0)
 
 RateLimiter::RateLimiter():
-  RateLimiter(DEFAULT_RATE_LIMIT)
+    RateLimiter(DEFAULT_RATE_LIMIT)
 {
-  XTRACE();
+    XTRACE();
 }
 
 RateLimiter::RateLimiter(int rate):
-  timeSlice(1.0/rate),
-  sliceStartTime(0.0)
+    timeSlice(1.0/rate),
+    sliceStartTime(0.0)
 {
-  XTRACE();
+    XTRACE();
 }
 
 RateLimiter::~RateLimiter()
 {
-  XTRACE();
+    XTRACE();
 }
 
 void RateLimiter::reset(float currTime)
 {
-  this->sliceStartTime = currTime;
+    this->sliceStartTime = currTime;
 }
 
 void RateLimiter::limit(float currTime)
 {
-  if(!this->enabled)
-  {
-    return;
-  }
-
-  float currentDifference = currTime - this->sliceStartTime;
-
-  if((this->timeSlice - currentDifference) > 0.0)
-  {
-    Timer::sleep(this->timeSlice - currentDifference);
-    this->sliceStartTime += this->timeSlice;
-  }
-  else
-  {
-    //we are behind so use the currTime as the start time and don't delay
-    this->sliceStartTime = currTime;
-  }
+    if(!this->enabled)
+    {
+        return;
+    }
+  
+    float currentDifference = currTime - this->sliceStartTime;
+  
+    if((this->timeSlice - currentDifference) > 0.0)
+    {
+        Timer::sleep(this->timeSlice - currentDifference);
+        this->sliceStartTime += this->timeSlice;
+    }
+    else
+    {
+        //we are behind so use the currTime as the start time and don't delay
+        this->sliceStartTime = currTime;
+    }
 }
