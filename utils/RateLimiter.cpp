@@ -20,7 +20,8 @@
 #define DEFAULT_RATE_LIMIT (100.0)
 
 RateLimiter::RateLimiter():
-    RateLimiter(DEFAULT_RATE_LIMIT)
+    _timeSlice(1.0/DEFAULT_RATE_LIMIT),
+    _sliceStartTime(0.0)
 {
     XTRACE();
 }
