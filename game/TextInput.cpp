@@ -35,7 +35,7 @@ TextInput::~TextInput()
 void TextInput::input( const Trigger &trigger, const bool &isDown)
 {
     XTRACE();
-    Trigger t = trigger;
+    //Trigger t = trigger;
     if( isDown)
     {
 	switch( trigger.type)

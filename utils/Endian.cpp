@@ -26,6 +26,12 @@ enum EndianEnum
     eLAST
 };
 
+union EndianTest
+{
+  uint32_t i;
+  char c[4];
+};
+
 static EndianEnum  _endianess = eNeedInit;
 
 bool isLittleEndian( void)
@@ -35,8 +41,12 @@ bool isLittleEndian( void)
     {
         case eNeedInit:
             {
-		char c[4] = {'1','2','3','4'};
-		_endianess = (EndianEnum) *((int*)c);
+		EndianTest v;
+		v.c[0] = '1';
+		v.c[1] = '2';
+		v.c[2] = '3';
+		v.c[3] = '4';
+		_endianess = (EndianEnum) v.i;
             }
             return _endianess == eLittleEndian;
             break;

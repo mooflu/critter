@@ -29,7 +29,7 @@ public:
     virtual bool update( ParticleInfo *p) = 0;
     virtual void draw( ParticleInfo *p) = 0;
 
-    virtual void hit( ParticleInfo *p, int /*damage*/, int radIndex=0) { p->tod = 0; radIndex=0;}
+    virtual void hit( ParticleInfo *p, int /*damage*/, int radIndex=0) { p->tod = radIndex;}
     virtual void hit( ParticleInfo *p, ParticleInfo *p2, int radIndex=0) { hit( p, p2->damage, radIndex);}
 
     virtual int getRadiiCount(void) { return 1;}
