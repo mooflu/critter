@@ -254,6 +254,11 @@ bool Video::setVideoMode( void)
 {
     int videoFlags = SDL_OPENGL;
 
+#if SDL_VERSION_ATLEAST(1, 2, 10)
+    //Disable Vsync
+    SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL,0);
+#endif
+
     ConfigS::instance()->getBoolean( "fullscreen", _isFullscreen);
     if( _isFullscreen)
     {
@@ -301,7 +306,7 @@ bool Video::updateSettings( void)
     int height = 0;
     ConfigS::instance()->getInteger( "height", height);
 
-    if( (fullscreen != _isFullscreen) || (width != _width) || (height != _height))
+    if( (fullscreen != _isFullscreen) || (width != _width) || (height != _height) )
     {
 	reset();
 	bool oldFullscreen = _isFullscreen;
