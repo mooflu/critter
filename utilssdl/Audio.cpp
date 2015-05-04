@@ -106,9 +106,16 @@ void Audio::loadMusic( const string &mod)
     int fileSize = infile.fileSize();
     _soundTrackData = new char[ fileSize];
     infile.read( _soundTrackData, fileSize);
-    SDL_RWops *src = SDL_RWFromMem( _soundTrackData, fileSize); 
+    SDL_RWops *src = SDL_RWFromMem( _soundTrackData, fileSize);
+    if( !src)
+    {
+	LOG_ERROR << "Failed to load soundtrack: [" << mod << "]\n";
+	LOG_ERROR << SDL_GetError() << "\n";
+	return;
+    }
 
     _soundTrack = Mix_LoadMUS_RW(src);
+    SDL_FreeRW(src);
 
     if( !_soundTrack)
     { 
