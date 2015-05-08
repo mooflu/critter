@@ -268,6 +268,7 @@ bool Hero::update( ParticleInfo *p)
         if( _isDyingDelay-- < 0)
         {
             _isAlive = false;
+	    _isDying = false;
             return false;
         }
         return true;
@@ -386,6 +387,10 @@ void Hero::move( Direction::DirectionEnum dir, bool isDown)
 void Hero::weaponFire( bool isDown, int weapNum)
 {
 //    XTRACE();
+    //don't fire the weapon if we are dying
+    if( _isDying)
+      return;
+
     if( !_isAlive) 
     {
 	if( weapNum == 2)

@@ -99,9 +99,11 @@ if test "x$TARGET" = xWIN32; then
 else
     LIBS="-L/usr/local/lib -L/usr/X11R6/lib $LIBS"
     CXXFLAGS="$CXXFLAGS -I/usr/X11R6/include"
-	AC_CHECK_LIB(curl-gnutls, main,, AC_MSG_ERROR(libcurl-gnutls is needed))
+	AC_CHECK_LIB(curl-gnutls, main,,
+                     AC_CHECK_LIB(curl,main,,AC_MSG_ERROR(curl is needed))
+                    )
 	AC_CHECK_LIB(tinyxml, main,, AC_MSG_ERROR(libtinyxml is needed))
-	AC_CHECK_LIB(png, main,, AC_MSG_ERROR(libpng is needed))
+	AC_CHECK_LIB(png, png_get_io_ptr,, AC_MSG_ERROR(libpng is needed))
 	AC_CHECK_LIB(z, main,, AC_MSG_ERROR(libz is needed))
 	if test "x$TARGET" = xUNIX; then
 	    if test "x$enable_dyngl" = xoff; then
@@ -121,7 +123,16 @@ fi
 AC_CHECK_LIB(m, sin,, 
     AC_MSG_ERROR(libm is needed))
 
-AC_OUTPUT(Makefile utils/Makefile utilssdl/Makefile utilsgl/Makefile game/Makefile tools/Makefile )
+dnl Checking for Doxygen
+AC_CHECK_PROGS([DOXYGEN], [doxygen])
+if test -z "$DOXYGEN";
+   then AC_MSG_WARN([Doxygen not found - continuing without Doxygen support])
+fi
+
+AM_CONDITIONAL([HAVE_DOXYGEN],
+[test -n "$DOXYGEN"])AM_COND_IF([HAVE_DOXYGEN], [AC_CONFIG_FILES([docs/Doxyfile])])
+
+AC_OUTPUT(Makefile utils/Makefile utilssdl/Makefile utilsgl/Makefile game/Makefile tools/Makefile docs/Makefile)
 
 echo "Configuration:
 

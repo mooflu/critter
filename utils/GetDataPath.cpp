@@ -173,7 +173,11 @@ std::string getHomePath( void)
     return homePath;
 }
 
+#if defined(__APPLE__) || defined(WIN32)
 std::string getWritableDataPath( const std::string subDir)
+#else
+std::string getWritableDataPath( const std::string /*subDir*/)
+#endif
 {
     std::string writableDataPath = "";
 #ifdef __APPLE__

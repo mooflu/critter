@@ -15,6 +15,7 @@
 //
 
 #include <Singleton.hpp>
+#include <RateLimiter.hpp>
 
 class Game
 {
@@ -33,6 +34,8 @@ private:
 
     void updateOtherLogic( void);
     void updateInGameLogic( void);
+
+    RateLimiter _limiter;
 };
 
 typedef Singleton<Game> GameS;
