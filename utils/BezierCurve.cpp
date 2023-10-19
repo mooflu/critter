@@ -335,11 +335,12 @@ template <class POINT>
 bool BezierCurve<POINT>::Load(const char* filename) {
     XTRACE();
 
-    if (!ResourceManagerS::instance()->selectResource(string(filename))) {
+    if (!ResourceManagerS::instance()->hasResource(string(filename))) {
         LOG_ERROR << "Curve [" << filename << "] not found." << endl;
         return false;
     }
-    ziStream& infile = ResourceManagerS::instance()->getInputStream();
+    shared_ptr<ziStream> infilePtr(ResourceManagerS::instance()->getInputStream(filename));
+    ziStream& infile = *infilePtr;
 
     string line;
 
@@ -380,8 +381,8 @@ bool BezierCurve<POINT>::Load(const char* filename) {
 	    _controlPoints = 0;
 	    _pointsPerSegment = oldPointsPerSegment;
 	    _numSegments = 0;
-	    LOG_ERROR << "Expected another " 
-		      << POINT::dimension() << "-tuple" 
+	    LOG_ERROR << "Expected another "
+		      << POINT::dimension() << "-tuple"
 		      << "in [" << filename << "]" << endl;
 	    return false;
 #endif
