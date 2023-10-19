@@ -42,6 +42,7 @@ public:
     void DrawTexQuad(const vec4f v[4], const vec2f t[4]);
 
     void DrawPoints(GLfloat* verts, int numVerts);
+    void DrawColorPoints(GLfloat* verts, int numVerts, GLfloat* colors, int numColors);
 
 private:
     bool _hasColor;
