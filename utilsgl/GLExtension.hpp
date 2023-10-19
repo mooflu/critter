@@ -25,35 +25,32 @@ extern "C" { typedef void (*__GL_EXT_FuncPtr)(); }
 #include <GL/glew.h>
 #include "Trace.hpp"
 
+// TODO: replace GLExtension with checking via glew:
+// E.g. if (GLEW_ARB_vertex_program)
+
 class GLExtension {
 public:
     GLExtension(const char* extensionName) {
-        //get all extensions, pad with space
-        if (!_paddedExtensions) {
-            const char* extensions = (const char*)glGetString(GL_EXTENSIONS);
-            _paddedExtensions = new char[strlen(extensions) + 2];
-            strcat(strcpy(_paddedExtensions, extensions), " ");
-            //	    LOG_INFO << "[" << _paddedExtensions << "]\n";
-        }
-
-        _extensionName = new char[strlen(extensionName) + 1];
-        strcpy(_extensionName, extensionName);
-
         //check if extension is supported
         _isSupported = false;
-        if (strstr(_paddedExtensions, _extensionName)) {
-            LOG_INFO << "Supported: [" << _extensionName << "]\n";
-            _isSupported = true;
+
+        GLint n = 0;
+        glGetIntegerv(GL_NUM_EXTENSIONS, &n);
+        for (GLint i = 0; i < n; i++) {
+            const char* extension = (const char*)glGetStringi(GL_EXTENSIONS, i);
+            if (strstr(extension, extensionName)) {
+                LOG_INFO << "Supported: [" << extensionName << "]\n";
+                _isSupported = true;
+                break;
+            }
         }
     }
 
-    virtual ~GLExtension() { delete[] _extensionName; }
+    virtual ~GLExtension() {}
 
     virtual const char* getName(void) = 0;
 
     static void close(void) {
-        delete[] _paddedExtensions;
-        _paddedExtensions = 0;
     }
 
     bool isSupported(void) { return _isSupported; }
@@ -73,6 +70,4 @@ private:
     GLExtension& operator=(const GLExtension&);
 
     bool _isSupported;
-    char* _extensionName;
-    static char* _paddedExtensions;
 };

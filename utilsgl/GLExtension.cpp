@@ -13,5 +13,3 @@
 // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
 //
 #include "GLExtension.hpp"
-
-char* GLExtension::_paddedExtensions = 0;
