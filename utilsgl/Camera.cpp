@@ -21,19 +21,18 @@
 
 const float defaultAngleSensitivity = 1.0;
 
-void Camera::place(void) {
+void Camera::place(glm::mat4& modelview) {
     //    XTRACE();
     //    if( GameState::context != Context::eCameraFlyby) return;
-
-    glRotatef(-_cameraPitch, 1.0, 0.0, 0.0);
-    glRotatef(-_cameraYaw, 0.0, 1.0, 0.0);
-    glTranslatef(-_cameraX, -_cameraY, -_cameraZ);
+    modelview = glm::rotate(modelview, glm::radians(-_cameraPitch), glm::vec3(1.0, 0.0, 0.0));
+    modelview = glm::rotate(modelview, glm::radians(-_cameraYaw), glm::vec3(0.0, 1.0, 0.0));
+    modelview = glm::translate(modelview, glm::vec3(-_cameraX, -_cameraY, -_cameraZ));
 }
 
-void Camera::billboard(void) {
+void Camera::billboard(glm::mat4& modelview) {
     //    XTRACE();
-    glRotatef(_cameraYaw, 0.0, 1.0, 0.0);
-    glRotatef(_cameraPitch, 1.0, 0.0, 0.0);
+    modelview = glm::rotate(modelview, glm::radians(_cameraYaw), glm::vec3(0.0, 1.0, 0.0));
+    modelview = glm::rotate(modelview, glm::radians(_cameraPitch), glm::vec3(1.0, 0.0, 0.0));
 }
 
 void Camera::mouseLook(float dx, float dy) {

@@ -82,6 +82,7 @@ void GLTextureCubeMap::init(void) {
         glTexParameteri(GL_TEXTURE_CUBE_MAP_ARB, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     }
 
+#if 0
     int mode = GL_NORMAL_MAP_ARB;  //GL_REFLECTION_MAP_ARB; //GL_NORMAL_MAP_ARB
     glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, mode);
     glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, mode);
@@ -90,20 +91,7 @@ void GLTextureCubeMap::init(void) {
     int wrap = GL_CLAMP;  //GL_REPEAT; //GL_CLAMP;
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARB, GL_TEXTURE_WRAP_S, wrap);
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARB, GL_TEXTURE_WRAP_T, wrap);
-}
-
-void GLTextureCubeMap::enable(void) {
-    glEnable(GL_TEXTURE_CUBE_MAP_ARB);
-    glEnable(GL_TEXTURE_GEN_S);
-    glEnable(GL_TEXTURE_GEN_T);
-    glEnable(GL_TEXTURE_GEN_R);
-}
-
-void GLTextureCubeMap::disable(void) {
-    glDisable(GL_TEXTURE_CUBE_MAP_ARB);
-    glDisable(GL_TEXTURE_GEN_S);
-    glDisable(GL_TEXTURE_GEN_T);
-    glDisable(GL_TEXTURE_GEN_R);
+#endif
 }
 
 void GLTextureCubeMap::reload(void) {

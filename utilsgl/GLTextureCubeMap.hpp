@@ -45,9 +45,6 @@ public:
 
     void reload(void);
 
-    void enable(void);
-    void disable(void);
-
 private:
     GLuint _textureID;
     SDL_Surface* _image[6];

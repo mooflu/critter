@@ -14,17 +14,20 @@
 // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
 //
 
-#include <GL/glew.h>
 #include "Trace.hpp"
 #include "Direction.hpp"
 #include "Singleton.hpp"
+
+#include <GL/glew.h>
+#include "glm/ext.hpp"
+
 
 class Camera {
     friend class Singleton<Camera>;
 
 public:
-    void place(void);
-    void billboard(void);
+    void place(glm::mat4& modelview);
+    void billboard(glm::mat4& modelview);
     void mouseLook(float dx, float dy);
     void update(void);
     void move(Direction::DirectionEnum dir, bool isDown);
