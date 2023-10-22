@@ -171,6 +171,14 @@ void GLVBO::DrawTexQuad(const vec4f v[4], const vec2f t[4]) {
     draw(GL_TRIANGLE_FAN);
 }
 
+void GLVBO::DrawColorQuad(const vec4f v[4], const vec4f c[4]) {
+    std::vector<vec4f> verts = { v[0], v[1], v[2], v[3] };
+    std::vector<vec4f> colors = { c[0], c[1], c[2], c[3] };
+    std::vector<vec2f> texels;
+    init(verts, texels, colors);
+    draw(GL_TRIANGLE_FAN);
+}
+
 void GLVBO::DrawPoints(GLfloat* v, int numVerts) {
     std::vector<vec4f> verts;
     std::vector<vec4f> colors;

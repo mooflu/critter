@@ -40,6 +40,7 @@ public:
     void DrawQuad(const vec4f& p1, const vec4f& p2, const vec4f& p3, const vec4f& p4);
     void DrawQuad(const vec4f v[4]);
     void DrawTexQuad(const vec4f v[4], const vec2f t[4]);
+    void DrawColorQuad(const vec4f v[4], const vec4f c[4]);
 
     void DrawPoints(GLfloat* verts, int numVerts);
     void DrawColorPoints(GLfloat* verts, int numVerts, GLfloat* colors, int numColors);
