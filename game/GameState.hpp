@@ -18,8 +18,7 @@
 #include <Skill.hpp>
 #include <PausableTimer.hpp>
 
-struct GameState
-{
+struct GameState {
     static bool isDeveloper;
     static bool showFPS;
     static bool isAlive;

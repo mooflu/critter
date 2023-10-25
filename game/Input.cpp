@@ -15,7 +15,7 @@
 #include "Input.hpp"
 
 #include <math.h>
-#include "SDL/SDL.h"
+#include "SDL.h"
 
 #include "Trace.hpp"
 #include "Config.hpp"
@@ -25,52 +25,83 @@
 #include "CallbackManager.hpp"
 #include "Tokenizer.hpp"
 #include "Value.hpp"
+#include "Video.hpp"
 
 #ifdef __APPLE__
-#define MAIN_MODIFIER KMOD_META
+#define MAIN_MODIFIER KMOD_LCTRL
 #else
 #define MAIN_MODIFIER KMOD_CTRL
 #endif
 
+inline void Clampf(float& val, const float MINval, float MAXval) {
+    if (val < MINval) {
+        val = MINval;
+    } else if (val > MAXval) {
+        val = MAXval;
+    }
+}
+
 using namespace std;
 
-Input::Input( void):
-    _bindMode( false),
+Input::Input(void) :
+    _bindMode(false),
     _action(""),
     _callbackManager(),
-    _memoryDX(0.0),
-    _memoryDY(0.0),
-    _valDX(0.0),
-    _valDY(0.0),
-    _dampVal(0.0),
-    _sensitivity(0.5),
-    _interceptor(0)
-{
+    _mousePos(0, 0),
+    _mouseDelta(0, 0),
+    _interceptor(0) {
     XTRACE();
 }
 
-Input::~Input()
-{
+Input::~Input() {
     XTRACE();
     _callbackMap.clear();
 
     ATMap::iterator i;
-    for( i=_actionTriggerMap.begin(); i!=_actionTriggerMap.end() ;i++)
-    {
+    for (i = _actionTriggerMap.begin(); i != _actionTriggerMap.end(); i++) {
         delete i->second;
     }
 }
 
-bool Input::init( void)
-{
+const vec2f& Input::mousePos(void) {
+    return _mousePos;
+}
+
+void Input::resetMousePosition() {
+    _mousePos = vec2f((float)VideoS::instance()->getWidth(), (float)VideoS::instance()->getHeight()) / 2;
+}
+
+bool Input::init(void) {
     XTRACE();
     LOG_INFO << "Initializing Input..." << endl;
 
-    updateMouseSettings();
-    LOG_INFO << "Mouse smoothing: " << _dampVal << endl;
-    LOG_INFO << "Mouse sensitivity: " << _sensitivity << endl;
+    _keys.init();
 
-    SDL_EnableKeyRepeat( 300,200);
+    vector<Config::ConfigItem> bindList;
+    ConfigS::instance()->getList("binds", bindList);
+
+    vector<Config::ConfigItem>::iterator i;
+    for (i = bindList.begin(); i != bindList.end(); i++) {
+        Config::ConfigItem& bind = (*i);
+        string action = bind.key;
+        string keyname = bind.value;
+#if defined(EMSCRIPTEN)
+        if (action == "EscapeAction") {
+            keyname = "BACKSPACE";
+        }
+#endif
+        LOG_INFO << "action [" << action << "], "
+                 << "keyname [" << keyname << "]" << endl;
+
+        Trigger* trigger = new Trigger;
+        if (_keys.convertStringToTrigger(keyname, *trigger)) {
+            _actionTriggerMap[action] = trigger;
+        }
+    }
+
+    updateMouseSettings();
+
+    //SDL_EnableKeyRepeat( 300,200); -- SDL1
 
     _callbackManager.init();
 
@@ -78,341 +109,312 @@ bool Input::init( void)
     return true;
 }
 
-void Input::updateMouseSettings( void)
-{
-    ConfigS::instance()->getFloat( "mouseSmooth", _dampVal);
-    if( (_dampVal<0.0) || (_dampVal>0.999))
-    {
-        _dampVal = 0.0f;
-    }
+void Input::updateMouseSettings(void) {}
 
-    ConfigS::instance()->getFloat( "mouseSensitivity", _sensitivity);
-    if( (_sensitivity<0.01) || (_sensitivity>1.0))
-    {
-        _sensitivity = 0.1f;
-    }
-}
 
 // Returns false, if there are no more events available.
-bool Input::tryGetTrigger( Trigger &trigger, bool &isDown)
-{
-//    XTRACE();
+bool Input::tryGetTrigger(Trigger& trigger, bool& isDown) {
+    //    XTRACE();
     isDown = false;
 
     SDL_Event event;
-    if( !SDL_PollEvent( &event))
-    {
+    if (!SDL_PollEvent(&event)) {
         return false;
     }
 
-    switch( event.type ) 
-    {
-	case SDL_KEYDOWN:
-	    isDown = true;
-	    if( (event.key.keysym.sym == SDLK_BACKQUOTE) &&
-                (event.key.keysym.mod & KMOD_SHIFT))                
-	    {
-		LOG_INFO << "Resolution reset..." << endl;
-                Value *w = new Value( 800);
-                ConfigS::instance()->updateKeyword( "width", w);
-                Value *h = new Value( 600);
-                ConfigS::instance()->updateKeyword( "height", h);
-                
-		trigger.type = eUnknownTrigger;
-		break;
-	    }
-            if( (event.key.keysym.sym == SDLK_g) &&
-                (event.key.keysym.mod & MAIN_MODIFIER))                
-            {
-		SDL_GrabMode gmode = SDL_WM_GrabInput( SDL_GRAB_QUERY);
-		if( gmode == SDL_GRAB_OFF )
-		    SDL_WM_GrabInput( SDL_GRAB_ON);
-		else if ( gmode == SDL_GRAB_ON )
-		    SDL_WM_GrabInput( SDL_GRAB_OFF);
-	    }
-            if( (event.key.keysym.sym == SDLK_f) &&
-                (event.key.keysym.mod & MAIN_MODIFIER))                
-            {
-                bool fullscreen = false;
-                ConfigS::instance()->getBoolean( "fullscreen", fullscreen);
+    switch (event.type) {
+        case SDL_KEYDOWN:
+            isDown = true;
+            if ((event.key.keysym.sym == SDLK_BACKQUOTE) && (event.key.keysym.mod & KMOD_SHIFT)) {
+                LOG_INFO << "Resolution reset..." << endl;
+                Value* w = new Value(800);
+                ConfigS::instance()->updateKeyword("width", w);
+                Value* h = new Value(600);
+                ConfigS::instance()->updateKeyword("height", h);
 
-                Value *w = new Value( ! fullscreen);
-                ConfigS::instance()->updateKeyword( "fullscreen", w);
+                trigger.type = eUnknownTrigger;
+                break;
             }
-                    
+            if ((event.key.keysym.sym == SDLK_f) && (event.key.keysym.mod & MAIN_MODIFIER)) {
+                bool fullscreen = false;
+                ConfigS::instance()->getBoolean("fullscreen", fullscreen);
+
+                Value* w = new Value(!fullscreen);
+                ConfigS::instance()->updateKeyword("fullscreen", w);
+            }
+
 #ifndef NO_QUICK_EXIT
-	    if( (event.key.keysym.sym == SDLK_BACKQUOTE) 
-                || ((event.key.keysym.sym == SDLK_q) && (event.key.keysym.mod & MAIN_MODIFIER))
-                )
-	    {
-		GameState::isAlive = false;
-		LOG_WARNING << "Quick Exit invoked..." << endl;
+            if ((event.key.keysym.sym == SDLK_BACKQUOTE) ||
+                ((event.key.keysym.sym == SDLK_q) && (event.key.keysym.mod & MAIN_MODIFIER))) {
+                GameState::isAlive = false;
+                LOG_WARNING << "Quick Exit invoked..." << endl;
 
-		trigger.type = eUnknownTrigger;
-		break;
-	    }
+                trigger.type = eUnknownTrigger;
+                break;
+            }
 #endif
-	    //fall through
+            //fall through
 
-	case SDL_KEYUP:
-	    trigger.type = eKeyTrigger;
-	    trigger.data1 = event.key.keysym.sym;
-	    trigger.data2 = event.key.keysym.mod;
-	    trigger.data3 = event.key.keysym.unicode;
-	    break;
+        case SDL_KEYUP:
+            trigger.type = eKeyTrigger;
+            trigger.data1 = event.key.keysym.sym;
+            trigger.data2 = event.key.keysym.mod;
+            trigger.data3 = event.key.keysym.scancode;
+            break;
 
-	case SDL_MOUSEBUTTONDOWN:
-	    isDown = true;
-	    //fall through
+        case SDL_MOUSEBUTTONDOWN:
+            isDown = true;
+            //fall through
 
-	case SDL_MOUSEBUTTONUP:
-	    trigger.type = eButtonTrigger;
-	    trigger.data1 = event.button.button;
-	    trigger.data2 = 0;
-	    trigger.data3 = 0;
-	    break;
+        case SDL_MOUSEBUTTONUP:
+            trigger.type = eButtonTrigger;
+            trigger.data1 = event.button.button;
+            trigger.data2 = 0;
+            trigger.data3 = 0;
+            break;
 
-	case SDL_MOUSEMOTION:
-	    trigger.type = eUnknownTrigger;
-	    _valDX = event.motion.xrel*_sensitivity;
-	    _valDY = -event.motion.yrel*_sensitivity;
-	    break;
+        case SDL_MOUSEMOTION:
+            trigger.type = eMotionTrigger;
+            trigger.fData1 = (float)event.motion.xrel;
+            trigger.fData2 = (float)-event.motion.yrel;
+            break;
 
-	case SDL_QUIT:
-	    GameState::isAlive = false;
-	    break;
+        case SDL_MOUSEWHEEL:
+            isDown = true;
+            trigger.type = eButtonTrigger;
+            trigger.data1 = SDL_MOUSEWHEEL;
+            trigger.data2 = event.wheel.x;
+            trigger.data3 = event.wheel.y;
+            break;
 
-	default:
-	    trigger.type = eUnknownTrigger;
+        case SDL_TEXTINPUT:
+            // LOG_INFO << "SDL_TEXTINPUT\n";
+            trigger.type = eTextInputTrigger;
+            trigger.text = event.text.text;
+            trigger.data1 = -1;
+            trigger.data2 = (int)strlen(event.text.text);
+            break;
+
+        case SDL_TEXTEDITING:
+            // LOG_INFO << "SDL_TEXTEDITING\n";
+            trigger.type = eTextInputTrigger;
+            trigger.text = event.edit.text;
+            trigger.data1 = event.edit.start;
+            trigger.data2 = event.edit.length;
+            break;
+
+        case SDL_QUIT:
+            GameState::isAlive = false;
+            break;
+
+        default:
+            trigger.type = eUnknownTrigger;
             break;
     }
 
     return true;
 }
 
-bool Input::update( void)
-{
-//    XTRACE();
+bool Input::update(void) {
+    //    XTRACE();
     bool isDown;
     Trigger trigger;
 
-    static float nextTime = Timer::getTime()+0.5f;
+    static float nextTime = Timer::getTime() + 0.5f;
     float thisTime = Timer::getTime();
-    if( thisTime > nextTime)
-    {
-	updateMouseSettings();
-	nextTime = thisTime+0.5f;
+    if (thisTime > nextTime) {
+        updateMouseSettings();
+        nextTime = thisTime + 0.5f;
     }
 
-    _valDX = 0.0f;
-    _valDY = 0.0f;
+    _mouseDelta = vec2f(0, 0);
 
-    while( tryGetTrigger( trigger, isDown))
-    {
-        if( trigger.type == eUnknownTrigger)
-        {
+    while (tryGetTrigger(trigger, isDown)) {
+        if (trigger.type == eUnknownTrigger) {
             //for unkown trigger we don't need to do a lookup
             continue;
         }
-        
+
+        if (trigger.type == eMotionTrigger) {
+            //LOG_INFO << "dx: " << trigger.fData1 << " dy: " << trigger.fData2 << "\n";
+            _mouseDelta += vec2f(trigger.fData1, trigger.fData2);
+            continue;
+        }
+
         //Note: motion triggers can't be bound
-        if( _bindMode && isDown && _action.size() && (trigger.type!=eMotionTrigger))
-        {
+        if (_bindMode && isDown && _action.size() && (trigger.type != eMotionTrigger)) {
             bool validBind = true;
-            switch( trigger.type)
-            {
+            switch (trigger.type) {
                 case eKeyTrigger:
-                    switch( trigger.data1)
-                    {
-                        case SDLK_ESCAPE:
+                    switch (trigger.data1) {
+                        case ESCAPE_KEY:
                             validBind = false;
                             break;
                         default:
                             break;
                     }
                     break;
-                    
+
                 case eButtonTrigger:
                     break;
-                    
+
                 default:
                     break;
             }
-            if( validBind)
-            {
+            if (validBind) {
                 //LOG_INFO << "Trying to get new bind for " << _action << "\n";
 
-                Callback *cb2 = findHash( trigger, _callbackMap);
-                if( cb2)
-                {
-                    _actionTriggerMap.erase( cb2->getActionName());
-                }                    
-                
-                Trigger *t = findHash( _action, _actionTriggerMap);
-                Callback *cb = _callbackManager.getCallback( _action);
-                
-                if( t)
-                {
-                    //get rid of previous trigger mapping
-                    _actionTriggerMap.erase( _action);
-                    _callbackMap.erase( *t);
+                Callback* cb2 = findHash(trigger, _callbackMap);
+                if (cb2) {
+                    _actionTriggerMap.erase(cb2->getActionName());
                 }
-                else
-                {
+
+                Trigger* t = findHash(_action, _actionTriggerMap);
+                Callback* cb = _callbackManager.getCallback(_action);
+
+                if (t) {
+                    //get rid of previous trigger mapping
+                    _actionTriggerMap.erase(_action);
+                    _callbackMap.erase(*t);
+                } else {
                     t = new Trigger;
                 }
-                
+
                 //update trigger with new settings
                 *t = trigger;
-                _actionTriggerMap[ _action] = t;
-                _callbackMap[ *t] = cb;
+                _actionTriggerMap[_action] = t;
+                _callbackMap[*t] = cb;
+
+                ConfigS::instance()->updateKeyword(_action, _keys.convertTriggerToString(*t), "binds");
             }
-            
+
             //go back to normal mode
-	    _bindMode = false;
+            _bindMode = false;
             continue;
         }
-    
-	if( _interceptor)
-	{
-	    //feed trigger to interceptor instead of normal callback mechanism
-	    _interceptor->input( trigger, isDown);
-	    continue;
-	}
-      
-        if( !_bindMode)
-	{
-	    //find callback for this trigger
-	    //i.e. the action bound to this key
-	    Callback * cb = findHash( trigger, _callbackMap);
-	    if( cb)
-	    {
-//		LOG_INFO << "Callback for [" << cb->getActionName() << "]" << endl;
-		cb->performAction( trigger, isDown);
-	    }
-	}
-        else if( !_action.size())
-        {
+
+        if (_interceptor) {
+            //feed trigger to interceptor instead of normal callback mechanism
+            _interceptor->input(trigger, isDown);
+
+            continue;
+        }
+
+        if (!_bindMode) {
+            //find callback for this trigger
+            //i.e. the action bound to this key
+            Callback* cb = findHash(trigger, _callbackMap);
+            if (cb) {
+                //LOG_INFO << "Callback for [" << cb->getActionName() << "]" << endl;
+                cb->performAction(trigger, isDown);
+            }
+        } else if (!_action.size()) {
             LOG_ERROR << "Input is in bind mode, but no action" << endl;
-	    _bindMode = false;
+            _bindMode = false;
         }
     }
-    _valDX = feedbackFilter( _valDX, _dampVal, _memoryDX);
-    _valDY = feedbackFilter( _valDY, _dampVal, _memoryDY);
 
-    if( (fabs(_valDX)>1.0e-10) || (fabs(_valDY)>1.0e-10))
-    {
-	trigger.type = eMotionTrigger;
-	trigger.fData1 = _valDX; 
-	trigger.fData2 = _valDY;
+    if ((fabs(_mouseDelta.x()) > 1.0e-10) || (fabs(_mouseDelta.y()) > 1.0e-10)) {
+        _mousePos += _mouseDelta;
+        Clampf(_mousePos.x(), 0, (float)VideoS::instance()->getWidth());
+        Clampf(_mousePos.y(), 0, (float)VideoS::instance()->getHeight());
 
-	if( _interceptor)
-	{
-	    //feed trigger to interceptor instead of normal callback mechanism
-	    _interceptor->input( trigger, true);
-	}
-	else
-	{
-	    Callback * cb = findHash( trigger, _callbackMap);
-	    if( cb)
-	    {
-//	        LOG_INFO << "Callback for [" << cb->getActionName() << "]" << endl;
-		cb->performAction( trigger, isDown);
-	    }
-	}
+        trigger.fData1 = _mouseDelta.x();
+        trigger.fData2 = _mouseDelta.y();
+        if (_interceptor) {
+            //feed trigger to interceptor instead of normal callback mechanism
+            _interceptor->input(trigger, true);
+        } else {
+            Callback* cb = findHash(trigger, _callbackMap);
+            if (cb) {
+                //LOG_INFO << "Callback for [" << cb->getActionName() << "]" << endl;
+                cb->performAction(trigger, isDown);
+            }
+        }
     }
 
     return true;
 }
 
-void Input::handleLine( const string line)
-{
-//    XTRACE();
-    Tokenizer  t( line);
+void Input::handleLine(const string line) {
+    //    XTRACE();
+    Tokenizer t(line);
     string bindKeyword = t.next();
-    if( bindKeyword != "bind") return;
+    if (bindKeyword != "bind") {
+        return;
+    }
 
     string action = t.next();
     string keyname = t.next();
 
-//    LOG_INFO << "action [" << action << "], "
-//             << "keyname [" << keyname << "]" << endl;
+#if defined(EMSCRIPTEN)
+    if (action == "EscapeAction") {
+        keyname = "BACKSPACE";
+    }
+#endif
 
-    Trigger *trigger = new Trigger;
-    if( _keys.convertStringToTrigger( keyname, *trigger))
-    {
-	_actionTriggerMap[ action] = trigger;
+    LOG_INFO << "action [" << action << "], "
+             << "keyname [" << keyname << "]" << endl;
+
+    Trigger* trigger = new Trigger;
+    if (_keys.convertStringToTrigger(keyname, *trigger)) {
+        _actionTriggerMap[action] = trigger;
     }
 }
 
-void Input::save( ofstream &outfile)
-{
+void Input::save(ostream& outfile) {
     XTRACE();
     outfile << "# --- Binding section --- " << endl;
 
-    hash_map< Trigger, Callback*, hash<Trigger> >::const_iterator ci;
-    for( ci=_callbackMap.begin(); ci!=_callbackMap.end(); ci++)
-    {
-        outfile << "bind " 
-                << ci->second->getActionName() << " "
-                << _keys.convertTriggerToString( ci->first)
-                << endl;
+    hash_map<Trigger, Callback*, hash<Trigger>>::const_iterator ci;
+    for (ci = _callbackMap.begin(); ci != _callbackMap.end(); ci++) {
+        outfile << "bind " << ci->second->getActionName() << " " << _keys.convertTriggerToString(ci->first) << endl;
     }
 }
 
-void Input::addCallback( Callback *cb)
-{
-    if( cb)
-    {
-        _callbackManager.addCallback( cb);
-        
-	Trigger *t = findHash( cb->getActionName(), _actionTriggerMap);
-        if( !t)
-        {
+void Input::addCallback(Callback* cb) {
+    if (cb) {
+        _callbackManager.addCallback(cb);
+
+        Trigger* t = findHash(cb->getActionName(), _actionTriggerMap);
+        if (!t) {
+            LOG_INFO << "trigger not found for " << cb->getActionName() << " - using default\n";
             //add default
             t = new Trigger;
-            if( _keys.convertStringToTrigger( cb->getDefaultTriggerName(), *t))
-            {
-                Callback * cbAlreadyThere = findHash( *t, _callbackMap);
-                if( cbAlreadyThere) 
-                {
+            if (_keys.convertStringToTrigger(cb->getDefaultTriggerName(), *t)) {
+                Callback* cbAlreadyThere = findHash(*t, _callbackMap);
+                if (cbAlreadyThere) {
                     delete t;
                     return;
-                }                
-                _actionTriggerMap[ cb->getActionName()] = t;
-            }            
+                }
+                _actionTriggerMap[cb->getActionName()] = t;
+            }
         }
-        
-	if( t)
-	{
-	    bind( *t, cb);
-	}
+
+        if (t) {
+            bind(*t, cb);
+        }
     }
 }
 
-std::string Input::getTriggerName( std::string &action)
-{
-    Trigger *t = findHash( action, _actionTriggerMap);
-    if( t)
-    {
-        return _keys.convertTriggerToString( *t);
+std::string Input::getTriggerName(std::string& action) {
+    Trigger* t = findHash(action, _actionTriggerMap);
+    if (t) {
+        return _keys.convertTriggerToString(*t);
     }
     return "Not assigned!";
 }
 
-
-void Input::bind( Trigger &trigger, Callback *callback)
-{
+void Input::bind(Trigger& trigger, Callback* callback) {
     XTRACE();
-    Callback * cb = findHash( trigger, _callbackMap);
-    if( cb)
-    {
+    Callback* cb = findHash(trigger, _callbackMap);
+    if (cb) {
         LOG_WARNING << "Removing old binding" << endl;
         //remove previous callback...
-        _callbackMap.erase( trigger);
+        _callbackMap.erase(trigger);
     }
 
-    LOG_INFO << "Creating binding for " << callback->getActionName() 
-             << " - " << trigger.type << ":" << trigger.data1 << endl;
-    _callbackMap[ trigger] = callback;
+    LOG_INFO << "Creating binding for " << callback->getActionName() << " - " << trigger.type << ":" << trigger.data3
+             << " sym: " << trigger.data1 << endl;
+    _callbackMap[trigger] = callback;
 }

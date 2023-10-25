@@ -16,55 +16,54 @@
 
 #include <list>
 
-#include <Singleton.hpp>
-#include <tinyxml.h>
-
-#include <InterceptorI.hpp>
-#include <Context.hpp>
-#include <Model.hpp>
-#include <ParticleGroup.hpp>
-#include <OnlineUpdateDisplay.hpp>
+#include "tinyxml.h"
+#include "Singleton.hpp"
+#include "InterceptorI.hpp"
+#include "Context.hpp"
+#include "Model.hpp"
+#include "ParticleGroup.hpp"
 
 class Selectable;
 class GLTextureCubeMap;
 
-class MenuManager: public InterceptorI
-{
-friend class Singleton<MenuManager>;
-public:
-    bool init( void);
-    bool update( void);
-    bool draw( void);
+class MenuManager : public InterceptorI {
+    friend class Singleton<MenuManager>;
 
-    virtual void input( const Trigger &trigger, const bool &isDown);
-    void turnMenuOn( void);
-    void turnMenuOff( void);
-    void makeMenu( TiXmlNode *_node);
+public:
+    bool init(void);
+    bool update(void);
+    bool draw(void);
+
+    virtual void input(const Trigger& trigger, const bool& isDown);
+    void turnMenuOn(void);
+    void turnMenuOff(void);
+    bool canReturnToGame(void);
+    void makeMenu(TiXmlNode* _node);
 
     //Menu navigation
-    void Down( void);
-    void Up( void);
-    void Enter( void);
-    bool Exit( bool delayed=false);
-    void Goto( Selectable *s);
+    void Down(void);
+    void Up(void);
+    void Enter(void);
+    bool Exit(bool delayed = false);
+    void Goto(Selectable* s);
 
-    void reload( void);
+    void reload(void);
 
 private:
     virtual ~MenuManager();
-    MenuManager( void);
-    MenuManager( const MenuManager&);
-    MenuManager &operator=(const MenuManager&);
+    MenuManager(void);
+    MenuManager(const MenuManager&);
+    MenuManager& operator=(const MenuManager&);
 
-    void loadMenuLevel( void);
-    void clearActiveSelectables( void);
-    void updateSettings( void);
-    void activateSelectableUnderMouse( void);
-    
-    TiXmlDocument *_menu;
+    void loadMenuLevel(void);
+    void clearActiveSelectables(void);
+    void updateSettings(void);
+    void activateSelectableUnderMouse(const bool& useFallback = false);
 
-    TiXmlNode *_topMenu;
-    TiXmlNode *_currentMenu;
+    TiXmlDocument* _menu;
+
+    TiXmlNode* _topMenu;
+    TiXmlNode* _currentMenu;
 
     std::list<Selectable*> _activeSelectables;
     std::list<Selectable*>::iterator _currentSelectable;
@@ -83,17 +82,14 @@ private:
     bool _delayedExit;
     bool _newLevelLoaded;
 
-    Model *_nextGenShippy;
-    Model *_mapleLeaf;
+    Model* _nextGenShippy;
+    Model* _mapleLeaf;
     float _angle;
     float _prevAngle;
 
     bool _showSparks;
     ParticleGroup _burst;
-#ifdef USE_ONLINE_UPDATE
-    OnlineUpdateDisplay _onlineUpdateDisplay;
-#endif
-    GLTextureCubeMap *_nextGenShippyCubeMap;
+    GLTextureCubeMap* _nextGenShippyCubeMap;
 };
 
 typedef Singleton<MenuManager> MenuManagerS;

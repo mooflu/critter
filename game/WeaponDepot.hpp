@@ -22,21 +22,21 @@
 
 class Weapon;
 
-class WeaponDepot
-{
-friend class Singleton<WeaponDepot>;
+class WeaponDepot {
+    friend class Singleton<WeaponDepot>;
+
 public:
-    Weapon * getWeapon( std::string weapName);
+    Weapon* getWeapon(std::string weapName);
 
 private:
     ~WeaponDepot();
-    WeaponDepot( void);
-    WeaponDepot( const WeaponDepot&);
-    WeaponDepot &operator=(const WeaponDepot&);
+    WeaponDepot(void);
+    WeaponDepot(const WeaponDepot&);
+    WeaponDepot& operator=(const WeaponDepot&);
 
-    void addWeapon( Weapon *weap);
+    void addWeapon(Weapon* weap);
 
-    hash_map< std::string, Weapon*, hash<std::string>, std::equal_to<std::string> > _weaponMap;
+    hash_map<std::string, Weapon*, hash<std::string>, std::equal_to<std::string>> _weaponMap;
 };
 
 typedef Singleton<WeaponDepot> WeaponDepotS;

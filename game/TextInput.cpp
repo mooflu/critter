@@ -18,97 +18,72 @@
 #include "Input.hpp"
 
 #include <ctype.h>
+#include "MenuManager.hpp"
 
-TextInput::TextInput( unsigned int maxLength):
+TextInput::TextInput(unsigned int maxLength) :
     _maxLen(maxLength),
     _line(""),
-    _isOn( false)
-{
+    _isOn(false) {
     XTRACE();
 }
 
-TextInput::~TextInput()
-{
+TextInput::~TextInput() {
     XTRACE();
 }
 
-void TextInput::input( const Trigger &trigger, const bool &isDown)
-{
+void TextInput::input(const Trigger& trigger, const bool& isDown) {
     XTRACE();
-    Trigger t = trigger;
-    if( isDown)
-    {
-	switch( trigger.type)
-	{
-	    case eKeyTrigger:
-	        switch( trigger.data1)
-		{
-		    case SDLK_ESCAPE:
-		    case SDLK_RETURN:
-		        turnOff();
-			break;
+    switch (trigger.type) {
+        case eKeyTrigger:
+            if (!isDown) {
+                return;
+            }
 
-		    case SDLK_DELETE:
-		    case SDLK_BACKSPACE:
-		        if( _line.length() > 0)
-			{
-			    _line.erase( _line.length()-1, 1);
-			}
-			break;
+            switch (trigger.data1) {
+                case SDLK_ESCAPE:
+                case SDLK_RETURN:
+                    turnOff();
+                    break;
 
-		    default:
-			break;
-		}
+                case SDLK_DELETE:
+                case SDLK_BACKSPACE:
+                    if (_line.length() > 0) {
+                        _line.erase(_line.length() - 1, 1);
+                    }
+                    break;
 
-	        if( (_line.length() <= _maxLen) &&
-		    (trigger.data1 >=  SDLK_SPACE) &&
-		    (trigger.data1 <= SDLK_z))
-		{
-		    char c;
-		    //Accept simple unicode chars. Ie. ASCII
-		    if( (trigger.data3 != 0) && ((trigger.data3 & ~0xff) == 0))
-		    {
-			c=(char)(trigger.data3 & 0xff);
-		    }
-		    else
-		    {
-			//Poor boy's version of ASCII...
-			c=(char)tolower(trigger.data1);
-			if( trigger.data2 & KMOD_SHIFT)
-			{
-			    c = toupper(c);
-			}
-		    }
-		    _line += c;
-		}
-                break;
+                default:
+                    break;
+            }
+            break;
 
-	    default:
-                break;
-	}
+        case eTextInputTrigger:
+            if (_line.length() <= _maxLen) {
+                //LOG_INFO << "TextInput::input TEXT " << trigger.text << "\n";
+                _line += trigger.text;
+            }
+            break;
+
+        default:
+            break;
     }
 }
 
-void TextInput::turnOn( void)
-{
+void TextInput::turnOn(void) {
     XTRACE();
-    SDL_EnableUNICODE( true);
-    InputS::instance()->enableInterceptor( this);
+    InputS::instance()->enableInterceptor(this);
+    SDL_StartTextInput();
+    SDL_SetTextInputRect(0);
     _isOn = true;
 }
 
-void TextInput::turnOff( void)
-{
+void TextInput::turnOff(void) {
     XTRACE();
 
     InputS::instance()->disableInterceptor();
-    SDL_EnableUNICODE( false);
+    SDL_StopTextInput();
 
-    //pass escape to previous input handling...
-    SDL_Event event;
-    event.type = SDL_KEYDOWN;
-    event.key.keysym.sym = SDLK_ESCAPE;
-    SDL_PushEvent( &event);
+    MenuManagerS::instance()->turnMenuOn();
 
     _isOn = false;
 }

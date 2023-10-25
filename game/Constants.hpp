@@ -17,33 +17,35 @@
 #include <string>
 
 #ifdef HAVE_CONFIG_H
-#include <defines.h> //PACKAGE and VERSION
+#include <defines.h>  //PACKAGE and VERSION
 #endif
 
 #ifndef M_PI
-# define M_PI           3.14159265358979323846  /* pi */
+#define M_PI 3.14159265358979323846 /* pi */
 #endif
 
-const std::string GAMETITLE   = PACKAGE;
+#define GAME_HAS_HERO_PARTICLE 1
+
+const std::string GAMETITLE = PACKAGE;
 const std::string GAMEVERSION = VERSION;
 
-const std::string HERO_GROUP                    = "Hero";
-const std::string HERO_BULLETS_GROUP            = "HeroBullets";
-const std::string ENEMIES_GROUP                 = "Enemies";
-const std::string ENEMIES_BULLETS_GROUP         = "EnemyBullets";
-const std::string BONUS_GROUP                   = "Bonus";
+const std::string HERO_GROUP = "Hero";
+const std::string HERO_BULLETS_GROUP = "HeroBullets";
+const std::string ENEMIES_GROUP = "Enemies";
+const std::string ENEMIES_BULLETS_GROUP = "EnemyBullets";
+const std::string BONUS_GROUP = "Bonus";
 const std::string SHOOTABLE_ENEMY_BULLETS_GROUP = "ShootableEnemyBullets";
-const std::string SHOOTABLE_BONUS_GROUP         = "ShootableBonus";
-const std::string EFFECTS_GROUP1                = "Effects1";
-const std::string EFFECTS_GROUP2                = "Effects2";
-const std::string EFFECTS_GROUP3                = "Effects3";
+const std::string SHOOTABLE_BONUS_GROUP = "ShootableBonus";
+const std::string EFFECTS_GROUP1 = "Effects1";
+const std::string EFFECTS_GROUP2 = "Effects2";
+const std::string EFFECTS_GROUP3 = "Effects3";
 
-const int MAX_PARTICLES_PER_GROUP=2048;
+const int MAX_PARTICLES_PER_GROUP = 2048;
 
-const float GAME_STEP_SIZE = 1.0f/30.0f; //run logic 30 times per second
-const int MAX_GAME_STEPS = 10; //max number of logic runs per frame
+const float GAME_STEP_SIZE = 1.0f / 30.0f;  //run logic 30 times per second
+const int MAX_GAME_STEPS = 10;              //max number of logic runs per frame
 
 // All updates in out logic are based on a game step size of 1/30.
 // In case we want to use a different GAME_STEP_SIZE in the future,
 // multiply all update values by GAME_STEP_SCALE.
-const float GAME_STEP_SCALE = 30.0f*GAME_STEP_SIZE;
+const float GAME_STEP_SCALE = 30.0f * GAME_STEP_SIZE;

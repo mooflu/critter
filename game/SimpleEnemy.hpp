@@ -17,17 +17,17 @@
 #include <BaseEnemy.hpp>
 
 class Model;
-class SimpleEnemy: public BaseEnemy
-{
+
+class SimpleEnemy : public BaseEnemy {
 public:
-    SimpleEnemy( LEnemy *le);
+    SimpleEnemy(LEnemy* le);
     virtual ~SimpleEnemy();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/);
 
 private:
-    Model *_model;
+    Model* _model;
 };

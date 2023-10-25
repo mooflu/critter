@@ -18,33 +18,34 @@
 #include <LevelPack.hpp>
 #include <ParticleGroup.hpp>
 
-class BaseEnemy: public ParticleType
-{
+#include "glm/ext.hpp"
+
+class BaseEnemy : public ParticleType {
 public:
-    BaseEnemy( LEnemy *le, std::string name);
+    BaseEnemy(LEnemy* le, std::string name);
     virtual ~BaseEnemy();
 
-    virtual bool update( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/);
+    virtual bool update(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/);
 
-    void updateOffset( void);
-    void sendHome( void);
-    void getNextPath( void);
+    void updateOffset(void);
+    void sendHome(void);
+    void getNextPath(void);
 
 protected:
-    enum MoveState
-    {
-	eIdle,
-	eEntry,
-	eAttack,
-	eRetreat,
-	eTransition,
-	eLAST
+    enum MoveState {
+        eIdle,
+        eEntry,
+        eAttack,
+        eRetreat,
+        eTransition,
+        eLAST
     };
-    //transforms y axis to at vector
-    void alignWith( Point3D &at);
 
-    LEnemy *_lEnemy;
+    //transforms y axis to at vector
+    void alignWith(Point3D& at, glm::mat4& modelview);
+
+    LEnemy* _lEnemy;
     int _energy;
     float _levelStartTime;
     float _pathStartTime;
@@ -57,12 +58,12 @@ protected:
     MoveState _moveState;
     MoveState _nextMoveState;
     bool _moveHome;
-    LPath *_activePath;
-    LPath *_nextPath;
+    LPath* _activePath;
+    LPath* _nextPath;
     int _activePathIndex;
 
     LPath _transitionPath;
-    BezierCurve<Point3D> &_transitionBC;
+    BezierCurve<Point3D>& _transitionBC;
 
-    static ParticleGroup *_enemyGroup;
+    static ParticleGroup* _enemyGroup;
 };

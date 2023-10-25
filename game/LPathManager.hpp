@@ -18,23 +18,20 @@
 #include <Singleton.hpp>
 #include <LevelPack.hpp>
 
-class LPathManager: public ResourceCache<LPath>
-{
-friend class Singleton<LPathManager>;
+class LPathManager : public ResourceCache<LPath> {
+    friend class Singleton<LPathManager>;
+
 public:
-    LPath *getPath( const string &pathName)
-    { 
-	return getResource( pathName);
-    }
+    LPath* getPath(const string& pathName) { return getResource(pathName); }
 
 protected:
-    virtual LPath *load( const string &path);
+    virtual LPath* load(const string& path);
 
 private:
-    LPathManager( void);
+    LPathManager(void);
     virtual ~LPathManager();
-    LPathManager( const LPathManager&);
-    LPathManager &operator=(const LPathManager&);
+    LPathManager(const LPathManager&);
+    LPathManager& operator=(const LPathManager&);
 };
 
 typedef Singleton<LPathManager> LPathManagerS;

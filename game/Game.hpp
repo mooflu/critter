@@ -16,23 +16,25 @@
 
 #include <Singleton.hpp>
 
-class Game
-{
-friend class Singleton<Game>;
+class Game {
+    friend class Singleton<Game>;
+
 public:
-    bool init( void);
-    void run( void);
-    void reset( void);
-    void startNewGame( void);
+    bool init(void);
+    void run(void);
+    void reset(void);
+    void startNewGame(void);
+
+    static void gameLoop(void);
 
 private:
     ~Game();
-    Game( void);
-    Game( const Game&);
-    Game &operator=(const Game&);
+    Game(void);
+    Game(const Game&);
+    Game& operator=(const Game&);
 
-    void updateOtherLogic( void);
-    void updateInGameLogic( void);
+    void updateOtherLogic(void);
+    void updateInGameLogic(void);
 };
 
 typedef Singleton<Game> GameS;

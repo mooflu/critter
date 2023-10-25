@@ -15,44 +15,38 @@
 #include <Trace.hpp>
 #include <LPathManager.hpp>
 
-LPathManager::LPathManager( void)
-{
+LPathManager::LPathManager(void) {
     XTRACE();
 }
 
-LPathManager::~LPathManager()
-{
+LPathManager::~LPathManager() {
     XTRACE();
 }
 
-LPath *LPathManager::load( const string &pathName)
-{
+LPath* LPathManager::load(const string& pathName) {
     XTRACE();
-    LPath *lp = 0;
-    BezierCurve<Point3D> *bc = new BezierCurve<Point3D>(64);
+    LPath* lp = 0;
+    BezierCurve<Point3D>* bc = new BezierCurve<Point3D>(64);
 
-    string fullPathName = pathName+".path";
+    string fullPathName = pathName + ".path";
 
-    if( bc->Load( fullPathName.c_str()))
-    {
-	//move start of curve to origin
-	Point3D start = bc->GetControlPoint(0) * -1;
-	bc->MoveCurve( start);
-	bc->ScaleCurve( 0.15f);
-/*
+    if (bc->Load(fullPathName.c_str())) {
+        //move start of curve to origin
+        Point3D start = bc->GetControlPoint(0) * -1;
+        bc->MoveCurve(start);
+        bc->ScaleCurve(0.15f);
+        /*
 	LOG_INFO << "Moving Curve by [" 
 		 << start.x << "," 
 		 << start.y << "," 
 		 << start.z << "]" << endl; 
 */
 
-	lp = new LPath( bc);
-	LOG_INFO << "  Path [" << pathName << "]" << endl; 
-    }
-    else
-    {
-	LOG_ERROR << "Unable to load: " << pathName << endl;
-	delete bc;
+        lp = new LPath(bc);
+        LOG_INFO << "  Path [" << pathName << "]" << endl;
+    } else {
+        LOG_ERROR << "Unable to load: " << pathName << endl;
+        delete bc;
     }
 
     return lp;

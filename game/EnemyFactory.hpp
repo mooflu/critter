@@ -16,8 +16,7 @@
 
 #include <tinyxml.h>
 
-class EnemyFactory
-{
+class EnemyFactory {
 public:
-    static void createEnemy( TiXmlNode *enemyNode);
+    static void createEnemy(TiXmlNode* enemyNode);
 };

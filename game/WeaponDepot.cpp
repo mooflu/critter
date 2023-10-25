@@ -20,39 +20,33 @@
 
 using namespace std;
 
-WeaponDepot::WeaponDepot( void)
-{
+WeaponDepot::WeaponDepot(void) {
     XTRACE();
 
-    addWeapon( new GuardDog());
-    addWeapon( new WingPhaser());
-    addWeapon( new TripplePhaser());
-    addWeapon( new IceSpray());
-    addWeapon( new FlankBurster());
-    addWeapon( new Stinger());
+    addWeapon(new GuardDog());
+    addWeapon(new WingPhaser());
+    addWeapon(new TripplePhaser());
+    addWeapon(new IceSpray());
+    addWeapon(new FlankBurster());
+    addWeapon(new Stinger());
 }
 
-WeaponDepot::~WeaponDepot()
-{
+WeaponDepot::~WeaponDepot() {
     XTRACE();
 
-    hash_map< string, Weapon*, hash<string> >::const_iterator ci;
-    for( ci=_weaponMap.begin(); ci!=_weaponMap.end(); ci++)
-    {
+    hash_map<string, Weapon*, hash<string>>::const_iterator ci;
+    for (ci = _weaponMap.begin(); ci != _weaponMap.end(); ci++) {
         delete ci->second;
     }
 
     _weaponMap.clear();
 }
 
-Weapon * WeaponDepot::getWeapon( string weapName)
-{
-//    XTRACE();
-    Weapon * weap = findHash( weapName, _weaponMap);
-    if( !weap)
-    {
-        LOG_ERROR << "Weapon Depot never heard of a " << weapName 
-                  << " before!" << endl;
+Weapon* WeaponDepot::getWeapon(string weapName) {
+    //    XTRACE();
+    Weapon* weap = findHash(weapName, _weaponMap);
+    if (!weap) {
+        LOG_ERROR << "Weapon Depot never heard of a " << weapName << " before!" << endl;
 
         //trying first in list
         weap = _weaponMap.begin()->second;
@@ -60,12 +54,10 @@ Weapon * WeaponDepot::getWeapon( string weapName)
     return weap;
 }
 
-void WeaponDepot::addWeapon( Weapon *weap)
-{
+void WeaponDepot::addWeapon(Weapon* weap) {
     XTRACE();
-    if( weap)
-    {
+    if (weap) {
         LOG_INFO << "New Weapon type: [" << weap->name() << "] [" << weap->description() << "]" << endl;
-        _weaponMap[ weap->name()] = weap;
+        _weaponMap[weap->name()] = weap;
     }
 }

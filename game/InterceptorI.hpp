@@ -16,10 +16,9 @@
 
 #include "Trigger.hpp"
 
-class InterceptorI
-{
+class InterceptorI {
 public:
-    virtual void input( const Trigger &trigger, const bool &isDown) = 0;
+    virtual void input(const Trigger& trigger, const bool& isDown) = 0;
 
     virtual ~InterceptorI() {}
 };

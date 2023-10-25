@@ -18,29 +18,29 @@
 
 class Model;
 
-const std::string WeaponTRIPPLEPHASER="TripplePhaser";
-const std::string WeaponWINGPHASER="WingPhaser";
-const std::string WeaponICESPRAY="IceSpray";
-const std::string WeaponFLANKBURST="FlankBurst";
-const std::string WeaponSTINGER="HeroStinger";
-const std::string WeaponDOG="GuardDog";
+const std::string WeaponTRIPPLEPHASER = "TripplePhaser";
+const std::string WeaponWINGPHASER = "WingPhaser";
+const std::string WeaponICESPRAY = "IceSpray";
+const std::string WeaponFLANKBURST = "FlankBurst";
+const std::string WeaponSTINGER = "HeroStinger";
+const std::string WeaponDOG = "GuardDog";
 
-class Weapon
-{
+class Weapon {
 public:
-    Weapon( float energyRequired, float reloadTime, std::string name, std::string desc);
+    Weapon(float energyRequired, float reloadTime, std::string name, std::string desc);
     virtual ~Weapon();
 
-    float energyRequired( void);
-    float reloadTime( void);
-    virtual void launch( float x, float y, float z) = 0;
+    float energyRequired(void);
+    float reloadTime(void);
+    virtual void launch(float x, float y, float z) = 0;
 
-    void setDamageMultiplier( float damageMultiplier);
+    void setDamageMultiplier(float damageMultiplier);
 
-    const std::string& name( void){ return _name;}
-    const std::string& description( void){ return _description;}
+    const std::string& name(void) { return _name; }
 
-    virtual void draw( void) {}
+    const std::string& description(void) { return _description; }
+
+    virtual void draw(void) {}
 
 protected:
     float _energyRequired;
@@ -50,75 +50,72 @@ protected:
     const std::string _description;
 };
 
-class GuardDog: public Weapon
-{
+class GuardDog : public Weapon {
 public:
-    GuardDog( void);
+    GuardDog(void);
     virtual ~GuardDog();
 
-    virtual void launch( float x, float y, float z);
+    virtual void launch(float x, float y, float z);
 };
 
-class Stinger: public Weapon
-{
+class Stinger : public Weapon {
 public:
-    Stinger( void);
+    Stinger(void);
     virtual ~Stinger();
 
-    virtual void launch( float x, float y, float z);
-    virtual void draw( void);
+    virtual void launch(float x, float y, float z);
+    virtual void draw(void);
+
 private:
-    Model *_stinger;
+    Model* _stinger;
 };
 
-class FlankBurster: public Weapon
-{
+class FlankBurster : public Weapon {
 public:
-    FlankBurster( void);
+    FlankBurster(void);
     virtual ~FlankBurster();
 
-    virtual void launch( float x, float y, float z);
-    virtual void draw( void);
+    virtual void launch(float x, float y, float z);
+    virtual void draw(void);
+
 private:
-    Model *_flankBurster;
+    Model* _flankBurster;
 };
 
-class IceSpray: public Weapon
-{
+class IceSpray : public Weapon {
 public:
-    IceSpray( void);
+    IceSpray(void);
     virtual ~IceSpray();
 
-    virtual void launch( float x, float y, float z);
-    virtual void draw( void);
+    virtual void launch(float x, float y, float z);
+    virtual void draw(void);
+
 private:
-    Model *_iceSpray;
-    Model *_iceSprayPierce;
+    Model* _iceSpray;
+    Model* _iceSprayPierce;
 };
 
-class WingPhaser: public Weapon
-{
+class WingPhaser : public Weapon {
 public:
-    WingPhaser( void);
+    WingPhaser(void);
     virtual ~WingPhaser();
 
-    virtual void launch( float x, float y, float z);
-    virtual void draw( void);
+    virtual void launch(float x, float y, float z);
+    virtual void draw(void);
+
 private:
-    Model *_wingPhaser;
-    Model *_wingPhaserPierce;
+    Model* _wingPhaser;
+    Model* _wingPhaserPierce;
 };
 
-
-class TripplePhaser: public Weapon
-{
+class TripplePhaser : public Weapon {
 public:
-    TripplePhaser( void);
+    TripplePhaser(void);
     virtual ~TripplePhaser();
-    
-    virtual void launch( float x, float y, float z);
-    virtual void draw( void);
-private:
-    Model *_tripplePhaser;
-};
 
+    virtual void launch(float x, float y, float z);
+    virtual void draw(void);
+
+private:
+    Model* _tripplePhaser;
+};

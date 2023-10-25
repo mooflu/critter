@@ -17,29 +17,22 @@
 #include <string>
 #include <InterceptorI.hpp>
 
-class TextInput: public InterceptorI
-{
+class TextInput : public InterceptorI {
 public:
-    TextInput( unsigned int maxLength=15);
+    TextInput(unsigned int maxLength = 15);
     virtual ~TextInput();
 
-    virtual void input( const Trigger &trigger, const bool &isDown);
-    void turnOn( void);
-    void turnOff( void);
+    virtual void input(const Trigger& trigger, const bool& isDown);
+    void turnOn(void);
+    void turnOff(void);
 
-    bool isOn( void)
-    {
-	return _isOn;
-    }
+    bool isOn(void) { return _isOn; }
 
-    const std::string &getText( void)
-    {
-	return _line;
-    }
+    const std::string& getText(void) { return _line; }
 
 private:
-    TextInput( const TextInput&);
-    TextInput &operator=(const TextInput&);
+    TextInput(const TextInput&);
+    TextInput& operator=(const TextInput&);
 
     unsigned int _maxLen;
     std::string _line;

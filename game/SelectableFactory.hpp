@@ -27,101 +27,88 @@
 
 #include "tinyxml.h"
 
-class SelectableFactory
-{
+class SelectableFactory {
 public:
-    static SelectableFactory *getFactory( const std::string &name);
-    static void cleanup( void);
+    static SelectableFactory* getFactory(const std::string& name);
+    static void cleanup(void);
 
-    virtual Selectable *createSelectable( TiXmlNode *) = 0;
+    virtual Selectable* createSelectable(TiXmlNode*) = 0;
 
 protected:
-    SelectableFactory( void) {}
+    SelectableFactory(void) {}
+
     virtual ~SelectableFactory() {}
 
-    static hash_map< 
-		const std::string, SelectableFactory*, hash<const std::string>, std::equal_to<const std::string> > _sfMap;
+    static hash_map<const std::string, SelectableFactory*, hash<const std::string>, std::equal_to<const std::string>>
+        _sfMap;
 
-    void posToPoint2D( const std::string &pos, Point2D &point);
-    std::string getAttribute( const TiXmlElement* elem, std::string attr);
-    void getBasics(TiXmlElement* elem,Point2D &pos, 
-                   std::string &text,
-                   std::string &info,
-                   bool &enabled);
+    void posToPoint2D(const std::string& pos, Point2D& point);
+    std::string getAttribute(const TiXmlElement* elem, std::string attr);
+    void getBasics(TiXmlElement* elem, Point2D& pos, std::string& text, std::string& info, bool& enabled);
 
 private:
     static bool _initialized;
 };
 
-class ActionItemFactory: public SelectableFactory
-{
+class ActionItemFactory : public SelectableFactory {
 public:
-    ActionItemFactory( void);
+    ActionItemFactory(void);
     virtual ~ActionItemFactory();
-    virtual Selectable *createSelectable( TiXmlNode *node);
+    virtual Selectable* createSelectable(TiXmlNode* node);
 };
 
-class MenuItemFactory: public SelectableFactory
-{
+class MenuItemFactory : public SelectableFactory {
 public:
-    MenuItemFactory( void);
+    MenuItemFactory(void);
     virtual ~MenuItemFactory();
-    virtual Selectable *createSelectable( TiXmlNode *node);
+    virtual Selectable* createSelectable(TiXmlNode* node);
 };
 
-class TextItemFactory: public SelectableFactory
-{
+class TextItemFactory : public SelectableFactory {
 public:
-    TextItemFactory( void);
+    TextItemFactory(void);
     virtual ~TextItemFactory();
-    virtual Selectable *createSelectable( TiXmlNode *node);
+    virtual Selectable* createSelectable(TiXmlNode* node);
 };
 
-class BoolFactory: public SelectableFactory
-{
+class BoolFactory : public SelectableFactory {
 public:
-    BoolFactory( void);
+    BoolFactory(void);
     virtual ~BoolFactory();
-    virtual Selectable *createSelectable( TiXmlNode *node);
+    virtual Selectable* createSelectable(TiXmlNode* node);
 };
 
-class EnumFactory: public SelectableFactory
-{
+class EnumFactory : public SelectableFactory {
 public:
-    EnumFactory( void);
+    EnumFactory(void);
     virtual ~EnumFactory();
-    virtual Selectable *createSelectable( TiXmlNode *node);
+    virtual Selectable* createSelectable(TiXmlNode* node);
 };
 
-class FloatFactory: public SelectableFactory
-{
+class FloatFactory : public SelectableFactory {
 public:
-    FloatFactory( void);
+    FloatFactory(void);
     virtual ~FloatFactory();
-    virtual Selectable *createSelectable( TiXmlNode *node);
+    virtual Selectable* createSelectable(TiXmlNode* node);
 };
 
-class LeaderBoardFactory: public SelectableFactory
-{
+class LeaderBoardFactory : public SelectableFactory {
 public:
-    LeaderBoardFactory( void);
+    LeaderBoardFactory(void);
     virtual ~LeaderBoardFactory();
-    virtual Selectable *createSelectable( TiXmlNode *node);
+    virtual Selectable* createSelectable(TiXmlNode* node);
 };
 
-class ResolutionFactory: public SelectableFactory
-{
+class ResolutionFactory : public SelectableFactory {
 public:
-    ResolutionFactory( void);
+    ResolutionFactory(void);
     virtual ~ResolutionFactory();
-    virtual Selectable *createSelectable( TiXmlNode *node);
+    virtual Selectable* createSelectable(TiXmlNode* node);
 };
 
-class BindKeyFactory: public SelectableFactory
-{
+class BindKeyFactory : public SelectableFactory {
 public:
-    BindKeyFactory( void);
+    BindKeyFactory(void);
     virtual ~BindKeyFactory();
-    virtual Selectable *createSelectable( TiXmlNode *node);
+    virtual Selectable* createSelectable(TiXmlNode* node);
 };
-

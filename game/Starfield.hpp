@@ -20,20 +20,19 @@
 const int NUM_STARS = 300;
 const int NUM_NEBULAS = 3;
 
-class Starfield
-{
-friend class Singleton<Starfield>;
+class Starfield {
+    friend class Singleton<Starfield>;
+
 private:
-    struct Nebula
-    {
+    struct Nebula {
         float x;
         float y;
         float z;
         float d;
 
-	float r;
-	float g;
-	float b;
+        float r;
+        float g;
+        float b;
 
         float sizeX;
         float sizeY;
@@ -41,45 +40,43 @@ private:
         float max;
     };
 
-    struct Star
-    {
-	float x;
-	float y;
-	float z;
-	float d;
+    struct Star {
+        float x;
+        float y;
+        float z;
+        float d;
 
-	float r;
-	float g;
-	float b;
-    };  
+        float r;
+        float g;
+        float b;
+    };
 
 public:
-    void init( float z);
-    void update( void);
-    void draw( bool showStars, bool showNebulas);
-    void bindTexture( void) { _nebula->bind();}
+    void init(float z);
+    void update(void);
+    void draw(bool showStars, bool showNebulas);
 
 private:
     ~Starfield();
-    Starfield( void);
-    Starfield( const Starfield&);
-    Starfield &operator=(const Starfield&);
+    Starfield(void);
+    Starfield(const Starfield&);
+    Starfield& operator=(const Starfield&);
 
-    void pickSize( Nebula &n);
-    void findMax( Nebula &n);
-    void pickColor( Nebula &n);
-    void updatePrevs( void);
+    void pickSize(Nebula& n);
+    void findMax(Nebula& n);
+    void pickColor(Nebula& n);
+    void updatePrevs(void);
 
-    GLBitmapCollection *_nebula;
+    GLBitmapCollection* _nebula;
     int _nebulaIndex;
     float _nebulaHalfWidth;
     float _nebulaHalfHeight;
 
-    Star _starInfo[ NUM_STARS];
-    float _prevStarInfoY[ NUM_STARS];
+    Star _starInfo[NUM_STARS];
+    float _prevStarInfoY[NUM_STARS];
 
-    Nebula _nebulaInfo[ NUM_NEBULAS];
-    float _prevNebulaInfoY[ NUM_NEBULAS];
+    Nebula _nebulaInfo[NUM_NEBULAS];
+    float _prevNebulaInfoY[NUM_NEBULAS];
 };
 
 typedef Singleton<Starfield> StarfieldS;

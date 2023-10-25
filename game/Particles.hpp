@@ -22,33 +22,28 @@
 #include <ParticleType.hpp>
 #include <BezierCurve.hpp>
 
-class Particles
-{
+class Particles {
 public:
-    static void Initialize( void);
+    static void Initialize(void);
 };
 
-class BitmapParticleType: public ParticleType
-{
+class BitmapParticleType : public ParticleType {
 public:
-    BitmapParticleType( const std::string &name);
+    BitmapParticleType(const std::string& name);
     virtual ~BitmapParticleType();
 
-    virtual void init( ParticleInfo *p) = 0;
-    virtual bool update( ParticleInfo *p) = 0;
-    virtual void draw( ParticleInfo *p) = 0;
-
-    static void bindTexture( void) { _bitmaps->bind();}
+    virtual void init(ParticleInfo* p) = 0;
+    virtual bool update(ParticleInfo* p) = 0;
+    virtual void draw(ParticleInfo* p) = 0;
 
 protected:
-    static GLBitmapCollection *_bitmaps;
-    void LoadBitmaps( void);
+    static GLBitmapCollection* _bitmaps;
+    void LoadBitmaps(void);
 };
 
-class SingleBitmapParticle: public BitmapParticleType
-{
+class SingleBitmapParticle : public BitmapParticleType {
 public:
-    SingleBitmapParticle( const std::string &name, const char *bitmapName);
+    SingleBitmapParticle(const std::string& name, const char* bitmapName);
 
 protected:
     float _bmHalfWidth;
@@ -58,153 +53,142 @@ protected:
     int _bmIndex;
 };
 
-class SmokePuff: public SingleBitmapParticle
-{
+class SmokePuff : public SingleBitmapParticle {
 public:
-    SmokePuff( void);
+    SmokePuff(void);
     virtual ~SmokePuff();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
 
 private:
 };
 
-class MiniSmoke: public SingleBitmapParticle
-{
+class MiniSmoke : public SingleBitmapParticle {
 public:
-    MiniSmoke( void);
+    MiniSmoke(void);
     virtual ~MiniSmoke();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
 
 private:
 };
 
-class Spark: public SingleBitmapParticle
-{
+class Spark : public SingleBitmapParticle {
 public:
-    Spark( void);
+    Spark(void);
     virtual ~Spark();
-    
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
-    
+
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
+
 private:
 };
 
-class FireSpark: public SingleBitmapParticle
-{
+class FireSpark : public SingleBitmapParticle {
 public:
-    FireSpark( const string &sp);
+    FireSpark(const string& sp);
     virtual ~FireSpark();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
 
 private:
 };
 
-class FlankBurst: public SingleBitmapParticle
-{
+class FlankBurst : public SingleBitmapParticle {
 public:
-    FlankBurst( const string &sp);
+    FlankBurst(const string& sp);
     virtual ~FlankBurst();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int damage, int /*radIndex*/);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int damage, int /*radIndex*/);
 
 private:
     float _dir;
 };
 
-class BallOfPoison: public SingleBitmapParticle
-{
+class BallOfPoison : public SingleBitmapParticle {
 public:
-    BallOfPoison( void);
+    BallOfPoison(void);
     virtual ~BallOfPoison();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int damage, int /*radIndex*/);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int damage, int /*radIndex*/);
 
 private:
 };
 
-class BallOfIce: public SingleBitmapParticle
-{
+class BallOfIce : public SingleBitmapParticle {
 public:
-    BallOfIce( void);
+    BallOfIce(void);
     virtual ~BallOfIce();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int damage, int /*radIndex*/);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int damage, int /*radIndex*/);
 
 private:
 };
 
-class SwarmLeader: public SingleBitmapParticle
-{
+class SwarmLeader : public SingleBitmapParticle {
 public:
-    SwarmLeader( void);
+    SwarmLeader(void);
     virtual ~SwarmLeader();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
 
 private:
     BezierCurve<Point3D> _toHero;
 };
 
-class SwarmElement: public ParticleType
-{
+class SwarmElement : public ParticleType {
 public:
-    SwarmElement( void);
+    SwarmElement(void);
     virtual ~SwarmElement();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int damage, int /*radIndex*/);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int damage, int /*radIndex*/);
 
 private:
 };
 
-class Phaser: public SingleBitmapParticle
-{
+class Phaser : public SingleBitmapParticle {
 public:
-    Phaser( void);
+    Phaser(void);
     virtual ~Phaser();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int damage, int /*radIndex*/);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int damage, int /*radIndex*/);
 
 private:
 };
 
-class PlasmaBullet: public BitmapParticleType
-{
+class PlasmaBullet : public BitmapParticleType {
 public:
-    PlasmaBullet( void);
+    PlasmaBullet(void);
     virtual ~PlasmaBullet();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int damage, int /*radIndex*/);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int damage, int /*radIndex*/);
 
 private:
     int _bulletIndex0;
@@ -214,16 +198,15 @@ private:
     float _bmHalfHeight;
 };
 
-class BallOfFire: public BitmapParticleType
-{
+class BallOfFire : public BitmapParticleType {
 public:
-    BallOfFire( void);
+    BallOfFire(void);
     virtual ~BallOfFire();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int damage, int /*radIndex*/);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int damage, int /*radIndex*/);
 
 private:
     int _ballOfFire;
@@ -232,152 +215,142 @@ private:
     float _bmHalfHeight;
 };
 
-class StingerTrail: public ParticleType
-{
+class StingerTrail : public ParticleType {
 public:
-    StingerTrail( void);
+    StingerTrail(void);
     virtual ~StingerTrail();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
 
 protected:
-    Model *_trail;
+    Model* _trail;
 };
 
-class HeroStinger: public ParticleType
-{
+class HeroStinger : public ParticleType {
 public:
-    HeroStinger( void);
+    HeroStinger(void);
     virtual ~HeroStinger();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int damage, int /*radIndex*/);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int damage, int /*radIndex*/);
 
 protected:
-    Model *_stinger;
+    Model* _stinger;
 };
 
-class StatusMessage: public ParticleType
-{
+class StatusMessage : public ParticleType {
 public:
-    StatusMessage( void);
+    StatusMessage(void);
     virtual ~StatusMessage();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
 
 protected:
-    GLBitmapFont *_smallFont;
-};  
+    GLBitmapFont* _smallFont;
+};
 
-class ExplosionPiece: public ParticleType
-{
+class ExplosionPiece : public ParticleType {
 public:
-    ExplosionPiece( void);
+    ExplosionPiece(void);
     virtual ~ExplosionPiece();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
 
 protected:
-    Model *_cloud;
+    Model* _cloud;
 };
 
-class EnergyBlob: public ParticleType
-{
+class EnergyBlob : public ParticleType {
 public:
-    EnergyBlob( void);
+    EnergyBlob(void);
     virtual ~EnergyBlob();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int damage, int /*radIndex*/);
-    virtual void draw( ParticleInfo *p);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int damage, int /*radIndex*/);
+    virtual void draw(ParticleInfo* p);
 
 protected:
-    Model *_blob;
+    Model* _blob;
 };
 
-class ShieldBoost: public ParticleType
-{
+class ShieldBoost : public ParticleType {
 public:
-    ShieldBoost( void);
+    ShieldBoost(void);
     virtual ~ShieldBoost();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int damage, int /*radIndex*/);
-    virtual void draw( ParticleInfo *p);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int damage, int /*radIndex*/);
+    virtual void draw(ParticleInfo* p);
 
 protected:
-    Model *_shield;
+    Model* _shield;
 };
 
-class ArmorPierce: public ParticleType
-{
+class ArmorPierce : public ParticleType {
 public:
-    ArmorPierce( void);
+    ArmorPierce(void);
     virtual ~ArmorPierce();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int damage, int /*radIndex*/);
-    virtual void draw( ParticleInfo *p);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int damage, int /*radIndex*/);
+    virtual void draw(ParticleInfo* p);
 
 protected:
-    Model *_armor;
+    Model* _armor;
 };
 
-class WeaponUpgrade: public ParticleType
-{
+class WeaponUpgrade : public ParticleType {
 public:
-    WeaponUpgrade( void);
+    WeaponUpgrade(void);
     virtual ~WeaponUpgrade();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int damage, int /*radIndex*/);
-    virtual void draw( ParticleInfo *p);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int damage, int /*radIndex*/);
+    virtual void draw(ParticleInfo* p);
 
 protected:
-    Model *_upgrade;
+    Model* _upgrade;
 };
 
-class Bonus1: public ParticleType
-{
+class Bonus1 : public ParticleType {
 public:
-    Bonus1( string modelName, int value);
+    Bonus1(string modelName, int value);
     virtual ~Bonus1();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, int damage, int /*radIndex*/);
-    virtual void draw( ParticleInfo *p);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, int damage, int /*radIndex*/);
+    virtual void draw(ParticleInfo* p);
 
 protected:
     int _value;
     string _scoreName;
-    Model *_bonus;
+    Model* _bonus;
 };
 
-class ScoreHighlight: public ParticleType
-{
+class ScoreHighlight : public ParticleType {
 public:
-    ScoreHighlight( void);
+    ScoreHighlight(void);
     virtual ~ScoreHighlight();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
 
 protected:
     vec3 _color;
     std::string _value;
-    GLBitmapFont *_font;
+    GLBitmapFont* _font;
 };

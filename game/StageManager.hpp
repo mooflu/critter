@@ -1,6 +1,6 @@
 #pragma once
 // Description:
-//   Stage manager controls movement from levelpack to levelpack and 
+//   Stage manager controls movement from levelpack to levelpack and
 //   level to level.
 //
 // Copyright (C) 2001 Frank Becker
@@ -24,43 +24,35 @@
 #include <string>
 #include <vector>
 
-class StageManager
-{
-friend class Singleton<StageManager>;
+class StageManager {
+    friend class Singleton<StageManager>;
+
 public:
-    bool init( void);
-    void reset( void);
-    void update( void);
+    bool init(void);
+    void reset(void);
+    void update(void);
 
-    float levelStartTime( void)
-    {
-        return _levelStartTime;
-    }
+    float levelStartTime(void) { return _levelStartTime; }
 
-    const std::string &getActiveLevelName( void)
-    {
-	return _activeLevelName;
-    }
+    const std::string& getActiveLevelName(void) { return _activeLevelName; }
 
 private:
-    StageManager( void):
+    StageManager(void) :
         _activeLevelPack(0),
-	_activeLevel(0),
-        _delayEndOfLevel(30)
-    {
-    }
-    ~StageManager()
-    {
-	delete _activeLevelPack;
-	_activeLevelPack = 0;
-	_activeLevel = 0;
+        _activeLevel(0),
+        _delayEndOfLevel(30) {}
+
+    ~StageManager() {
+        delete _activeLevelPack;
+        _activeLevelPack = 0;
+        _activeLevel = 0;
     }
 
-    StageManager( const StageManager&);
-    StageManager &operator=(const StageManager&);
+    StageManager(const StageManager&);
+    StageManager& operator=(const StageManager&);
 
-    TiXmlDocument *_activeLevelPack;
-    TiXmlNode *_activeLevel;
+    TiXmlDocument* _activeLevelPack;
+    TiXmlNode* _activeLevel;
     int _delayEndOfLevel;
     float _levelStartTime;
     std::string _activeLevelName;
@@ -70,9 +62,9 @@ private:
     std::vector<TiXmlNode*> _levelList;
     unsigned int _activeLevelIndex;
 
-    bool findLevelPacks( void);
-    bool loadNextLevelPack( void);
-    bool activateLevel( void);
+    bool findLevelPacks(void);
+    bool loadNextLevelPack(void);
+    bool activateLevel(void);
 };
 
 typedef Singleton<StageManager> StageManagerS;

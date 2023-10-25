@@ -18,10 +18,9 @@
 #include <Point.hpp>
 #include <BezierCurve.hpp>
 
-struct LevelInfo
-{
-    string name;       //Name for Level or LevelPack
-    string author;     //Author of Level or LevelPack
+struct LevelInfo {
+    string name;    //Name for Level or LevelPack
+    string author;  //Author of Level or LevelPack
     float version;
 
 #if 0
@@ -32,93 +31,75 @@ struct LevelInfo
 #endif
 };
 
-class LPath
-{
-//bezier curve or some constant velocity curve...
+class LPath {
+    //bezier curve or some constant velocity curve...
 public:
-    LPath( BezierCurve<Point3D> *bc, bool linear=false):
+    LPath(BezierCurve<Point3D>* bc, bool linear = false) :
         _isLinear(linear),
-        _bc(bc)
-    {
-	XTRACE();
+        _bc(bc) {
+        XTRACE();
         _init();
     }
-    LPath( void):_isLinear(false), _bc(0) {}
 
-    void init( BezierCurve<Point3D> *bc, bool linear=false)
-    {
-	XTRACE();
+    LPath(void) :
+        _isLinear(false),
+        _bc(0) {}
+
+    void init(BezierCurve<Point3D>* bc, bool linear = false) {
+        XTRACE();
         _bc = bc;
         _isLinear = linear;
         _init();
     }
-    ~LPath()
-    {
-	XTRACE();
+
+    ~LPath() {
+        XTRACE();
         delete _bc;
     }
 
-    float length( void)
-    {
-        return _length;
-    }
-    void getPos( float t, Point3D &pos)
-    {
+    float length(void) { return _length; }
+
+    void getPos(float t, Point3D& pos) {
         //assume t is [0,_length]
-	_bc->GetPos( t, pos);
-    }
-    void getTangent( float t, Point3D &tangent)
-    {
-        //assume t is [0,_length]
-	_bc->GetTangent( t, tangent);
+        _bc->GetPos(t, pos);
     }
 
-    void start( Point3D &pos)
-    {
-        pos = _start;
-    }
-    void startT( Point3D &tangent)
-    {
-        tangent = _startT;
-    }
-    void end( Point3D &pos)
-    {
-        pos = _end;
-    }
-    void endT( Point3D &tangent)
-    {
-        tangent = _endT;
+    void getTangent(float t, Point3D& tangent) {
+        //assume t is [0,_length]
+        _bc->GetTangent(t, tangent);
     }
 
-    void update( void)
-    {
+    void start(Point3D& pos) { pos = _start; }
+
+    void startT(Point3D& tangent) { tangent = _startT; }
+
+    void end(Point3D& pos) { pos = _end; }
+
+    void endT(Point3D& tangent) { tangent = _endT; }
+
+    void update(void) {
         //update internally cached values
         _init();
     }
 
-    BezierCurve<Point3D> *getBezierCurve( void)
-    {
-        return _bc;
-    }
+    BezierCurve<Point3D>* getBezierCurve(void) { return _bc; }
 
 private:
     bool _isLinear;
     float _length;
 
-    void _init( void)
-    {
-	XTRACE();
+    void _init(void) {
+        XTRACE();
         int num = _bc->GetNumSegments();
-        if( num > 0) 
-        {
-	    _length = (float)(num);
-	    _start  = _bc->GetControlPoint( 0);
-	    _startT = _bc->GetControlPoint( 1) - _start;
-	    _end  = _bc->GetControlPoint( _bc->GetNumControlPoints()-1);
-	    _endT = _bc->GetControlPoint( _bc->GetNumControlPoints()-2) - _end;
-        }
-        else
+        if (num > 0) {
+            _length = (float)(num);
+            _start = _bc->GetControlPoint(0);
+            _startT = _bc->GetControlPoint(1) - _start;
+            _end = _bc->GetControlPoint(_bc->GetNumControlPoints() - 1);
+            _endT = _bc->GetControlPoint(_bc->GetNumControlPoints() - 2) - _end;
+        } else {
             _length = 0.0;
+        }
     }
 
     Point3D _start;
@@ -126,7 +107,7 @@ private:
     Point3D _end;
     Point3D _endT;
 
-    BezierCurve<Point3D> *_bc;
+    BezierCurve<Point3D>* _bc;
 };
 
 //spawnTime after level start at spawnPoint
@@ -134,38 +115,35 @@ private:
 //From home via attackPath away from home
 //and via retreatPath towards home.
 //Idlepath when home.
-struct LEnemy
-{
-    float spawnTime;   //time at which to enter level
-    Point3D spawnPoint;//start position
-    Point3D home;      //home position
+struct LEnemy {
+    float spawnTime;     //time at which to enter level
+    Point3D spawnPoint;  //start position
+    Point3D home;        //home position
 
     //the flight path this enemy is capable of
     int numAttackPaths;
-    LPath **attack;
+    LPath** attack;
 
     int numRetreatPaths;
-    LPath **retreat;
+    LPath** retreat;
 
     //a single entry and idle path
-    LPath *entry;
-    LPath *idle;
+    LPath* entry;
+    LPath* idle;
 
-    string modelName; //the modelName for this enemy
+    string modelName;  //the modelName for this enemy
 };
 
-struct LevelDescription
-{
-    LevelInfo info;    //info for the level
+struct LevelDescription {
+    LevelInfo info;  //info for the level
 
     int numEnemies;
-    LEnemy *enemy;
+    LEnemy* enemy;
 };
 
-struct LevelPack
-{
-    LevelInfo info;    //info for the levelpack
+struct LevelPack {
+    LevelInfo info;  //info for the levelpack
 
     int numLevels;
-    LevelDescription *level;
+    LevelDescription* level;
 };

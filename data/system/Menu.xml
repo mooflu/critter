@@ -1,257 +1,245 @@
-<Menu 
-    Text="Critical Mass (aka Critter) - Copyright (C) 2010 Frank Becker"
+<Menu
+    Text="Critical Mass (aka Critter) - Copyright (C) 2004-2023 Frank Becker"
     Info=""
     Position="0.0 0.0">
 
-    <TextItem 
-	Text="    "
-	Size="1.9"
-	Info="Made in Canada, eh!"
-	Position="820.0 590.0" />
+    <TextItem
+        Text="    "
+        Size="1.9"
+        Info="Made in Canada, eh!"
+        Position="820.0 590.0" />
 
-    <ActionItem 
-        Text="New Game" 
-        Action="NewGame" 
-	Info="Start a new game!"
+    <ActionItem
+        Text="New Game"
+        Action="NewGame"
+        Info="Start a new game!"
         Position="500.0 440.0"/>
 
-    <Menu 
-        Text="Scores" 
+    <Menu
+        Text="Scores"
         Info="The Top-10 scores"
-	Position="500.0 380.0">
+        Position="500.0 380.0">
 
-        <LeaderBoard 
-	    Text="Leader Board:"
-	    Info="Top-10"
-	    Size="1.0"
-	    Position="500.0 470.0" />
+        <LeaderBoard
+            Text="Leader Board:"
+            Info="Top-10"
+            Size="1.0"
+            Position="500.0 470.0" />
     </Menu>
 
-    <Menu 
-        Text="Mission" 
+    <Menu
+        Text="Mission"
         Info="The story, your mission, and tips'n tricks"
-	Position="500.0 320.0">
+        Position="500.0 320.0">
 
-        <TextItem 
-	    Text="Mission Details:"
-	    Size="1.0"
-	    Position="500.0 470.0" />
-        <TextItem 
-	    Text="Your world has been infested by an aggressive army of space"
-	    Position="500.0 430.0" />
-        <TextItem 
-	    Text="critters. Overrun and unprepared, your government was unable"
-	    Position="500.0 390.0" />
-        <TextItem 
-	    Text="to defend its precious resources. As a last effort to recapture"
-	    Position="500.0 350.0" />
-        <TextItem 
-	    Text="some of the 'goodies', YOU have been placed into a tiny space"
-	    Position="500.0 310.0" />
-        <TextItem 
-	    Text="craft and sent after them..."
-	    Position="500.0 270.0" />
-        <TextItem 
-	    Text="In short: Shoot all critters and collect resource containers."
-	    Info="What are you waiting for?"
-	    Position="500.0 210.0" />
+        <TextItem
+            Text="Mission Details:"
+            Size="1.0"
+            Position="500.0 470.0" />
+        <TextItem
+            Text="Your world has been infested by an aggressive army of space"
+            Position="500.0 430.0" />
+        <TextItem
+            Text="critters. Overrun and unprepared, your government was unable"
+            Position="500.0 390.0" />
+        <TextItem
+            Text="to defend its precious resources. As a last effort to recapture"
+            Position="500.0 350.0" />
+        <TextItem
+            Text="some of the 'goodies', YOU have been placed into a tiny space"
+            Position="500.0 310.0" />
+        <TextItem
+            Text="craft and sent after them..."
+            Position="500.0 270.0" />
+        <TextItem
+            Text="In short: Shoot all critters and collect resource containers."
+            Info="What are you waiting for?"
+            Position="500.0 210.0" />
 
-	<Menu 
-	    Text="Help, it's too hard!" 
-	    Info="Don't rub it..."
-	    Position="500.0 130.0">
+        <Menu
+            Text="Help, it's too hard!"
+            Info="Don't rub it..."
+            Position="500.0 130.0">
 
-	    <TextItem 
-		Text="Mission Tips (hover over tips):"
-		Info="That's it, you got it... Hover on, dude!"
-		Size="1.0"
-		Position="500.0 470.0" />
-	    <TextItem 
-		Text="* Using the keyboard is much harder then using the mouse"
-		Info="If it gets too easy, try using the keyboard!"
-		Position="500.0 430.0" />
-	    <TextItem 
-		Text="* Secondary weapon becomes available in > NORMAL"
-		Info="Default is mouse button 2 or left ALT."
-		Position="500.0 390.0" />
-	    <TextItem 
-		Text="* Tertiary weapon helps against horizontal bullets"
-		Info="Default is mouse button 3 or left CTRL."
-		Position="500.0 350.0" />
-	    <TextItem 
-		Text="* Armor piercing becomes useful in > NORMAL"
-		Info="Critters will otherwise require multiple hits to give up goodies."
-		Position="500.0 310.0" />
-	    <TextItem 
-		Text="* Shoot some then move to other side of screen. Rinse and repeat."
-		Info="It's sounds almost too simple now, doesn't it?"
-		Position="500.0 270.0" />
-	    <TextItem 
-		Text="* Don't die"
-		Info="Duh!"
-		Size="1.0"
-		Position="500.0 210.0" />
-	</Menu>
+            <TextItem
+                Text="Mission Tips (hover over tips):"
+                Info="That's it, you got it... Hover on, dude!"
+                Size="1.0"
+                Position="500.0 470.0" />
+            <TextItem
+                Text="* Using the keyboard is much harder then using the mouse"
+                Info="If it gets too easy, try using the keyboard!"
+                Position="500.0 430.0" />
+            <TextItem
+                Text="* Secondary weapon becomes available in > NORMAL"
+                Info="Default is mouse button 2 or left ALT."
+                Position="500.0 390.0" />
+            <TextItem
+                Text="* Tertiary weapon helps against horizontal bullets"
+                Info="Default is mouse button 3 or left CTRL."
+                Position="500.0 350.0" />
+            <TextItem
+                Text="* Armor piercing becomes useful in > NORMAL"
+                Info="Critters will otherwise require multiple hits to give up goodies."
+                Position="500.0 310.0" />
+            <TextItem
+                Text="* Shoot some then move to other side of screen. Rinse and repeat."
+                Info="It's sounds almost too simple now, doesn't it?"
+                Position="500.0 270.0" />
+            <TextItem
+                Text="* Don't die"
+                Info="Duh!"
+                Size="1.0"
+                Position="500.0 210.0" />
+        </Menu>
     </Menu>
 
-    <Menu 
-        Text="Credits" 
+    <Menu
+        Text="Credits"
         Info="Greetings and salutations go out to..."
-	Position="500.0 260.0">
+        Position="500.0 260.0">
 
-        <TextItem 
-	    Text="-=<[ Critical Mass (aka Critter) ]>=-"
-	    Info="Have you used your bike lately? Why not?"
-	    Size="1.2"
-	    Position="500.0 440.0"/>
-        <TextItem 
-	    Text="Copyright (C) 2010 Frank Becker"
-	    Size="0.85"
-	    Position="500.0 400.0" />
-        <TextItem 
-	    Text="Visit  http://criticalmass.sourceforge.net"
-	    Info="Hosted by SourceForge.net. OK, you knew that..."
-	    Position="500.0 320.0" />
-        <TextItem 
-	    Text="Special thanks to:"
-	    Info="Danke schoen. Muchas gracias. Merci."
-	    Position="500.0 220.0" />
-        <TextItem 
-	    Text="-- SDL folks --"
-	    Info="Goto libsdl.org for details."
-	    Position="500.0 190.0" />
-        <TextItem 
-	    Text="-- Lee Thomason (TinyXml) --"
-	    Info="Goto tinyxml.sourceforge.net for details."
-	    Position="500.0 160.0" />
-        <TextItem 
-	    Text="-- Lunar Gravity & Burkey (Soundtrack) --"
-	    Info="Critical: Lunar Gravity's Millennium Remake"
-	    Position="500.0 130.0" />
+        <TextItem
+            Text="-=<[ Critical Mass (aka Critter) ]>=-"
+            Info="Have you used your bike lately? Why not?"
+            Size="1.2"
+            Position="500.0 440.0"/>
+        <TextItem
+            Text="Copyright (C) 2004-2023 Frank Becker"
+            Size="0.85"
+            Position="500.0 400.0" />
+        <TextItem
+            Text="Visit https://github.com/mooflu/critter"
+            Info="Older versions on http://criticalmass.sourceforge.net"
+            Position="500.0 320.0" />
+        <TextItem
+            Text="Special thanks to:"
+            Info="Danke schoen. Muchas gracias. Merci."
+            Position="500.0 220.0" />
+        <TextItem
+            Text="-- SDL folks --"
+            Info="Goto libsdl.org for details."
+            Position="500.0 190.0" />
+        <TextItem
+            Text="-- Lee Thomason (TinyXml) --"
+            Info="Goto https://github.com/leethomason for details."
+            Position="500.0 160.0" />
+        <TextItem
+            Text="-- Lunar Gravity & Burkey (Soundtrack) --"
+            Info="Critical: Lunar Gravity's Millennium Remake"
+            Position="500.0 130.0" />
     </Menu>
 
-    <Menu 
-        Text="Config" 
+    <Menu
+        Text="Config"
         Info="Change this'n that."
-	Position="500.0 200.0">
+        Position="500.0 200.0">
 
-	<Menu 
-	    Text="Video" 
-	    Info="Video related tweaks."
-	    Position="500.0 440.0">
+        <Menu
+            Text="Video"
+            Info="Video related tweaks."
+            Position="500.0 440.0">
 
-	    <Bool  
-		Text="Fullscreen" 
-		Info="Toggle between fullscreen and windowed mode."
-		Position="220.0 460.0"
-		Variable="fullscreen" />
-	    <Resolution 
-		Text="Resolution: " 
-		Info="Change resolution. Click resolution to change and box to accept."
-		Position="220.0 420.0" />
-	    <Bool  
-		Text="Allow Skewed Resolution" 
-		Info="Allow resolutions that do not have an aspect ratio or 4:3."
-		Position="220.0 380.0"
-		Variable="allowAnyAspectRatio" />
+            <Bool
+                Text="Fullscreen"
+                Info="Toggle between fullscreen and windowed mode."
+                Position="220.0 460.0"
+                Variable="fullscreen" />
+            <Resolution
+                Text="Resolution: "
+                Info="Change resolution. Click resolution to change and box to accept."
+                Position="220.0 420.0" />
+            <Bool
+                Text="Allow Skewed Resolution"
+                Info="Allow resolutions that do not have an aspect ratio or 4:3."
+                Position="220.0 380.0"
+                Variable="allowAnyAspectRatio" />
 
-	    <Bool  
-		Text="Show FPS" 
-		Info="Show or hide frames per second counter."
-		Position="220.0 320.0"
-		Variable="showFPS" />
-	    <Bool  
-		Text="Show Nebulas" 
-		Info="Show or hide nebulas."
-		Position="220.0 280.0"
-		Variable="showNebulas" />
-	    <Bool  
-		Text="Show Stars" 
-		Info="Show or hide stars."
-		Position="220.0 240.0"
-		Variable="showStarfield" />
-	    <Bool  
-		Text="Show Sparks" 
-		Info="Show or hide cursor sparks."
-		Position="220.0 200.0"
-		Variable="showSparks" />
-	</Menu>
+            <Bool
+                Text="Show FPS"
+                Info="Show or hide frames per second counter."
+                Position="220.0 320.0"
+                Variable="showFPS" />
+            <Bool
+                Text="Show Nebulas"
+                Info="Show or hide nebulas."
+                Position="220.0 280.0"
+                Variable="showNebulas" />
+            <Bool
+                Text="Show Stars"
+                Info="Show or hide stars."
+                Position="220.0 240.0"
+                Variable="showStarfield" />
+            <Bool
+                Text="Show Sparks"
+                Info="Show or hide cursor sparks."
+                Position="220.0 200.0"
+                Variable="showSparks" />
+        </Menu>
 
-	<Menu 
-	    Text="Audio/Input" 
-	    Info="Audio/Input related tweaks."
-	    Position="500.0 380.0">
+        <Menu
+            Text="Audio/Input"
+            Info="Audio/Input related tweaks."
+            Position="500.0 380.0">
 
-	    <Bool  
-		Text="Play music" 
-		Info="Turn music on or off."
-		Position="220.0 460.0"
-		Variable="playMusic" />
-	    <Bool  
-		Text="Play default soundtrack" 
-		Info="Play default or custom soundtrack."
-		Position="220.0 420.0"
-		Variable="playDefaultSoundtrack" />
+            <Bool
+                Text="Play music"
+                Info="Turn music on or off."
+                Position="220.0 460.0"
+                Variable="playMusic" />
+            <Bool
+                Text="Play default soundtrack"
+                Info="Play default or custom soundtrack."
+                Position="220.0 420.0"
+                Variable="playDefaultSoundtrack" />
 
-	    <Float 
-		Text="Music Volume" 
-		Info="Change music volume."
-		Position="220.0 360.0"
-		Variable="musicVolume" 
-		Range="0.0 1.0"
-		SliderOffset="60"/>
-	    <Float 
-		Text="Effects Volume" 
-		Info="Change effects volume."
-		Position="220.0 320.0"
-		Variable="effectsVolume" 
-		Range="0.0 1.0"
-		SliderOffset="60"/>
+            <Float
+                Text="Music Volume"
+                Info="Change music volume."
+                Position="220.0 360.0"
+                Variable="musicVolume"
+                Range="0.0 1.0"
+                SliderOffset="60"/>
+            <Float
+                Text="Effects Volume"
+                Info="Change effects volume."
+                Position="220.0 320.0"
+                Variable="effectsVolume"
+                Range="0.0 1.0"
+                SliderOffset="60"/>
 
-	    <Float 
-		Text="Mouse Smoothing" 
-		Info="Soften mouse movement."
-		Position="220.0 260.0"
-		Variable="mouseSmooth" 
-		Range="0.0 0.9"
-		SliderOffset="100"/>
-	    <Float 
-		Text="Mouse Sensitivity" 
-		Info="Change mouse speed."
-		Position="220.0 220.0"
-		Variable="mouseSensitivity" 
-		Range="0.1 0.5"
-		SliderOffset="100"/>
-	</Menu>
+            <Float
+                Text="Mouse Sensitivity"
+                Info="Change mouse speed."
+                Position="220.0 220.0"
+                Variable="mouseSensitivity"
+                Range="0.1 0.5"
+                SliderOffset="100"/>
+        </Menu>
 
-	<Bool  
-	    Text="Vertical Ship Movement" 
-	    Info="Allow vertical ship movement for next new game."
-	    Position="340.0 280.0"
-	    Variable="allowVerticalMovement" />
-	<Enum  
-	    Text="Skill Level: " 
-	    Info="Click to change skill level for next new game."
-	    Position="340.0 240.0"
-	    Variable="skill" 
-	    Values="ROOKIE NORMAL EXPERT INSANE"/>
-	<Bool  
-	    Text="Autofire" 
-	    Info="Click once, fire often, you lazy bastard!"
-	    Position="340.0 200.0"
-	    Variable="autofireOn" />
+        <Bool
+            Text="Vertical Ship Movement"
+            Info="Allow vertical ship movement for next new game."
+            Position="340.0 280.0"
+            Variable="allowVerticalMovement" />
+        <Enum
+            Text="Skill Level: "
+            Info="Click to change skill level for next new game."
+            Position="340.0 240.0"
+            Variable="skill"
+            Values="ROOKIE NORMAL EXPERT INSANE"/>
+        <Bool
+            Text="Autofire"
+            Info="Click once, fire often, you lazy bastard!"
+            Position="340.0 200.0"
+            Variable="autofireOn" />
 
-        <Bool  
-	    Text="Online Check and News Scroller" 
-	    Info="Check for updates and news at startup."
-	    Position="340.0 140.0"
-	    Variable="onlineCheck" />
     </Menu>
 
-    <ActionItem 
-        Text="Quit" 
-        Action="Quit" 
-	Info="I had enough, thank you!"
+    <ActionItem
+        Text="Quit"
+        Action="Quit"
+        Info="I had enough, thank you!"
         Position="500.0 130.0"/>
 
 </Menu>

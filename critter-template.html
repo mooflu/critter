@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Critter</title>
+    <style>
+        body {
+            font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+            background-color: black;
+            color: #999;
+        }
+        button {
+            display: none;
+            cursor: pointer;
+            font-size: 2rem;
+            padding: 0.2rem 1rem;
+            margin: 2rem auto;
+            color: yellow;
+            background-color: #080;
+            box-shadow: none;
+            border-color: yellow;
+            border-radius: 10px;
+        }
+        #canvas {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="progress"></div>
+    <button id="startButton" onclick="Module.onStart()">Start Critter</button>
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+	<script>
+		var Module = {
+            readyToStart: 0,
+            askUserToStart: function() {
+                document.getElementById('startButton').style.display = 'block';
+            },
+            onStart: function() {
+                document.getElementById('startButton').style.display = 'none';
+                document.getElementById('canvas').style.display = 'block';
+                document.getElementById('canvas').requestPointerLock();
+                Module.readyToStart=1
+            },
+            locateFile: function(path, prefix) {
+		      console.log(`locateFile: path:${path} prefix:${prefix}`);
+              if (path.endsWith(".data")) return "./" + path;
+			  //if (path.endsWith(".data")) return "critter/" + path;
+              // otherwise, use the default, the prefix (JS file's dir) + the path
+              return prefix + path;
+            },
+			print: function(text) {
+				console.log(text);
+			},
+			printErr: function(text) {
+				if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+				console.error(text);
+			},
+            setStatus: function(text) {
+                var total = 0;
+                var loaded = 0;
+                var num = 0;
+
+                for (var download in Module.dataFileDownloads) {
+                var data = Module.dataFileDownloads[download];
+                    total += data.total;
+                    loaded += data.loaded;
+                    num++;
+                }
+
+                console.log('Progress: ' + loaded + '/' + total);
+                document.getElementById('progress').innerHTML = 'Loading: ' + Math.round(100*loaded/total) + '%';
+                if(loaded === total) {
+                    document.getElementById('progress').style.display = 'none';
+                }
+            },
+            gamePostRun: function() {
+                document.getElementById('progress').innerHTML = 'Thanks for playing - reload to play again.';
+                document.getElementById('progress').style.display = 'block';
+            },
+			canvas: (function() {
+				var canvas = document.getElementById('canvas');
+				return canvas;
+			})()
+		};
+	</script>
+
+	{{{ SCRIPT }}}
+</body>
+</html>

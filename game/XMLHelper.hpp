@@ -16,8 +16,7 @@
 #include <string>
 #include "tinyxml.h"
 
-class XMLHelper
-{
+class XMLHelper {
 public:
-    static TiXmlDocument *load( const std::string &filename);
+    static TiXmlDocument* load(const std::string& filename);
 };

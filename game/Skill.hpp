@@ -24,61 +24,58 @@ const std::string SKILL_INSANE = "INSANE";
 const std::string SKILL_UNKNOWN = "UNKNOWN";
 const std::string SKILL_ERROR = "*ERROR*";
 
-class Skill
-{
-friend class Singleton<Skill>;
+class Skill {
+    friend class Singleton<Skill>;
+
 public:
-    enum SkillEnum
-    {
-	eUnknown = 0,
-	eRookie = 1,
-	eNormal = 2,
-	eExpert = 3,
-	eInsane = 4,
-	eLAST
+    enum SkillEnum {
+        eUnknown = 0,
+        eRookie = 1,
+        eNormal = 2,
+        eExpert = 3,
+        eInsane = 4,
+        eLAST
     };
 
-    inline static const std::string &getString( SkillEnum e)
-    {
-	switch( e)
-	{
-	    case eRookie:
-	        return SKILL_ROOKIE;
+    inline static const std::string& getString(SkillEnum e) {
+        switch (e) {
+            case eRookie:
+                return SKILL_ROOKIE;
 
-	    case eNormal:
-	        return SKILL_NORMAL;
+            case eNormal:
+                return SKILL_NORMAL;
 
-	    case eExpert:
-	        return SKILL_EXPERT;
+            case eExpert:
+                return SKILL_EXPERT;
 
-	    case eInsane:
-	        return SKILL_INSANE;
+            case eInsane:
+                return SKILL_INSANE;
 
-	    case eUnknown:
-	        return SKILL_UNKNOWN;
+            case eUnknown:
+                return SKILL_UNKNOWN;
 
-	    case eLAST:
-	    default:
-	        break;
-	}
-	return SKILL_ERROR;
+            case eLAST:
+            default:
+                break;
+        }
+        return SKILL_ERROR;
     }
 
-    static inline int getFireProbability( void);
-    static inline int getMaxBullets( void);
-    static inline int getMaxAttacking( void);
+    static inline int getFireProbability(void);
+    static inline int getMaxBullets(void);
+    static inline int getMaxAttacking(void);
 
-    void updateSkill( const Skill::SkillEnum &skill);
-    void updateSkill( void);
-    void incrementSkill( void);
+    void updateSkill(const Skill::SkillEnum& skill);
+    void updateSkill(void);
+    void incrementSkill(void);
 
 private:
     ~Skill();
-    Skill( void);
-    Skill( const Skill&);
-    Skill &operator=(const Skill&);
+    Skill(void);
+    Skill(const Skill&);
+    Skill& operator=(const Skill&);
 
-    SkillEnum convertStringToSkill( const std::string &skill);
+    SkillEnum convertStringToSkill(const std::string& skill);
 
     int _fireProbability;
     int _maxBullets;
@@ -87,17 +84,14 @@ private:
 
 typedef Singleton<Skill> SkillS;
 
-int Skill::getFireProbability( void) 
-{ 
+int Skill::getFireProbability(void) {
     return SkillS::instance()->_fireProbability;
 }
 
-int Skill::getMaxBullets( void) 
-{ 
+int Skill::getMaxBullets(void) {
     return SkillS::instance()->_maxBullets;
 }
 
-int Skill::getMaxAttacking( void) 
-{ 
+int Skill::getMaxAttacking(void) {
     return SkillS::instance()->_maxAttacking;
 }

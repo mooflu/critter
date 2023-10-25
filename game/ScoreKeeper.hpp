@@ -24,8 +24,7 @@
 
 using namespace std;
 
-struct ScoreData
-{
+struct ScoreData {
     int score;
     string name;
     time_t time;
@@ -34,75 +33,57 @@ struct ScoreData
     int skill;
 };
 
-inline bool operator< (const ScoreData &s1, const ScoreData &s2)
-{
+inline bool operator<(const ScoreData& s1, const ScoreData& s2) {
     // ">" since we want highscore first
     return s1.score > s2.score;
 }
 
-class ScoreKeeper
-{
-friend class Singleton<ScoreKeeper>;
+class ScoreKeeper {
+    friend class Singleton<ScoreKeeper>;
+
 public:
     ~ScoreKeeper();
-    ScoreKeeper( void);
+    ScoreKeeper(void);
 
-    int getCurrentScore( void)
-    {
-	return _leaderBoard[_currentIndex].score;
-    }
+    int getCurrentScore(void) { return _leaderBoard[_currentIndex].score; }
 
-    void resetCurrentScore( void);
+    void resetCurrentScore(void);
 
-    int addToCurrentScore( int value);
+    int addToCurrentScore(int value);
 
-    void incGoodiesCaught( void);
-    void incGoodiesMissed( void);
-    
+    void incGoodiesCaught(void);
+    void incGoodiesMissed(void);
+
     int goodiesCaught(void);
 
-    int getScore( unsigned int index)
-    {
-	if( index < _leaderBoard.size())
-	{
-	    return _leaderBoard[ index].score;
-	}
+    int getScore(unsigned int index) {
+        if (index < _leaderBoard.size()) {
+            return _leaderBoard[index].score;
+        }
 
-	return 0;
+        return 0;
     }
 
-    const string getInfoText( unsigned int index);
+    const string getInfoText(unsigned int index);
 
-    int getHighScore( void)
-    {
-	return _leaderBoard[0].score;
-    }
+    int getHighScore(void) { return _leaderBoard[0].score; }
 
-    int boardSize( void)
-    {
-	return (int)_leaderBoard.size();
-    }
+    int boardSize(void) { return (int)_leaderBoard.size(); }
 
-    bool currentIsTopTen( void)
-    {
-	return  _currentIndex < 10;
-    }
+    bool currentIsTopTen(void) { return _currentIndex < 10; }
 
-    void setName( const string &name)
-    {
-	_leaderBoard[_currentIndex].name = name;
-    }
+    void setName(const string& name) { _leaderBoard[_currentIndex].name = name; }
 
-    void load( void);
-    void save( void);
-    void draw( const Point2Di &offset);
+    void load(void);
+    void save(void);
+    void draw(const Point2Di& offset);
 
 private:
-    ScoreKeeper( const ScoreKeeper&);
-    ScoreKeeper &operator=(const ScoreKeeper&);
+    ScoreKeeper(const ScoreKeeper&);
+    ScoreKeeper& operator=(const ScoreKeeper&);
 
-    void updateLeaderBoard( void);
-    void dump( void);
+    void updateLeaderBoard(void);
+    void dump(void);
 
     unsigned int _currentIndex;
     vector<ScoreData> _leaderBoard;

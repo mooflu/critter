@@ -15,19 +15,17 @@
 //
 
 #ifdef HAS_NAMESPACE
-namespace 
+namespace
 #else
 struct
 #endif
-Context
-{
-    enum ContextEnum
-    {
-        eUnknown,
-        eMenu,
-        eInGame,
-        ePaused,
-        eCameraFlyby,
-        eLAST
-    };
+    Context {
+enum ContextEnum {
+    eUnknown,
+    eMenu,
+    eInGame,
+    ePaused,
+    eCameraFlyby,
+    eLAST
 };
+};  // namespace Context

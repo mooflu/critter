@@ -19,15 +19,13 @@
 
 using namespace std;
 
-Callback::Callback( const string &actionName, const string &defaultTrigger):
-    _actionName( actionName),
-    _defaultTrigger( defaultTrigger)
-{
+Callback::Callback(const string& actionName, const string& defaultTrigger) :
+    _actionName(actionName),
+    _defaultTrigger(defaultTrigger) {
     XTRACE();
-    InputS::instance()->addCallback( this);
+    InputS::instance()->addCallback(this);
 }
 
-Callback::~Callback()
-{
+Callback::~Callback() {
     XTRACE();
 }

@@ -17,7 +17,7 @@
 #include <Trace.hpp>
 #include <Constants.hpp>
 #include <GameState.hpp>
-#include <Random.hpp>
+#include <RandomKnuth.hpp>
 #include <ModelManager.hpp>
 #include <Camera.hpp>
 #include <ParticleGroup.hpp>
@@ -27,121 +27,120 @@
 #include <FontManager.hpp>
 #include <BitmapManager.hpp>
 #include <ScoreKeeper.hpp>
-using namespace std;
-//------------------------------------------------------------------------------
-void Particles::Initialize( void)
-{
-    static bool initialized = false;
-    if( !initialized)
-    {
-	new HeroStinger();
-	new StingerTrail();
-	new SmokePuff();
-	new MiniSmoke();
-	new ExplosionPiece();
-	new PlasmaBullet();
-	new Bonus1( "SuperBonus", 1000);
-	new Bonus1( "Bonus1", 100);
-	new ScoreHighlight();
-	new EnergyBlob();
-	new ShieldBoost();
-	new ArmorPierce();
-	new WeaponUpgrade();
-	new StatusMessage();
-	new Spark();
-	new BallOfFire();
-	new BallOfIce();
-	new BallOfPoison();
-	new SwarmLeader();
-	new SwarmElement();
-	new Phaser();
-	new FireSpark( "FireSpark1");
-	new FireSpark( "FireSpark2");
-	new FireSpark( "FireSpark3");
-	new FlankBurst( "FlankBurstLeft");
-	new FlankBurst( "FlankBurstRight");
-	HeroS::instance();
 
-	initialized = true;
+#include <GL/glew.h>
+#include "gl3/Program.hpp"
+#include "gl3/ProgramManager.hpp"
+#include "gl3/MatrixStack.hpp"
+#include "glm/ext.hpp"
+#include "GLVertexBufferObject.hpp"
+
+using namespace std;
+
+static RandomKnuth _random;
+
+//------------------------------------------------------------------------------
+void Particles::Initialize(void) {
+    static bool initialized = false;
+    if (!initialized) {
+        new HeroStinger();
+        new StingerTrail();
+        new SmokePuff();
+        new MiniSmoke();
+        new ExplosionPiece();
+        new PlasmaBullet();
+        new Bonus1("SuperBonus", 1000);
+        new Bonus1("Bonus1", 100);
+        new ScoreHighlight();
+        new EnergyBlob();
+        new ShieldBoost();
+        new ArmorPierce();
+        new WeaponUpgrade();
+        new StatusMessage();
+        new Spark();
+        new BallOfFire();
+        new BallOfIce();
+        new BallOfPoison();
+        new SwarmLeader();
+        new SwarmElement();
+        new Phaser();
+        new FireSpark("FireSpark1");
+        new FireSpark("FireSpark2");
+        new FireSpark("FireSpark3");
+        new FlankBurst("FlankBurstLeft");
+        new FlankBurst("FlankBurstRight");
+        HeroS::instance();
+
+        initialized = true;
     }
 }
 
-float getPseudoRadius( Model *model)
-{
-//if most of the movement is vertical, width represents the radius
-//most realistically (for non square objs).
+float getPseudoRadius(Model* model) {
+    //if most of the movement is vertical, width represents the radius
+    //most realistically (for non square objs).
     vec3 minpt, maxpt;
-    model->getBoundingBox( minpt, maxpt);
-    return (maxpt.x-minpt.x)/2.0;
+    model->getBoundingBox(minpt, maxpt);
+    return (maxpt.x - minpt.x) / 2.0;
 }
 
 //------------------------------------------------------------------------------
 
-GLBitmapCollection *BitmapParticleType::_bitmaps = 0;
+GLBitmapCollection* BitmapParticleType::_bitmaps = 0;
 
-BitmapParticleType::BitmapParticleType( const string &particleName):
-    ParticleType( particleName)
-{
+BitmapParticleType::BitmapParticleType(const string& particleName) :
+    ParticleType(particleName) {
     XTRACE();
     LoadBitmaps();
 }
 
-BitmapParticleType::~BitmapParticleType()
-{
+BitmapParticleType::~BitmapParticleType() {
     XTRACE();
 }
 
-void BitmapParticleType::LoadBitmaps( void)
-{
+void BitmapParticleType::LoadBitmaps(void) {
     XTRACE();
     static bool bitmapsLoaded = false;
-    if( !bitmapsLoaded)
-    {
-	_bitmaps = BitmapManagerS::instance()->getBitmap( "bitmaps/ammo");
-	if( !_bitmaps)
-	{
-	    LOG_ERROR << "Unable to load particle bitmap" << endl;
-	}
+    if (!bitmapsLoaded) {
+        _bitmaps = BitmapManagerS::instance()->getBitmap("bitmaps/ammo");
+        if (!_bitmaps) {
+            LOG_ERROR << "Unable to load particle bitmap" << endl;
+        }
         bitmapsLoaded = true;
     }
 }
 
 //------------------------------------------------------------------------------
 
-SingleBitmapParticle::SingleBitmapParticle( 
-    const string &particleName, const char *bitmapName) 
-    :BitmapParticleType(particleName)
-{
+SingleBitmapParticle::SingleBitmapParticle(const string& particleName, const char* bitmapName) :
+    BitmapParticleType(particleName) {
     XTRACE();
-    string bmName( bitmapName);
-    _bmIndex = _bitmaps->getIndex( bmName);
+    string bmName(bitmapName);
+    _bmIndex = _bitmaps->getIndex(bmName);
 
-    _bmHalfWidth = (float)(_bitmaps->getWidth( _bmIndex))/2.0f;
-    _bmHalfHeight= (float)(_bitmaps->getHeight( _bmIndex))/2.0f;
+    _bmHalfWidth = (float)(_bitmaps->getWidth(_bmIndex)) / 2.0f;
+    _bmHalfHeight = (float)(_bitmaps->getHeight(_bmIndex)) / 2.0f;
 
-//if most of the movement is vertical, width represents the radius
-//most realisticly (for non square objs).
-//        _radius = sqrt(_bmHalfWidth*_bmHalfWidth + _bmHalfHeight*_bmHalfHeight);
-    _radius = _bmHalfWidth;// + _bmHalfHeight)/2.0;
+    //if most of the movement is vertical, width represents the radius
+    //most realisticly (for non square objs).
+    //        _radius = sqrt(_bmHalfWidth*_bmHalfWidth + _bmHalfHeight*_bmHalfHeight);
+    _radius = _bmHalfWidth;  // + _bmHalfHeight)/2.0;
 }
 
 //------------------------------------------------------------------------------
 
-SmokePuff::SmokePuff( void):SingleBitmapParticle( "SmokePuff", "SmokePuff1")
-{
+SmokePuff::SmokePuff(void) :
+    SingleBitmapParticle("SmokePuff", "SmokePuff1") {
     XTRACE();
 }
 
-SmokePuff::~SmokePuff()
-{
+SmokePuff::~SmokePuff() {
     XTRACE();
 }
 
-void SmokePuff::init( ParticleInfo *p)
-{
+void SmokePuff::init(ParticleInfo* p) {
     XTRACE();
     p->velocity.x = 0.0f * GAME_STEP_SCALE;
-    p->velocity.y = 0.27f* GAME_STEP_SCALE;
+    p->velocity.y = 0.27f * GAME_STEP_SCALE;
     p->velocity.z = 0.0f * GAME_STEP_SCALE;
 
     p->extra.x = 0.025f * GAME_STEP_SCALE;
@@ -152,17 +151,18 @@ void SmokePuff::init( ParticleInfo *p)
     updatePrevs(p);
 }
 
-bool SmokePuff::update( ParticleInfo *p)
-{
-//    XTRACE();
+bool SmokePuff::update(ParticleInfo* p) {
+    //    XTRACE();
     //update previous values for interpolation
     updatePrevs(p);
 
-    p->extra.z = 0.36f - p->extra.x*6.0f;
+    p->extra.z = 0.36f - p->extra.x * 6.0f;
     //if alpha reaches 0, we can die
-    if( p->extra.z < 0) return false;
+    if (p->extra.z < 0) {
+        return false;
+    }
 
-    p->extra.x    += p->extra.y;
+    p->extra.x += p->extra.y;
 
     p->position.x += p->velocity.x;
     p->position.y += p->velocity.y;
@@ -170,52 +170,49 @@ bool SmokePuff::update( ParticleInfo *p)
     return true;
 }
 
-void SmokePuff::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void SmokePuff::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glEnable(GL_TEXTURE_2D);
-    glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
 
-    glPushMatrix();
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    glm::mat4& projection = MatrixStack::projection.top();
 
-    float shiftX = _bmHalfWidth*pi.extra.x;
-    float shiftY = _bmHalfHeight*pi.extra.x;
-    glTranslatef( pi.position.x-shiftX, pi.position.y-shiftY, pi.position.z);
+    float shiftX = _bmHalfWidth * pi.extra.x;
+    float shiftY = _bmHalfHeight * pi.extra.x;
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x - shiftX, pi.position.y - shiftY, pi.position.z));
 
     //rotate towards the camera
-    CameraS::instance()->billboard();
+    CameraS::instance()->billboard(modelview);
 
-//	LOG_ERROR << pi.extra.x << endl;
-    glColor4f(1.0,1.0,1.0, pi.extra.z);
+    Program* prog = ProgramManagerS::instance()->getProgram("texture");
+    prog->use();  //needed to set uniforms
+    GLint modelViewMatrixLoc = glGetUniformLocation(prog->id(), "modelViewMatrix");
+    glUniformMatrix4fv(modelViewMatrixLoc, 1, GL_FALSE, glm::value_ptr(projection * modelview));
 
-    bindTexture();
-    _bitmaps->Draw( _bmIndex, 0, 0, pi.extra.x, pi.extra.x);
+    _bitmaps->setColor(1.0, 1.0, 1.0, pi.extra.z);
+    _bitmaps->Draw(_bmIndex, 0, 0, pi.extra.x, pi.extra.x);
 
-    glPopMatrix();
+    MatrixStack::model.pop();
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
-    glDisable(GL_TEXTURE_2D);
 }
 
 //------------------------------------------------------------------------------
 
-MiniSmoke::MiniSmoke( void):SingleBitmapParticle( "MiniSmoke", "SmokePuff1")
-{
+MiniSmoke::MiniSmoke(void) :
+    SingleBitmapParticle("MiniSmoke", "SmokePuff1") {
     XTRACE();
 }
 
-MiniSmoke::~MiniSmoke()
-{
+MiniSmoke::~MiniSmoke() {
     XTRACE();
 }
 
-void MiniSmoke::init( ParticleInfo *p)
-{
+void MiniSmoke::init(ParticleInfo* p) {
     XTRACE();
 
     p->extra.x = 0.020f * GAME_STEP_SCALE;
@@ -226,17 +223,18 @@ void MiniSmoke::init( ParticleInfo *p)
     updatePrevs(p);
 }
 
-bool MiniSmoke::update( ParticleInfo *p)
-{
-//    XTRACE();
+bool MiniSmoke::update(ParticleInfo* p) {
+    //    XTRACE();
     //update previous values for interpolation
     updatePrevs(p);
 
-    p->extra.z = 0.80f - p->extra.x*12.0f;
+    p->extra.z = 0.80f - p->extra.x * 12.0f;
     //if alpha reaches 0, we can die
-    if( p->extra.z < 0) return false;
+    if (p->extra.z < 0) {
+        return false;
+    }
 
-    p->extra.x    += p->extra.y;
+    p->extra.x += p->extra.y;
 
     p->position.x += p->velocity.x;
     p->position.y += p->velocity.y;
@@ -244,67 +242,63 @@ bool MiniSmoke::update( ParticleInfo *p)
     return true;
 }
 
-void MiniSmoke::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void MiniSmoke::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glEnable(GL_TEXTURE_2D);
-    glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
 
-    glPushMatrix();
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    glm::mat4& projection = MatrixStack::projection.top();
 
-    float shiftX = _bmHalfWidth*pi.extra.x;
-    float shiftY = _bmHalfHeight*pi.extra.x;
-    glTranslatef( pi.position.x-shiftX, pi.position.y-shiftY, pi.position.z);
+    float shiftX = _bmHalfWidth * pi.extra.x;
+    float shiftY = _bmHalfHeight * pi.extra.x;
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x - shiftX, pi.position.y - shiftY, pi.position.z));
 
     //rotate towards the camera
-    CameraS::instance()->billboard();
+    CameraS::instance()->billboard(modelview);
 
-//	LOG_ERROR << pi.extra.x << endl;
-    glColor4f(1.0,1.0,1.0, pi.extra.z);
+    Program* prog = ProgramManagerS::instance()->getProgram("texture");
+    prog->use();  //needed to set uniforms
+    GLint modelViewMatrixLoc = glGetUniformLocation(prog->id(), "modelViewMatrix");
+    glUniformMatrix4fv(modelViewMatrixLoc, 1, GL_FALSE, glm::value_ptr(projection * modelview));
 
-    bindTexture();
-    _bitmaps->Draw( _bmIndex, 0, 0, pi.extra.x, pi.extra.x);
+    _bitmaps->setColor(1.0, 1.0, 1.0, pi.extra.z);
+    _bitmaps->Draw(_bmIndex, 0, 0, pi.extra.x, pi.extra.x);
 
-    glPopMatrix();
+    MatrixStack::model.pop();
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
-    glDisable(GL_TEXTURE_2D);
 }
 
 //------------------------------------------------------------------------------
 
-Spark::Spark( void):SingleBitmapParticle( "Spark", "Spark1")
-{
+Spark::Spark(void) :
+    SingleBitmapParticle("Spark", "Spark1") {
     XTRACE();
 }
 
-Spark::~Spark()
-{
+Spark::~Spark() {
     XTRACE();
 }
 
-void Spark::init( ParticleInfo *p)
-{
+void Spark::init(ParticleInfo* p) {
     XTRACE();
-    p->velocity.x =  (float)(Random::random()&0xf) * 0.82f * GAME_STEP_SCALE;
-    p->velocity.y = -(float)(Random::random()&0xf) * 0.62f * GAME_STEP_SCALE;
-    p->velocity.z =  0.0f  * GAME_STEP_SCALE;
+    p->velocity.x = (float)(_random.random() & 0xf) * 0.82f * GAME_STEP_SCALE;
+    p->velocity.y = -(float)(_random.random() & 0xf) * 0.62f * GAME_STEP_SCALE;
+    p->velocity.z = 0.0f * GAME_STEP_SCALE;
 
     p->extra.x = 0.10f * GAME_STEP_SCALE;
-//    p->extra.z = 0.36;
+    //    p->extra.z = 0.36;
 
     //init previous values for interpolation
     updatePrevs(p);
 }
 
-bool Spark::update( ParticleInfo *p)
-{
-//    XTRACE();
+bool Spark::update(ParticleInfo* p) {
+    //    XTRACE();
     //update previous values for interpolation
     updatePrevs(p);
 
@@ -312,67 +306,67 @@ bool Spark::update( ParticleInfo *p)
 
     p->extra.z = 0.9f - p->extra.x;
     //if alpha reaches 0, we can die
-    if( p->extra.z < 0) return false;
+    if (p->extra.z < 0) {
+        return false;
+    }
 
     p->extra.x += 0.025f * GAME_STEP_SCALE;
 
     p->position.x += p->velocity.x;
     p->position.y += p->velocity.y;
 
-    if( p->position.y < 0) return false;
+    if (p->position.y < 0) {
+        return false;
+    }
 
     return true;
 }
 
-void Spark::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void Spark::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolateOther( p, pi);
+    interpolateOther(p, pi);
 
-    glColor4f(1.0,1.0,1.0, pi.extra.z);
-
-    bindTexture();
-    _bitmaps->DrawC( _bmIndex, pi.position.x, pi.position.y, 1.0, 1.0);
+    _bitmaps->setColor(1.0, 1.0, 1.0, pi.extra.z);
+    _bitmaps->DrawC(_bmIndex, pi.position.x, pi.position.y, 1.0, 1.0);
 }
 
 //------------------------------------------------------------------------------
 
-FireSpark::FireSpark( const string &sp):SingleBitmapParticle( sp, sp.c_str())
-{
+FireSpark::FireSpark(const string& sp) :
+    SingleBitmapParticle(sp, sp.c_str()) {
     XTRACE();
 }
 
-FireSpark::~FireSpark()
-{
+FireSpark::~FireSpark() {
     XTRACE();
 }
 
-void FireSpark::init( ParticleInfo *p)
-{
+void FireSpark::init(ParticleInfo* p) {
     XTRACE();
-    p->velocity.x = (float)((Random::random()&0xff)-0x80) * 0.0010f * GAME_STEP_SCALE;
-    p->velocity.y = (float)((Random::random()&0xff)-0x80) * 0.0010f * GAME_STEP_SCALE;
-    p->velocity.z =  0.0f  * GAME_STEP_SCALE;
+    p->velocity.x = (float)((int)(_random.random() & 0xff) - 0x80) * 0.0010f * GAME_STEP_SCALE;
+    p->velocity.y = (float)((int)(_random.random() & 0xff) - 0x80) * 0.0010f * GAME_STEP_SCALE;
+    p->velocity.z = 0.0f * GAME_STEP_SCALE;
 
     p->extra.x = 0.10f * GAME_STEP_SCALE;
-//    p->extra.z = 0.36;
+    //    p->extra.z = 0.36;
 
     //init previous values for interpolation
     updatePrevs(p);
 }
 
-bool FireSpark::update( ParticleInfo *p)
-{
-//    XTRACE();
+bool FireSpark::update(ParticleInfo* p) {
+    //    XTRACE();
     //update previous values for interpolation
     updatePrevs(p);
 
-//    p->velocity.y -= 0.8 * GAME_STEP_SCALE;
+    //    p->velocity.y -= 0.8 * GAME_STEP_SCALE;
 
     p->extra.z = 0.9f - p->extra.x;
     //if alpha reaches 0, we can die
-    if( p->extra.z < 0) return false;
+    if (p->extra.z < 0) {
+        return false;
+    }
 
     p->extra.x += 0.10f * GAME_STEP_SCALE;
 
@@ -382,58 +376,50 @@ bool FireSpark::update( ParticleInfo *p)
     return true;
 }
 
-void FireSpark::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void FireSpark::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glEnable(GL_TEXTURE_2D);
-    glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
 
-    glPushMatrix();
-
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    glm::mat4& projection = MatrixStack::projection.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
 
     //rotate towards the camera
-    CameraS::instance()->billboard();
+    CameraS::instance()->billboard(modelview);
 
-    glColor4f(1.0,1.0,1.0, p->extra.z);
+    Program* prog = ProgramManagerS::instance()->getProgram("texture");
+    prog->use();  //needed to set uniforms
+    GLint modelViewMatrixLoc = glGetUniformLocation(prog->id(), "modelViewMatrix");
+    glUniformMatrix4fv(modelViewMatrixLoc, 1, GL_FALSE, glm::value_ptr(projection * modelview));
 
-    bindTexture();
-
-//    glRotatef( pi.extra.y, 0,0,1);
-
-    _bitmaps->DrawC( _bmIndex, 0, 0, 0.2f, 0.2f);
-
-    glPopMatrix();
+    _bitmaps->setColor(1.0, 1.0, 1.0, p->extra.z);
+    _bitmaps->DrawC(_bmIndex, 0, 0, 0.2f, 0.2f);
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
-    glDisable(GL_TEXTURE_2D);
+
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-FlankBurst::FlankBurst( const string &sp):
-  SingleBitmapParticle( sp, sp.c_str()),
-  _dir(1.0)
-{
+FlankBurst::FlankBurst(const string& sp) :
+    SingleBitmapParticle(sp, sp.c_str()),
+    _dir(1.0) {
     XTRACE();
-    if( sp == "FlankBurstLeft")
-    {
-	_dir = -1.0;
+    if (sp == "FlankBurstLeft") {
+        _dir = -1.0;
     }
 }
 
-FlankBurst::~FlankBurst()
-{
+FlankBurst::~FlankBurst() {
     XTRACE();
 }
 
-void FlankBurst::init( ParticleInfo *p)
-{
+void FlankBurst::init(ParticleInfo* p) {
     XTRACE();
     p->velocity.x = 2.0f * GAME_STEP_SCALE * _dir;
     p->velocity.y = 0.0f * GAME_STEP_SCALE;
@@ -444,15 +430,14 @@ void FlankBurst::init( ParticleInfo *p)
 
     p->extra.x = 0.008f * GAME_STEP_SCALE;
     p->extra.y = 0.02f;
-    p->radius = _bmHalfWidth*p->extra.y*2.0f;
+    p->radius = _bmHalfWidth * p->extra.y * 2.0f;
 
     //init previous values for interpolation
     updatePrevs(p);
 }
 
-bool FlankBurst::update( ParticleInfo *p)
-{
-//    XTRACE();
+bool FlankBurst::update(ParticleInfo* p) {
+    //    XTRACE();
     //update previous values for interpolation
     updatePrevs(p);
 
@@ -460,87 +445,82 @@ bool FlankBurst::update( ParticleInfo *p)
     p->position.y += p->velocity.y;
 
     p->extra.y += p->extra.x;
-    p->radius = _bmHalfWidth*p->extra.y*2.0f;
+    p->radius = _bmHalfWidth * p->extra.y * 2.0f;
 
-    if( (fabs( p->position.x) > 68.0f)) 
-    {
-	return false;
+    if ((fabs(p->position.x) > 68.0f)) {
+        return false;
     }
 
     return true;
 }
 
-void FlankBurst::hit( ParticleInfo * /*p*/, int /*damage*/, int /*radIndex*/) 
-{ 
+void FlankBurst::hit(ParticleInfo* /*p*/, int /*damage*/, int /*radIndex*/) {
     /*
-    p->tod = 0; 
+    p->tod = 0;
     */
-    AudioS::instance()->playSample( "sounds/whoop.wav");
+    AudioS::instance()->playSample("sounds/whoop.wav");
 }
 
-void FlankBurst::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void FlankBurst::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glEnable(GL_TEXTURE_2D);
-    glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
 
-    glPushMatrix();
-
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    glm::mat4& projection = MatrixStack::projection.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
 
     //rotate towards the camera
-    CameraS::instance()->billboard();
+    CameraS::instance()->billboard(modelview);
 
-    glColor4f(1.0,1.0,1.0, 1.0);
+    Program* prog = ProgramManagerS::instance()->getProgram("texture");
+    prog->use();  //needed to set uniforms
+    GLint modelViewMatrixLoc = glGetUniformLocation(prog->id(), "modelViewMatrix");
+    glUniformMatrix4fv(modelViewMatrixLoc, 1, GL_FALSE, glm::value_ptr(projection * modelview));
 
-    bindTexture();
-    _bitmaps->DrawC( _bmIndex, 0, 0, pi.extra.y, pi.extra.y);
-
-    glPopMatrix();
+    _bitmaps->setColor(1.0, 1.0, 1.0, 1.0);
+    _bitmaps->DrawC(_bmIndex, 0, 0, pi.extra.y, pi.extra.y);
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
-    glDisable(GL_TEXTURE_2D);
+
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-BallOfPoison::BallOfPoison( void): 
-    SingleBitmapParticle( "BallOfPoison", "BallOfPoison")
-{
+BallOfPoison::BallOfPoison(void) :
+    SingleBitmapParticle("BallOfPoison", "BallOfPoison") {
     XTRACE();
 }
 
-BallOfPoison::~BallOfPoison()
-{
+BallOfPoison::~BallOfPoison() {
     XTRACE();
 }
 
-void BallOfPoison::init( ParticleInfo *p)
-{
+void BallOfPoison::init(ParticleInfo* p) {
     XTRACE();
     /*
     p->velocity.x = 2.0 * GAME_STEP_SCALE;
     p->velocity.y = 0.0 * GAME_STEP_SCALE;
     p->velocity.z = 0.0 * GAME_STEP_SCALE;
     */
-//    p->damage = 50;
+    //    p->damage = 50;
 
-    p->radius = _bmHalfWidth*0.05f;
+    p->radius = _bmHalfWidth * 0.05f;
     p->tod = -1;
 
     //init previous values for interpolation
     updatePrevs(p);
 }
 
-bool BallOfPoison::update( ParticleInfo *p)
-{
-//    XTRACE();
-    if( p->tod == 0) return false;
+bool BallOfPoison::update(ParticleInfo* p) {
+    //    XTRACE();
+    if (p->tod == 0) {
+        return false;
+    }
 
     //update previous values for interpolation
     updatePrevs(p);
@@ -548,87 +528,82 @@ bool BallOfPoison::update( ParticleInfo *p)
     p->position.x += p->velocity.x;
     p->position.y += p->velocity.y;
 
-    if( (fabs( p->position.x) > 68.0)) 
-    {
-	return false;
+    if ((fabs(p->position.x) > 68.0)) {
+        return false;
     }
 
-    if( (fabs( p->position.y) > 50.0)) 
-    {
-	return false;
+    if ((fabs(p->position.y) > 50.0)) {
+        return false;
     }
 
     return true;
 }
 
-void BallOfPoison::hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/) 
-{ 
-    p->tod = 0; 
-    AudioS::instance()->playSample( "sounds/whoop.wav");
+void BallOfPoison::hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/) {
+    p->tod = 0;
+    AudioS::instance()->playSample("sounds/whoop.wav");
 }
 
-void BallOfPoison::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void BallOfPoison::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glEnable(GL_TEXTURE_2D);
-    glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
 
-    glPushMatrix();
-
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    glm::mat4& projection = MatrixStack::projection.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
 
     //rotate towards the camera
-    CameraS::instance()->billboard();
+    CameraS::instance()->billboard(modelview);
 
-    glColor4f(1.0,1.0,1.0, 1.0);
+    Program* prog = ProgramManagerS::instance()->getProgram("texture");
+    prog->use();  //needed to set uniforms
+    GLint modelViewMatrixLoc = glGetUniformLocation(prog->id(), "modelViewMatrix");
+    glUniformMatrix4fv(modelViewMatrixLoc, 1, GL_FALSE, glm::value_ptr(projection * modelview));
 
-    bindTexture();
-    _bitmaps->DrawC( _bmIndex, 0, 0, 0.2f, 0.2f);
-
-    glPopMatrix();
+    _bitmaps->setColor(1.0, 1.0, 1.0, 1.0);
+    _bitmaps->DrawC(_bmIndex, 0, 0, 0.2f, 0.2f);
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
-    glDisable(GL_TEXTURE_2D);
+
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-BallOfIce::BallOfIce( void): SingleBitmapParticle( "BallOfIce", "BallOfIce")
-{
+BallOfIce::BallOfIce(void) :
+    SingleBitmapParticle("BallOfIce", "BallOfIce") {
     XTRACE();
 }
 
-BallOfIce::~BallOfIce()
-{
+BallOfIce::~BallOfIce() {
     XTRACE();
 }
 
-void BallOfIce::init( ParticleInfo *p)
-{
+void BallOfIce::init(ParticleInfo* p) {
     XTRACE();
     /*
     p->velocity.x = 2.0 * GAME_STEP_SCALE;
     p->velocity.y = 0.0 * GAME_STEP_SCALE;
     p->velocity.z = 0.0 * GAME_STEP_SCALE;
     */
-//    p->damage = 50;
+    //    p->damage = 50;
 
-    p->radius = _bmHalfWidth*0.05f;
+    p->radius = _bmHalfWidth * 0.05f;
     p->tod = -1;
 
     //init previous values for interpolation
     updatePrevs(p);
 }
 
-bool BallOfIce::update( ParticleInfo *p)
-{
-//    XTRACE();
-    if( p->tod == 0) return false;
+bool BallOfIce::update(ParticleInfo* p) {
+    //    XTRACE();
+    if (p->tod == 0) {
+        return false;
+    }
 
     //update previous values for interpolation
     updatePrevs(p);
@@ -636,85 +611,78 @@ bool BallOfIce::update( ParticleInfo *p)
     p->position.x += p->velocity.x;
     p->position.y += p->velocity.y;
 
-    if( (fabs( p->position.x) > 68.0)) 
-    {
-	return false;
+    if ((fabs(p->position.x) > 68.0)) {
+        return false;
     }
 
-    if( (fabs( p->position.y) > 50.0)) 
-    {
-	return false;
+    if ((fabs(p->position.y) > 50.0)) {
+        return false;
     }
 
     return true;
 }
 
-void BallOfIce::hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/) 
-{ 
-    p->tod = 0; 
-    AudioS::instance()->playSample( "sounds/whoop.wav");
+void BallOfIce::hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/) {
+    p->tod = 0;
+    AudioS::instance()->playSample("sounds/whoop.wav");
 }
 
-void BallOfIce::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void BallOfIce::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glEnable(GL_TEXTURE_2D);
-    glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
 
-    glPushMatrix();
-
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    glm::mat4& projection = MatrixStack::projection.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
 
     //rotate towards the camera
-    CameraS::instance()->billboard();
+    CameraS::instance()->billboard(modelview);
 
-    glColor4f(1.0,1.0,1.0, 1.0);
+    Program* prog = ProgramManagerS::instance()->getProgram("texture");
+    prog->use();  //needed to set uniforms
+    GLint modelViewMatrixLoc = glGetUniformLocation(prog->id(), "modelViewMatrix");
+    glUniformMatrix4fv(modelViewMatrixLoc, 1, GL_FALSE, glm::value_ptr(projection * modelview));
 
-    bindTexture();
-    _bitmaps->DrawC( _bmIndex, 0, 0, 0.2f, 0.2f);
-
-    glPopMatrix();
+    _bitmaps->setColor(1.0, 1.0, 1.0, 1.0);
+    _bitmaps->DrawC(_bmIndex, 0, 0, 0.2f, 0.2f);
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
-    glDisable(GL_TEXTURE_2D);
-}
 
+    MatrixStack::model.pop();
+}
 
 //------------------------------------------------------------------------------
 
-SwarmLeader::SwarmLeader( void): SingleBitmapParticle( "SwarmLeader", "BallOfIce"),
-    _toHero(64)
-{
+SwarmLeader::SwarmLeader(void) :
+    SingleBitmapParticle("SwarmLeader", "BallOfIce"),
+    _toHero(64) {
     XTRACE();
-    _toHero.AddSegment( Point3D(0,0,0));
-    _toHero.AddSegment( Point3D(0,0,0));
+    _toHero.AddSegment(Point3D(0, 0, 0));
+    _toHero.AddSegment(Point3D(0, 0, 0));
 }
 
-SwarmLeader::~SwarmLeader()
-{
+SwarmLeader::~SwarmLeader() {
     XTRACE();
 }
 
-void SwarmLeader::init( ParticleInfo *p)
-{
+void SwarmLeader::init(ParticleInfo* p) {
     XTRACE();
 
-    p->radius = _bmHalfWidth*0.5f;
+    p->radius = _bmHalfWidth * 0.5f;
     p->tod = -1;
 
     p->damage = 0;
-    p->extra.x = 0.0f; //dt 0..1
-    p->extra.y = 0.0f; //# of attached swarm elements
+    p->extra.x = 0.0f;  //dt 0..1
+    p->extra.y = 0.0f;  //# of attached swarm elements
 
-    p->points[0] = Point3D( p->position.x, p->position.y, 0); 
-    p->points[1] = p->points[0] + Point3D( p->velocity.x*30, p->velocity.y*30, 0);
-    p->points[3] = Point3D( HeroS::instance()->lastXPos, HeroS::instance()->lastYPos, 0); 
-    p->points[2] = p->points[3] + Point3D( p->velocity.x*30, -p->velocity.y*30, 0);
+    p->points[0] = Point3D(p->position.x, p->position.y, 0);
+    p->points[1] = p->points[0] + Point3D(p->velocity.x * 30, p->velocity.y * 30, 0);
+    p->points[3] = Point3D(HeroS::instance()->lastXPos, HeroS::instance()->lastYPos, 0);
+    p->points[2] = p->points[3] + Point3D(p->velocity.x * 30, -p->velocity.y * 30, 0);
 
     GameState::enemyBulletCount++;
 
@@ -722,45 +690,39 @@ void SwarmLeader::init( ParticleInfo *p)
     updatePrevs(p);
 }
 
-bool SwarmLeader::update( ParticleInfo *p)
-{
-//    XTRACE();
-    if( (p->extra.y<0.5) && ((fabs(p->position.x) > 70.0) || (fabs(p->position.y) > 50.0)))
-    {
-	GameState::enemyBulletCount--;
-	return false;
+bool SwarmLeader::update(ParticleInfo* p) {
+    //    XTRACE();
+    if ((p->extra.y < 0.5) && ((fabs(p->position.x) > 70.0) || (fabs(p->position.y) > 50.0))) {
+        GameState::enemyBulletCount--;
+        return false;
     }
 
     //update previous values for interpolation
     updatePrevs(p);
 
-    _toHero.SetControlPoint( 0, p->points[0]);
-    _toHero.SetControlPoint( 1, p->points[1]);
-    _toHero.SetControlPoint( 2, p->points[2]);
-    _toHero.SetControlPoint( 3, p->points[3]);
-    if( p->extra.x <= 1.0f)
-    {
-	Point3D pos;
-	_toHero.GetPos( p->extra.x, pos);
-	p->extra.x += 0.01 * GAME_STEP_SCALE;
-	p->position.x = pos.x;
-	p->position.y = pos.y;
-    }
-    else
-    {
-	Point3D pos1,pos2;
-	_toHero.GetPos( 1.0, pos1);
-	_toHero.GetPos( 1.0-(0.01 * GAME_STEP_SCALE), pos2);
-	pos1 = pos1 - pos2;
-	p->position.x += pos1.x;
-	p->position.y += pos1.y;
+    _toHero.SetControlPoint(0, p->points[0]);
+    _toHero.SetControlPoint(1, p->points[1]);
+    _toHero.SetControlPoint(2, p->points[2]);
+    _toHero.SetControlPoint(3, p->points[3]);
+    if (p->extra.x <= 1.0f) {
+        Point3D pos;
+        _toHero.GetPos(p->extra.x, pos);
+        p->extra.x += 0.01 * GAME_STEP_SCALE;
+        p->position.x = pos.x;
+        p->position.y = pos.y;
+    } else {
+        Point3D pos1, pos2;
+        _toHero.GetPos(1.0, pos1);
+        _toHero.GetPos(1.0 - (0.01 * GAME_STEP_SCALE), pos2);
+        pos1 = pos1 - pos2;
+        p->position.x += pos1.x;
+        p->position.y += pos1.y;
     }
 
     return true;
 }
 
-void SwarmLeader::draw( ParticleInfo *)
-{
+void SwarmLeader::draw(ParticleInfo*) {
 //    XTRACE();
 #if 0
     ParticleInfo pi;
@@ -818,9 +780,7 @@ void SwarmLeader::draw( ParticleInfo *)
     //rotate towards the camera
     CameraS::instance()->billboard();
 
-    glColor4f(1.0,1.0,1.0, 1.0);
-
-    bindTexture();
+    _bitmaps->setColor(1.0, 1.0, 1.0, 1.0);
     _bitmaps->DrawC( _bmIndex, 0, 0, 0.2f, 0.2f);
 
     glPopMatrix();
@@ -833,61 +793,54 @@ void SwarmLeader::draw( ParticleInfo *)
 
 //------------------------------------------------------------------------------
 
-SwarmElement::SwarmElement( void):ParticleType( "SwarmElement")
-{
+SwarmElement::SwarmElement(void) :
+    ParticleType("SwarmElement") {
     XTRACE();
 }
 
-SwarmElement::~SwarmElement()
-{
+SwarmElement::~SwarmElement() {
     XTRACE();
 }
 
-void SwarmElement::init( ParticleInfo *p)
-{
+void SwarmElement::init(ParticleInfo* p) {
     XTRACE();
 
     p->radius = 1.0;
     p->tod = -1;
     p->damage = 1;
 
-    p->related->extra.y++; 
+    p->related->extra.y++;
 
     //init previous values for interpolation
     updatePrevs(p);
 }
 
-void SwarmElement::hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/) 
-{ 
+void SwarmElement::hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/) {
     p->tod = 0;
-//    AudioS::instance()->playSample( "sounds/whoop.wav");
+    //    AudioS::instance()->playSample( "sounds/whoop.wav");
 }
 
-bool SwarmElement::update( ParticleInfo *p)
-{
-//    XTRACE();
+bool SwarmElement::update(ParticleInfo* p) {
+    //    XTRACE();
 
-    if( (p->tod==0) || (fabs( p->position.x) > 70.0) || (fabs( p->position.y) > 50.0) )
-    {
-	p->related->extra.y--; 
-	return false;
+    if ((p->tod == 0) || (fabs(p->position.x) > 70.0) || (fabs(p->position.y) > 50.0)) {
+        p->related->extra.y--;
+        return false;
     }
 
     vec3 a = p->related->position - p->position;
-    Point3D a2( a.x+(Random::rangef0_1()-0.5), a.y+(Random::rangef0_1()-0.5), 0);
-    if( dist(a2) > 0.0001)
-    {
-	norm(a2);
-	a2 = a2 * 0.2;
-	Point3D v(p->velocity.x, p->velocity.y, 0);
-	v = v+a2;
-	float d = dist(v);
-	if( d > 2.0)
-	{
-	    v = v*(2.0/d);
-	}
-	p->velocity.x = v.x;
-	p->velocity.y = v.y;
+    Point3D a2(a.x + (_random.rangef0_1() - 0.5), a.y + (_random.rangef0_1() - 0.5), 0);
+    if (dist(a2) > 0.0001) {
+        norm(a2);
+        a2 = a2 * 0.2;
+        Point3D v(p->velocity.x, p->velocity.y, 0);
+        v = v + a2;
+        float d = dist(v);
+        if (d > 2.0) {
+            v = v * (2.0 / d);
+        }
+        p->velocity.x = v.x;
+        p->velocity.y = v.y;
     }
 
     //update previous values for interpolation
@@ -899,97 +852,103 @@ bool SwarmElement::update( ParticleInfo *p)
     return true;
 }
 
-void SwarmElement::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void SwarmElement::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
 
-    glPushMatrix();
-
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
 
     Point3D v(p->velocity.x, p->velocity.y, 0);
     v = v * 0.5;
     float d = dist(v);
-    if( d>1.0)
-	v = v * (1.0/d);
-    if( d<0.5)
-	v = v * (0.5/d);
+    if (d > 1.0) {
+        v = v * (1.0 / d);
+    }
+    if (d < 0.5) {
+        v = v * (0.5 / d);
+    }
 
     Point3D vp = Point3D(-v.y, v.x, 0);
 
-    Point3D p1 = v*2;
+    Point3D p1 = v * 2;
     Point3D p2 = vp;
     Point3D p3 = v * -1.0;
     Point3D p4 = vp * -1.0;
 
-    GLfloat swarmElementVertices[] = {
-        p1.x, p1.y, 0,
-        p2.x, p2.y, 0,
-        p3.x, p3.y, 0,
-        p4.x, p4.y, 0
+    vec4f sv[4] = {
+        vec4f(p1.x, p1.y, 0, 1),
+        vec4f(p2.x, p2.y, 0, 1),
+        vec4f(p3.x, p3.y, 0, 1),
+        vec4f(p4.x, p4.y, 0, 1),
     };
-    
-    GLfloat swarmElementColors[] = {
-        1.0, 1.0, 0.2, 0.8,
-        1.0, 1.0, 0.2, 0.5,
-        1.0, 1.0, 0.2, 0.1,
-        1.0, 1.0, 0.2, 0.5
+
+    vec4f sc[4] = {
+        vec4f(1.0, 1.0, 0.2, 0.8),
+        vec4f(1.0, 1.0, 0.2, 0.5),
+        vec4f(1.0, 1.0, 0.2, 0.1),
+        vec4f(1.0, 1.0, 0.2, 0.5),
     };
-    
+
+    GLVBO vbo;
+    vbo.DrawColorQuad(sv, sc);
+
+    /*
+    GLfloat swarmElementVertices[] = { p1.x, p1.y, 0, p2.x, p2.y, 0, p3.x, p3.y, 0, p4.x, p4.y, 0 };
+    GLfloat swarmElementColors[] = {1.0, 1.0, 0.2, 0.8, 1.0, 1.0, 0.2, 0.5, 1.0, 1.0, 0.2, 0.1, 1.0, 1.0, 0.2, 0.5};
+
     glVertexPointer(3, GL_FLOAT, 0, swarmElementVertices);
     glColorPointer(4, GL_FLOAT, 0, swarmElementColors);
-    
+
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_COLOR_ARRAY);
-    
+
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-    
+
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_COLOR_ARRAY);
-    
-    glPopMatrix();
+    */
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
+
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-Phaser::Phaser( void): SingleBitmapParticle( "WingPhaser1", "WingPhaser1")
-{
+Phaser::Phaser(void) :
+    SingleBitmapParticle("WingPhaser1", "WingPhaser1") {
     XTRACE();
 }
 
-Phaser::~Phaser()
-{
+Phaser::~Phaser() {
     XTRACE();
 }
 
-void Phaser::init( ParticleInfo *p)
-{
+void Phaser::init(ParticleInfo* p) {
     XTRACE();
 
     p->velocity.x = 0.0f * GAME_STEP_SCALE;
     p->velocity.y = 4.0f * GAME_STEP_SCALE;
     p->velocity.z = 0.0f * GAME_STEP_SCALE;
 
-    p->radius = _bmHalfWidth*0.05f;
-//    p->damage = 50;
+    p->radius = _bmHalfWidth * 0.05f;
+    //    p->damage = 50;
     p->tod = -1;
 
     //init previous values for interpolation
     updatePrevs(p);
 }
 
-bool Phaser::update( ParticleInfo *p)
-{
-//    XTRACE();
-    if( p->tod == 0) return false;
+bool Phaser::update(ParticleInfo* p) {
+    //    XTRACE();
+    if (p->tod == 0) {
+        return false;
+    }
 
     //update previous values for interpolation
     updatePrevs(p);
@@ -997,83 +956,76 @@ bool Phaser::update( ParticleInfo *p)
     p->position.x += p->velocity.x;
     p->position.y += p->velocity.y;
 
-    if( (fabs( p->position.x) > 68.0f)) 
-    {
-	return false;
+    if ((fabs(p->position.x) > 68.0f)) {
+        return false;
     }
 
-    if( (fabs( p->position.y) > 50.0f)) 
-    {
-	return false;
+    if ((fabs(p->position.y) > 50.0f)) {
+        return false;
     }
 
     return true;
 }
 
-void Phaser::hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/) 
-{ 
-    p->tod = 0; 
-    AudioS::instance()->playSample( "sounds/whoop.wav");
+void Phaser::hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/) {
+    p->tod = 0;
+    AudioS::instance()->playSample("sounds/whoop.wav");
 }
 
-void Phaser::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void Phaser::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glEnable(GL_TEXTURE_2D);
-    glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
 
-    glPushMatrix();
-
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    glm::mat4& projection = MatrixStack::projection.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
 
     //rotate towards the camera
-    CameraS::instance()->billboard();
+    CameraS::instance()->billboard(modelview);
 
-//    glColor4f(1.0,1.0,1.0, 1.0);
-    glColor4f( p->color.x, p->color.y, p->color.z, 1.0);
+    Program* prog = ProgramManagerS::instance()->getProgram("texture");
+    prog->use();  //needed to set uniforms
+    GLint modelViewMatrixLoc = glGetUniformLocation(prog->id(), "modelViewMatrix");
+    glUniformMatrix4fv(modelViewMatrixLoc, 1, GL_FALSE, glm::value_ptr(projection * modelview));
 
-    bindTexture();
-    _bitmaps->DrawC( _bmIndex, 0, 0, 0.2f, 0.2f);
-
-    glPopMatrix();
+    _bitmaps->setColor(p->color.x, p->color.y, p->color.z, 1.0);
+    _bitmaps->DrawC(_bmIndex, 0, 0, 0.2f, 0.2f);
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
-    glDisable(GL_TEXTURE_2D);
+
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-PlasmaBullet::PlasmaBullet( void):BitmapParticleType( "PlasmaBullet")
-{
+PlasmaBullet::PlasmaBullet(void) :
+    BitmapParticleType("PlasmaBullet") {
     XTRACE();
     string plasmaBullet;
     plasmaBullet = "PlasmaBullet1";
-    _bulletIndex0 = _bitmaps->getIndex( plasmaBullet);
+    _bulletIndex0 = _bitmaps->getIndex(plasmaBullet);
     plasmaBullet = "PlasmaBullet2";
-    _bulletIndex1 = _bitmaps->getIndex( plasmaBullet);
+    _bulletIndex1 = _bitmaps->getIndex(plasmaBullet);
 
     //assume both smoke puffs are the same size
-    _bmHalfWidth = _bitmaps->getWidth( _bulletIndex0)/2.0f;
-    _bmHalfHeight= _bitmaps->getHeight( _bulletIndex0)/2.0f;
+    _bmHalfWidth = _bitmaps->getWidth(_bulletIndex0) / 2.0f;
+    _bmHalfHeight = _bitmaps->getHeight(_bulletIndex0) / 2.0f;
 }
 
-PlasmaBullet::~PlasmaBullet()
-{
+PlasmaBullet::~PlasmaBullet() {
     XTRACE();
 }
 
-void PlasmaBullet::init( ParticleInfo *p)
-{
+void PlasmaBullet::init(ParticleInfo* p) {
     XTRACE();
     float dx = HeroS::instance()->lastXPos - p->position.x;
     float dy = HeroS::instance()->lastYPos - p->position.y;
 
-    float d = 1.0f/sqrt(dx*dx+dy*dy);
+    float d = 1.0f / sqrt(dx * dx + dy * dy);
     dx *= d;
     dy *= d;
 
@@ -1087,7 +1039,7 @@ void PlasmaBullet::init( ParticleInfo *p)
     p->damage = 40;
     p->tod = -1;
 
-    p->radius = _bmHalfWidth*0.05f;
+    p->radius = _bmHalfWidth * 0.05f;
 
     GameState::enemyBulletCount++;
 
@@ -1095,14 +1047,12 @@ void PlasmaBullet::init( ParticleInfo *p)
     updatePrevs(p);
 }
 
-bool PlasmaBullet::update( ParticleInfo *p)
-{
-//    XTRACE();
-    if( (p->tod == 0) || (fabs( p->position.y) > 50.0)) 
-    {
-	//death or particle reaches bottom of screen, it dies
-	GameState::enemyBulletCount--;
-	return false;
+bool PlasmaBullet::update(ParticleInfo* p) {
+    //    XTRACE();
+    if ((p->tod == 0) || (fabs(p->position.y) > 50.0)) {
+        //death or particle reaches bottom of screen, it dies
+        GameState::enemyBulletCount--;
+        return false;
     }
 
     //update previous values for interpolation
@@ -1116,71 +1066,67 @@ bool PlasmaBullet::update( ParticleInfo *p)
     return true;
 }
 
-void PlasmaBullet::hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/) 
-{ 
-    p->tod = 0; 
-    AudioS::instance()->playSample( "sounds/whoop.wav");
+void PlasmaBullet::hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/) {
+    p->tod = 0;
+    AudioS::instance()->playSample("sounds/whoop.wav");
 }
 
-void PlasmaBullet::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void PlasmaBullet::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glEnable(GL_TEXTURE_2D);
-    glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
 
-    glPushMatrix();
-
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    glm::mat4& projection = MatrixStack::projection.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
 
     //rotate towards the camera
-    CameraS::instance()->billboard();
+    CameraS::instance()->billboard(modelview);
 
-    glColor4f(1.0f,1.0f,1.0f, 0.6f);
+    modelview = glm::rotate(modelview, glm::radians(pi.extra.y), glm::vec3(0., 0., 1.));
+    Program* prog = ProgramManagerS::instance()->getProgram("texture");
+    prog->use();  //needed to set uniforms
+    GLint modelViewMatrixLoc = glGetUniformLocation(prog->id(), "modelViewMatrix");
+    glUniformMatrix4fv(modelViewMatrixLoc, 1, GL_FALSE, glm::value_ptr(projection * modelview));
 
-    bindTexture();
+    _bitmaps->setColor(1.0f, 1.0f, 1.0f, 0.6f);
+    _bitmaps->DrawC(_bulletIndex0, 0, 0, 0.12f, 0.12f);
 
-    glRotatef( pi.extra.y, 0,0,1);
-    _bitmaps->DrawC( _bulletIndex0, 0, 0, 0.12f, 0.12f);
-
-    glRotatef( -pi.extra.y*2.3f, 0,0,1);
-    _bitmaps->DrawC( _bulletIndex1, 0, 0, 0.12f, 0.12f);
-
-    glPopMatrix();
+    modelview = glm::rotate(modelview, glm::radians(-pi.extra.y * 2.3f), glm::vec3(0., 0., 1.));
+    glUniformMatrix4fv(modelViewMatrixLoc, 1, GL_FALSE, glm::value_ptr(projection * modelview));
+    _bitmaps->DrawC(_bulletIndex1, 0, 0, 0.12f, 0.12f);
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
-    glDisable(GL_TEXTURE_2D);
+
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-BallOfFire::BallOfFire( void):BitmapParticleType( "BallOfFire")
-{
+BallOfFire::BallOfFire(void) :
+    BitmapParticleType("BallOfFire") {
     XTRACE();
     string ballOfFire;
     ballOfFire = "BallOfFire";
-    _ballOfFire = _bitmaps->getIndex( ballOfFire);
+    _ballOfFire = _bitmaps->getIndex(ballOfFire);
 
-    _bmHalfWidth = _bitmaps->getWidth( _ballOfFire)/2.0f;
-    _bmHalfHeight= _bitmaps->getHeight( _ballOfFire)/2.0f;
+    _bmHalfWidth = _bitmaps->getWidth(_ballOfFire) / 2.0f;
+    _bmHalfHeight = _bitmaps->getHeight(_ballOfFire) / 2.0f;
 }
 
-BallOfFire::~BallOfFire()
-{
+BallOfFire::~BallOfFire() {
     XTRACE();
 }
 
-void BallOfFire::init( ParticleInfo *p)
-{
+void BallOfFire::init(ParticleInfo* p) {
     XTRACE();
     float dx = HeroS::instance()->lastXPos - p->position.x;
     float dy = HeroS::instance()->lastYPos - p->position.y;
 
-    float d = 1.0f/sqrt(dx*dx+dy*dy);
+    float d = 1.0f / sqrt(dx * dx + dy * dy);
     dx *= d;
     dy *= d;
 
@@ -1188,15 +1134,16 @@ void BallOfFire::init( ParticleInfo *p)
     p->velocity.y = dy * GAME_STEP_SCALE;
     p->velocity.z = 0 * GAME_STEP_SCALE;
 
-    if( dy < 0)
-	p->extra.y = 180.0f + (asin( dx)*180.0f/(float)M_PI);
-    else
-	p->extra.y = -(asin( dx)*180.0f/(float)M_PI);
+    if (dy < 0) {
+        p->extra.y = 180.0f + (asin(dx) * 180.0f / (float)M_PI);
+    } else {
+        p->extra.y = -(asin(dx) * 180.0f / (float)M_PI);
+    }
 
     p->damage = 40;
     p->tod = -1;
 
-    p->radius = _bmHalfWidth*0.50f;
+    p->radius = _bmHalfWidth * 0.50f;
 
     GameState::enemyBulletCount++;
 
@@ -1204,34 +1151,27 @@ void BallOfFire::init( ParticleInfo *p)
     updatePrevs(p);
 }
 
-bool BallOfFire::update( ParticleInfo *p)
-{
-//    XTRACE();
-    if( (p->tod == 0) || (fabs( p->position.y) > 50.0)) 
-    {
-	//death or particle reaches bottom of screen, it dies
-	GameState::enemyBulletCount--;
-	return false;
+bool BallOfFire::update(ParticleInfo* p) {
+    //    XTRACE();
+    if ((p->tod == 0) || (fabs(p->position.y) > 50.0)) {
+        //death or particle reaches bottom of screen, it dies
+        GameState::enemyBulletCount--;
+        return false;
     }
 
-    static ParticleGroup *effects = 
-	ParticleGroupManagerS::instance()->getParticleGroup( EFFECTS_GROUP2);
-    int sparkType = Random::random()%3;
-    switch( sparkType)
-    {
-	case 0:
-	    effects->newParticle( 
-		"FireSpark1", p->position.x, p->position.y, p->position.z);
-	    break;
-	case 1:
-	    effects->newParticle( 
-		"FireSpark2", p->position.x, p->position.y, p->position.z);
-	    break;
-	case 2:
-	default:
-	    effects->newParticle( 
-		"FireSpark3", p->position.x, p->position.y, p->position.z);
-	    break;
+    static ParticleGroup* effects = ParticleGroupManagerS::instance()->getParticleGroup(EFFECTS_GROUP2);
+    int sparkType = _random.random() % 3;
+    switch (sparkType) {
+        case 0:
+            effects->newParticle("FireSpark1", p->position.x, p->position.y, p->position.z);
+            break;
+        case 1:
+            effects->newParticle("FireSpark2", p->position.x, p->position.y, p->position.z);
+            break;
+        case 2:
+        default:
+            effects->newParticle("FireSpark3", p->position.x, p->position.y, p->position.z);
+            break;
     }
 
     //update previous values for interpolation
@@ -1243,63 +1183,57 @@ bool BallOfFire::update( ParticleInfo *p)
     return true;
 }
 
-void BallOfFire::hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/) 
-{ 
-    p->tod = 0; 
-    AudioS::instance()->playSample( "sounds/whoop.wav");
+void BallOfFire::hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/) {
+    p->tod = 0;
+    AudioS::instance()->playSample("sounds/whoop.wav");
 }
 
-void BallOfFire::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void BallOfFire::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glEnable(GL_TEXTURE_2D);
-    glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
 
-    glPushMatrix();
-
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    glm::mat4& projection = MatrixStack::projection.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
+    modelview = glm::rotate(modelview, glm::radians(pi.extra.y), glm::vec3(0., 0., 1.));
 
     //rotate towards the camera
-    CameraS::instance()->billboard();
+    CameraS::instance()->billboard(modelview);
 
-    glColor4f(1.0f,1.0f,1.0f, 0.9f);
+    Program* prog = ProgramManagerS::instance()->getProgram("texture");
+    prog->use();  //needed to set uniforms
+    GLint modelViewMatrixLoc = glGetUniformLocation(prog->id(), "modelViewMatrix");
+    glUniformMatrix4fv(modelViewMatrixLoc, 1, GL_FALSE, glm::value_ptr(projection * modelview));
 
-    bindTexture();
-
-    glRotatef( pi.extra.y, 0,0,1);
-    _bitmaps->DrawC( _ballOfFire, 0, 0, 0.12f, 0.12f);
-
-    glPopMatrix();
+    _bitmaps->setColor(1.0f, 1.0f, 1.0f, 0.9f);
+    _bitmaps->DrawC(_ballOfFire, 0, 0, 0.12f, 0.12f);
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
-    glDisable(GL_TEXTURE_2D);
+
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-StingerTrail::StingerTrail( void):
-    ParticleType( "StingerTrail")
-{
+StingerTrail::StingerTrail(void) :
+    ParticleType("StingerTrail") {
     XTRACE();
     _trail = ModelManagerS::instance()->getModel("models/P1");
 }
 
-StingerTrail::~StingerTrail()
-{
+StingerTrail::~StingerTrail() {
     XTRACE();
 }
 
-void StingerTrail::init( ParticleInfo *p)
-{
-//    XTRACE();
-    p->velocity.x = (float)((Random::random()&0xf)-7) * 0.02f * GAME_STEP_SCALE;
-    p->velocity.y = (float)((Random::random()&0xf)-7) * 0.02f * GAME_STEP_SCALE;
-    p->velocity.z = (float)((Random::random()&0xf)-7) * 0.02f * GAME_STEP_SCALE;
+void StingerTrail::init(ParticleInfo* p) {
+    //    XTRACE();
+    p->velocity.x = (float)((int)(_random.random() & 0xf) - 7) * 0.02f * GAME_STEP_SCALE;
+    p->velocity.y = (float)((int)(_random.random() & 0xf) - 7) * 0.02f * GAME_STEP_SCALE;
+    p->velocity.z = (float)((int)(_random.random() & 0xf) - 7) * 0.02f * GAME_STEP_SCALE;
 
     p->extra.x = 0.03f * GAME_STEP_SCALE;
     p->extra.y = 1.0f;
@@ -1311,68 +1245,64 @@ void StingerTrail::init( ParticleInfo *p)
     updatePrevs(p);
 }
 
-bool StingerTrail::update( ParticleInfo *p)
-{
-//    XTRACE();
-    if( p->position.y > 50.0) return false;
+bool StingerTrail::update(ParticleInfo* p) {
+    //    XTRACE();
+    if (p->position.y > 50.0) {
+        return false;
+    }
 
     //update previous values for interpolation
     updatePrevs(p);
 
     p->extra.y -= p->extra.x;
-    if( p->extra.y <= 0) return false;
+    if (p->extra.y <= 0) {
+        return false;
+    }
 
     p->position.x += p->velocity.x;
     p->position.y += p->velocity.y;
     p->position.z += p->velocity.z;
 
-    p->extra.z += 7.5f*GAME_STEP_SCALE;
+    p->extra.z += 7.5f * GAME_STEP_SCALE;
 
     return true;
 }
 
-void StingerTrail::draw( ParticleInfo *p)
-{
+void StingerTrail::draw(ParticleInfo* p) {
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-//    XTRACE();
-//	glColor4f(0.9*pi.extra.y,0.6*pi.extra.y,0.2*pi.extra.y, pi.extra.y);
-//	glColor4f(0.9,0.6,0.2, pi.extra.y);
-    glColor4f(0.3f,1.0f,0.2f, pi.extra.y);
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    glm::mat4& projection = MatrixStack::projection.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
+    modelview = glm::rotate(modelview, glm::radians(pi.extra.z), glm::vec3(1., 1., 0.));
 
-    glPushMatrix();
-
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
-    glRotatef(pi.extra.z, 1,1,0);
-
+    _trail->setColor(0.3f, 1.0f, 0.2f, pi.extra.y);
     _trail->draw();
 
-    glPopMatrix();
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-HeroStinger::HeroStinger( void):
-    ParticleType( "HeroStinger")
-{
+HeroStinger::HeroStinger(void) :
+    ParticleType("HeroStinger") {
     XTRACE();
     _stinger = ModelManagerS::instance()->getModel("models/HeroStinger");
 }
 
-HeroStinger::~HeroStinger()
-{
+HeroStinger::~HeroStinger() {
     XTRACE();
 }
 
-void HeroStinger::init( ParticleInfo *p)
-{
+void HeroStinger::init(ParticleInfo* p) {
     XTRACE();
     p->velocity.x = 0 * GAME_STEP_SCALE;
     p->velocity.y = 4.5f * GAME_STEP_SCALE;
     p->velocity.z = 0 * GAME_STEP_SCALE;
 
-    p->radius = getPseudoRadius( _stinger);
+    p->radius = getPseudoRadius(_stinger);
 
     p->damage = 100;
     p->tod = -1;
@@ -1387,11 +1317,14 @@ void HeroStinger::init( ParticleInfo *p)
     updatePrevs(p);
 }
 
-bool HeroStinger::update( ParticleInfo *p)
-{
-//    XTRACE();
-    if( p->tod == 0) return false;
-    if( p->position.y > 50.0) return false;
+bool HeroStinger::update(ParticleInfo* p) {
+    //    XTRACE();
+    if (p->tod == 0) {
+        return false;
+    }
+    if (p->position.y > 50.0) {
+        return false;
+    }
 
     //update previous values for interpolation
     updatePrevs(p);
@@ -1402,77 +1335,65 @@ bool HeroStinger::update( ParticleInfo *p)
     return true;
 }
 
-void HeroStinger::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void HeroStinger::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
     //get particle group for special effects
-    static ParticleGroup *effects = 
-	ParticleGroupManagerS::instance()->getParticleGroup( EFFECTS_GROUP2);
+    static ParticleGroup* effects = ParticleGroupManagerS::instance()->getParticleGroup(EFFECTS_GROUP2);
 
 //Note that we don't want the interpolated extra.y here!
 //We want to start the trail at the current display position (pi)
 #ifdef TRAIL_3D
-    if( (pi.position.y - p->extra.y)*GameState::horsePower > (Random::random()&0xff))
-    {
+    if ((pi.position.y - p->extra.y) * GameState::horsePower > (_random.random() & 0xff)) {
 
-	effects->newParticle( 
-	    "StingerTrail", pi.position.x, pi.position.y, pi.position.z);
-	p->extra.y = pi.position.y;
+        effects->newParticle("StingerTrail", pi.position.x, pi.position.y, pi.position.z);
+        p->extra.y = pi.position.y;
     }
-#else 
-//	LOG_ERROR << p->extra.y << endl;
-    if(  pi.position.y > p->extra.y)
-    { 
-	effects->newParticle( 
-	    "SmokePuff", pi.position.x, pi.position.y, pi.position.z);
-	p->extra.y = pi.position.y + 3.0f;
+#else
+    //	LOG_ERROR << p->extra.y << endl;
+    if (pi.position.y > p->extra.y) {
+        effects->newParticle("SmokePuff", pi.position.x, pi.position.y, pi.position.z);
+        p->extra.y = pi.position.y + 3.0f;
     }
 #endif
 
-    glColor4f(0.8f,0.8f,0.2f, 1.0f);
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
 
-    glPushMatrix();
-
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
-
+    _stinger->setColor(0.8f, 0.8f, 0.2f, 1.0f);
     _stinger->draw();
 
-    glPopMatrix();
+    MatrixStack::model.pop();
 }
 
-void HeroStinger::hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/) 
-{
-//    XTRACE();
+void HeroStinger::hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/) {
+    //    XTRACE();
     p->tod = 0;
 }
 
 //------------------------------------------------------------------------------
 
-StatusMessage::StatusMessage( void):
-    ParticleType( "StatusMessage")
-{
+StatusMessage::StatusMessage(void) :
+    ParticleType("StatusMessage") {
     XTRACE();
-    _smallFont = FontManagerS::instance()->getFont( "bitmaps/arial-small");
-    if( !_smallFont)
-    {
-	LOG_ERROR << "Unable to get font... (arial-small)" << endl;
+    _smallFont = FontManagerS::instance()->getFont("bitmaps/arial-small");
+    if (!_smallFont) {
+        LOG_ERROR << "Unable to get font... (arial-small)" << endl;
     }
 }
 
-StatusMessage::~StatusMessage()
-{
+StatusMessage::~StatusMessage() {
     XTRACE();
 }
 
-void StatusMessage::init( ParticleInfo *p)
-{
-//    XTRACE();
-    p->velocity.x = -1.0f* GAME_STEP_SCALE;
+void StatusMessage::init(ParticleInfo* p) {
+    //    XTRACE();
+    p->velocity.x = -1.0f * GAME_STEP_SCALE;
 
-    p->extra.x = _smallFont->GetWidth( p->text.c_str(), 0.1f);
+    p->extra.x = _smallFont->GetWidth(p->text.c_str(), 0.1f);
     p->position.x = 70.0f;
 
     LOG_INFO << "StatusMsg = [" << p->text << "] " /*<< p->position.y*/ << endl;
@@ -1483,67 +1404,64 @@ void StatusMessage::init( ParticleInfo *p)
     updatePrevs(p);
 }
 
-bool StatusMessage::update( ParticleInfo *p)
-{
-//    XTRACE();
+bool StatusMessage::update(ParticleInfo* p) {
+    //    XTRACE();
     //update previous values for interpolation
     updatePrevs(p);
 
     p->position.x += p->velocity.x;
 
-    if( p->position.x < -(70.0f+p->extra.x))
-    {
-	return false;
+    if (p->position.x < -(70.0f + p->extra.x)) {
+        return false;
     }
 
     return true;
 }
 
-void StatusMessage::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void StatusMessage::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
 
-    glPushMatrix();
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    glm::mat4& projection = MatrixStack::projection.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
 
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
+    Program* prog = ProgramManagerS::instance()->getProgram("texture");
+    prog->use();  //needed to set uniforms
+    GLint modelViewMatrixLoc = glGetUniformLocation(prog->id(), "modelViewMatrix");
+    glUniformMatrix4fv(modelViewMatrixLoc, 1, GL_FALSE, glm::value_ptr(projection * modelview));
 
-    glColor4f( p->color.x, p->color.y, p->color.z, 0.8f);
-    _smallFont->DrawString(
-	    p->text.c_str(), 0 ,0 , p->extra.y, p->extra.z);
+    _smallFont->setColor(p->color.x, p->color.y, p->color.z, 0.8f);
+    _smallFont->DrawString(p->text.c_str(), 0, 0, p->extra.y, p->extra.z);
 
-    glPopMatrix();
+    MatrixStack::model.pop();
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
 }
 
 //------------------------------------------------------------------------------
 
-ExplosionPiece::ExplosionPiece( void):
-    ParticleType( "ExplosionPiece")
-{
+ExplosionPiece::ExplosionPiece(void) :
+    ParticleType("ExplosionPiece") {
     XTRACE();
     _cloud = ModelManagerS::instance()->getModel("models/E1");
 }
 
-ExplosionPiece::~ExplosionPiece()
-{
+ExplosionPiece::~ExplosionPiece() {
     XTRACE();
 }
 
-void ExplosionPiece::init( ParticleInfo *p)
-{
-//    XTRACE();
-    p->velocity.x = (float)((Random::random()&0xff)-128)*0.002f* GAME_STEP_SCALE;
-    p->velocity.y = (float)((Random::random()&0xff)-128)*0.002f* GAME_STEP_SCALE;
-    p->velocity.z = (float)((Random::random()&0xff)-128)*0.002f* GAME_STEP_SCALE;
+void ExplosionPiece::init(ParticleInfo* p) {
+    //    XTRACE();
+    p->velocity.x = (float)((int)(_random.random() & 0xff) - 128) * 0.002f * GAME_STEP_SCALE;
+    p->velocity.y = (float)((int)(_random.random() & 0xff) - 128) * 0.002f * GAME_STEP_SCALE;
+    p->velocity.z = (float)((int)(_random.random() & 0xff) - 128) * 0.002f * GAME_STEP_SCALE;
 
-    p->extra.x = ((float)(Random::random()%90)-45.0f)*0.1f * GAME_STEP_SCALE;
+    p->extra.x = ((float)(_random.random() % 90) - 45.0f) * 0.1f * GAME_STEP_SCALE;
     p->extra.y = 1.0f;
     p->tod = -1;
 
@@ -1553,14 +1471,15 @@ void ExplosionPiece::init( ParticleInfo *p)
     updatePrevs(p);
 }
 
-bool ExplosionPiece::update( ParticleInfo *p)
-{
-//    XTRACE();
+bool ExplosionPiece::update(ParticleInfo* p) {
+    //    XTRACE();
     //update previous values for interpolation
     updatePrevs(p);
 
     p->extra.y -= 0.03f * GAME_STEP_SCALE;
-    if( p->extra.y <= 0) return false;
+    if (p->extra.y <= 0) {
+        return false;
+    }
 
     p->extra.z += p->extra.x;
 
@@ -1571,59 +1490,57 @@ bool ExplosionPiece::update( ParticleInfo *p)
     return true;
 }
 
-void ExplosionPiece::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void ExplosionPiece::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glColor4f(1.0f,0.2f,0.1f, pi.extra.y);
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
+    modelview = glm::rotate(modelview, glm::radians(pi.extra.z), glm::vec3(1., 1., 0.));
 
-    glPushMatrix();
-
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
-    glRotatef(pi.extra.z, 1,1,0);
-
+    _cloud->setColor(1.0f, 0.2f, 0.1f, pi.extra.y);
     _cloud->draw();
 
-    glPopMatrix();
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-EnergyBlob::EnergyBlob( void):
-    ParticleType( "EnergyBlob")
-{
+EnergyBlob::EnergyBlob(void) :
+    ParticleType("EnergyBlob") {
     XTRACE();
     _blob = ModelManagerS::instance()->getModel("models/EnergyBlob");
 }
 
-EnergyBlob::~EnergyBlob()
-{
+EnergyBlob::~EnergyBlob() {
     XTRACE();
 }
 
-void EnergyBlob::init( ParticleInfo *p)
-{
-//    XTRACE();
+void EnergyBlob::init(ParticleInfo* p) {
+    //    XTRACE();
     p->velocity.y = -1.30f * GAME_STEP_SCALE;
-    p->extra.x = Random::rangef0_1()*60.0f - 30.0f;
-    p->extra.y = (Random::rangef0_1()*30.0f + 20.0f)*0.1f * GAME_STEP_SCALE;
+    p->extra.x = _random.rangef0_1() * 60.0f - 30.0f;
+    p->extra.y = (_random.rangef0_1() * 30.0f + 20.0f) * 0.1f * GAME_STEP_SCALE;
 
     p->tod = -1;
     p->damage = 0;
 
-    p->radius = getPseudoRadius( _blob);
+    p->radius = getPseudoRadius(_blob);
 
     //init previous values for interpolation
     updatePrevs(p);
 }
 
-bool EnergyBlob::update( ParticleInfo *p)
-{
-//    XTRACE();
-    if( p->tod == 0) return false;
-    if( fabs( p->position.y) > 50.0) return false;
+bool EnergyBlob::update(ParticleInfo* p) {
+    //    XTRACE();
+    if (p->tod == 0) {
+        return false;
+    }
+    if (fabs(p->position.y) > 50.0) {
+        return false;
+    }
 
     //update previous values for interpolation
     updatePrevs(p);
@@ -1634,78 +1551,74 @@ bool EnergyBlob::update( ParticleInfo *p)
     return true;
 }
 
-void EnergyBlob::hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/) 
-{
-    if( GameState::horsePower > 90.0)
-    {
-	static ParticleGroup *effects = 
-	    ParticleGroupManagerS::instance()->getParticleGroup(EFFECTS_GROUP2);
+void EnergyBlob::hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/) {
+    if (GameState::horsePower > 90.0) {
+        static ParticleGroup* effects = ParticleGroupManagerS::instance()->getParticleGroup(EFFECTS_GROUP2);
 
-	ParticleInfo pi;
-	pi.color.x = 0.5f;
-	pi.color.y = 0.5f;
-	pi.color.z = 1.0f;
-	pi.position = p->position;
-	pi.text = "Energy";
-	effects->newParticle( "ScoreHighlight", pi);
+        ParticleInfo pi;
+        pi.color.x = 0.5f;
+        pi.color.y = 0.5f;
+        pi.color.z = 1.0f;
+        pi.position = p->position;
+        pi.text = "Energy";
+        effects->newParticle("ScoreHighlight", pi);
     }
 
-    AudioS::instance()->playSample( "sounds/voiceEnergy.wav");
-    HeroS::instance()->addEnergy( 50);
+    AudioS::instance()->playSample("sounds/voiceEnergy.wav");
+    HeroS::instance()->addEnergy(50);
     p->tod = 0;
 }
 
-void EnergyBlob::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void EnergyBlob::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glPushMatrix();
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
+    modelview = glm::rotate(modelview, glm::radians(pi.extra.x), glm::vec3(1., 0., 0.));
 
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
-    glRotatef( pi.extra.x, 1,0,0);
     _blob->draw();
 
-    glPopMatrix();
-
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-ShieldBoost::ShieldBoost( void):
-    ParticleType( "ShieldBoost")
-{
+ShieldBoost::ShieldBoost(void) :
+    ParticleType("ShieldBoost") {
     XTRACE();
     _shield = ModelManagerS::instance()->getModel("models/ShieldBoost");
 }
 
-ShieldBoost::~ShieldBoost()
-{
+ShieldBoost::~ShieldBoost() {
     XTRACE();
 }
 
-void ShieldBoost::init( ParticleInfo *p)
-{
-//    XTRACE();
+void ShieldBoost::init(ParticleInfo* p) {
+    //    XTRACE();
     p->velocity.y = -1.30f * GAME_STEP_SCALE;
-    p->extra.x = Random::rangef0_1()*60.0f - 30.0f;
-    p->extra.y = (Random::rangef0_1()*30.0f + 20.0f)*0.1f * GAME_STEP_SCALE;
+    p->extra.x = _random.rangef0_1() * 60.0f - 30.0f;
+    p->extra.y = (_random.rangef0_1() * 30.0f + 20.0f) * 0.1f * GAME_STEP_SCALE;
 
     p->tod = -1;
     p->damage = 0;
 
-    p->radius = getPseudoRadius( _shield);
+    p->radius = getPseudoRadius(_shield);
 
     //init previous values for interpolation
     updatePrevs(p);
 }
 
-bool ShieldBoost::update( ParticleInfo *p)
-{
-//    XTRACE();
-    if( p->tod == 0) return false;
-    if( fabs( p->position.y) > 50.0) return false;
+bool ShieldBoost::update(ParticleInfo* p) {
+    //    XTRACE();
+    if (p->tod == 0) {
+        return false;
+    }
+    if (fabs(p->position.y) > 50.0) {
+        return false;
+    }
 
     //update previous values for interpolation
     updatePrevs(p);
@@ -1716,78 +1629,74 @@ bool ShieldBoost::update( ParticleInfo *p)
     return true;
 }
 
-void ShieldBoost::hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/) 
-{
-    if( GameState::horsePower > 90.0)
-    {
-	static ParticleGroup *effects = 
-	    ParticleGroupManagerS::instance()->getParticleGroup(EFFECTS_GROUP2);
+void ShieldBoost::hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/) {
+    if (GameState::horsePower > 90.0) {
+        static ParticleGroup* effects = ParticleGroupManagerS::instance()->getParticleGroup(EFFECTS_GROUP2);
 
-	ParticleInfo pi;
-	pi.color.x = 1.0f;
-	pi.color.y = 1.0f;
-	pi.color.z = 0.0f;
-	pi.position = p->position;
-	pi.text = "Shield";
-	effects->newParticle( "ScoreHighlight", pi);
+        ParticleInfo pi;
+        pi.color.x = 1.0f;
+        pi.color.y = 1.0f;
+        pi.color.z = 0.0f;
+        pi.position = p->position;
+        pi.text = "Shield";
+        effects->newParticle("ScoreHighlight", pi);
     }
 
-    AudioS::instance()->playSample( "sounds/voiceShield.wav");
-    HeroS::instance()->addShield( 50);
+    AudioS::instance()->playSample("sounds/voiceShield.wav");
+    HeroS::instance()->addShield(50);
     p->tod = 0;
 }
 
-void ShieldBoost::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void ShieldBoost::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glPushMatrix();
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
+    modelview = glm::rotate(modelview, glm::radians(pi.extra.x), glm::vec3(0., 1., 0.));
 
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
-    glRotatef( pi.extra.x, 0,1,0);
     _shield->draw();
 
-    glPopMatrix();
-
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-ArmorPierce::ArmorPierce( void):
-    ParticleType( "ArmorPierce")
-{
+ArmorPierce::ArmorPierce(void) :
+    ParticleType("ArmorPierce") {
     XTRACE();
     _armor = ModelManagerS::instance()->getModel("models/ArmorPierce");
 }
 
-ArmorPierce::~ArmorPierce()
-{
+ArmorPierce::~ArmorPierce() {
     XTRACE();
 }
 
-void ArmorPierce::init( ParticleInfo *p)
-{
-//    XTRACE();
+void ArmorPierce::init(ParticleInfo* p) {
+    //    XTRACE();
     p->velocity.y = -1.30f * GAME_STEP_SCALE;
-    p->extra.x = Random::rangef0_1()*60.0f - 30.0f;
-    p->extra.y = (Random::rangef0_1()*30.0f + 20.0f)*0.1f * GAME_STEP_SCALE;
+    p->extra.x = _random.rangef0_1() * 60.0f - 30.0f;
+    p->extra.y = (_random.rangef0_1() * 30.0f + 20.0f) * 0.1f * GAME_STEP_SCALE;
 
     p->tod = -1;
     p->damage = 0;
 
-    p->radius = getPseudoRadius( _armor);
+    p->radius = getPseudoRadius(_armor);
 
     //init previous values for interpolation
     updatePrevs(p);
 }
 
-bool ArmorPierce::update( ParticleInfo *p)
-{
-//    XTRACE();
-    if( p->tod == 0) return false;
-    if( fabs( p->position.y) > 50.0) return false;
+bool ArmorPierce::update(ParticleInfo* p) {
+    //    XTRACE();
+    if (p->tod == 0) {
+        return false;
+    }
+    if (fabs(p->position.y) > 50.0) {
+        return false;
+    }
 
     //update previous values for interpolation
     updatePrevs(p);
@@ -1798,81 +1707,77 @@ bool ArmorPierce::update( ParticleInfo *p)
     return true;
 }
 
-void ArmorPierce::hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/) 
-{
-    if( GameState::horsePower > 90.0)
-    {
-	static ParticleGroup *effects = 
-	    ParticleGroupManagerS::instance()->getParticleGroup(EFFECTS_GROUP2);
+void ArmorPierce::hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/) {
+    if (GameState::horsePower > 90.0) {
+        static ParticleGroup* effects = ParticleGroupManagerS::instance()->getParticleGroup(EFFECTS_GROUP2);
 
-	ParticleInfo pi;
-	pi.color.x = 0.0f;
-	pi.color.y = 1.0f;
-	pi.color.z = 1.0f;
-	pi.position = p->position;
-	pi.text = "Armor Pierce";
-	effects->newParticle( "ScoreHighlight", pi);
+        ParticleInfo pi;
+        pi.color.x = 0.0f;
+        pi.color.y = 1.0f;
+        pi.color.z = 1.0f;
+        pi.position = p->position;
+        pi.text = "Armor Pierce";
+        effects->newParticle("ScoreHighlight", pi);
     }
 
     //FIXME: for now just give some points...
-    ScoreKeeperS::instance()->addToCurrentScore( 1000);
+    ScoreKeeperS::instance()->addToCurrentScore(1000);
 
-    AudioS::instance()->playSample( "sounds/prriarr.wav");
-    HeroS::instance()->setArmorPierce( 2.0f);
+    AudioS::instance()->playSample("sounds/prriarr.wav");
+    HeroS::instance()->setArmorPierce(2.0f);
     p->tod = 0;
 }
 
-void ArmorPierce::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void ArmorPierce::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glPushMatrix();
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
+    modelview = glm::rotate(modelview, glm::radians(pi.extra.x), glm::vec3(1., 1., 0.));
 
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
-    glRotatef( pi.extra.x, 1,1,0);
     _armor->draw();
 
-    glPopMatrix();
-
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-WeaponUpgrade::WeaponUpgrade( void):
-    ParticleType( "WeaponUpgrade")
-{
+WeaponUpgrade::WeaponUpgrade(void) :
+    ParticleType("WeaponUpgrade") {
     XTRACE();
     _upgrade = ModelManagerS::instance()->getModel("models/WeaponUpgrade");
 }
 
-WeaponUpgrade::~WeaponUpgrade()
-{
+WeaponUpgrade::~WeaponUpgrade() {
     XTRACE();
 }
 
-void WeaponUpgrade::init( ParticleInfo *p)
-{
-//    XTRACE();
+void WeaponUpgrade::init(ParticleInfo* p) {
+    //    XTRACE();
     p->velocity.y = -1.30f * GAME_STEP_SCALE;
-    p->extra.x = Random::rangef0_1()*60.0f - 30.0f;
-    p->extra.y = (Random::rangef0_1()*30.0f + 20.0f)*0.1f * GAME_STEP_SCALE;
+    p->extra.x = _random.rangef0_1() * 60.0f - 30.0f;
+    p->extra.y = (_random.rangef0_1() * 30.0f + 20.0f) * 0.1f * GAME_STEP_SCALE;
 
     p->tod = -1;
     p->damage = 0;
 
-    p->radius = getPseudoRadius( _upgrade);
+    p->radius = getPseudoRadius(_upgrade);
 
     //init previous values for interpolation
     updatePrevs(p);
 }
 
-bool WeaponUpgrade::update( ParticleInfo *p)
-{
-//    XTRACE();
-    if( p->tod == 0) return false;
-    if( fabs( p->position.y) > 50.0) return false;
+bool WeaponUpgrade::update(ParticleInfo* p) {
+    //    XTRACE();
+    if (p->tod == 0) {
+        return false;
+    }
+    if (fabs(p->position.y) > 50.0) {
+        return false;
+    }
 
     //update previous values for interpolation
     updatePrevs(p);
@@ -1883,86 +1788,79 @@ bool WeaponUpgrade::update( ParticleInfo *p)
     return true;
 }
 
-void WeaponUpgrade::hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/) 
-{
-    if( GameState::horsePower > 90.0)
-    {
-	static ParticleGroup *effects = 
-	    ParticleGroupManagerS::instance()->getParticleGroup(EFFECTS_GROUP2);
+void WeaponUpgrade::hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/) {
+    if (GameState::horsePower > 90.0) {
+        static ParticleGroup* effects = ParticleGroupManagerS::instance()->getParticleGroup(EFFECTS_GROUP2);
 
-	ParticleInfo pi;
-	pi.color.x = 1.0f;
-	pi.color.y = 0.0f;
-	pi.color.z = 0.0f;
-	pi.position = p->position;
-	pi.text = "WeaponUpgrade";
-	effects->newParticle( "ScoreHighlight", pi);
+        ParticleInfo pi;
+        pi.color.x = 1.0f;
+        pi.color.y = 0.0f;
+        pi.color.z = 0.0f;
+        pi.position = p->position;
+        pi.text = "WeaponUpgrade";
+        effects->newParticle("ScoreHighlight", pi);
     }
 
     //FIXME: for now just give some points...
-    ScoreKeeperS::instance()->addToCurrentScore( 1000);
+    ScoreKeeperS::instance()->addToCurrentScore(1000);
 
-//    AudioS::instance()->playSample( "sounds/voiceUpgrade.wav");
-//    HeroS::instance()->addShield( 50);
+    //    AudioS::instance()->playSample( "sounds/voiceUpgrade.wav");
+    //    HeroS::instance()->addShield( 50);
     p->tod = 0;
 }
 
-void WeaponUpgrade::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void WeaponUpgrade::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glPushMatrix();
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
+    modelview = glm::rotate(modelview, glm::radians(pi.extra.x), glm::vec3(0., 1., 1.));
 
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
-    glRotatef( pi.extra.x, 0,1,1);
     _upgrade->draw();
 
-    glPopMatrix();
-
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-Bonus1::Bonus1( string modelName, int value):
-    ParticleType( modelName),
-    _value(value)
-{
+Bonus1::Bonus1(string modelName, int value) :
+    ParticleType(modelName),
+    _value(value) {
     XTRACE();
     string fullModelName = "models/" + modelName;
-    _bonus = ModelManagerS::instance()->getModel( fullModelName);
+    _bonus = ModelManagerS::instance()->getModel(fullModelName);
 }
 
-Bonus1::~Bonus1()
-{
+Bonus1::~Bonus1() {
     XTRACE();
 }
 
-void Bonus1::init( ParticleInfo *p)
-{
-//    XTRACE();
+void Bonus1::init(ParticleInfo* p) {
+    //    XTRACE();
     p->velocity.y = -1.30f * GAME_STEP_SCALE;
-    p->extra.x = Random::rangef0_1()*60.0f - 30.0f;
-    p->extra.y = (Random::rangef0_1()*30.0f + 20.0f)*0.1f * GAME_STEP_SCALE;
+    p->extra.x = _random.rangef0_1() * 60.0f - 30.0f;
+    p->extra.y = (_random.rangef0_1() * 30.0f + 20.0f) * 0.1f * GAME_STEP_SCALE;
 
     p->tod = -1;
     p->damage = 0;
 
-    p->radius = getPseudoRadius( _bonus);
+    p->radius = getPseudoRadius(_bonus);
 
     //init previous values for interpolation
     updatePrevs(p);
 }
 
-bool Bonus1::update( ParticleInfo *p)
-{
-//    XTRACE();
-    if( p->tod == 0) return false;
-    if( fabs( p->position.y) > 50.0) 
-    {
-	ScoreKeeperS::instance()->incGoodiesMissed();
-	return false;
+bool Bonus1::update(ParticleInfo* p) {
+    //    XTRACE();
+    if (p->tod == 0) {
+        return false;
+    }
+    if (fabs(p->position.y) > 50.0) {
+        ScoreKeeperS::instance()->incGoodiesMissed();
+        return false;
     }
 
     //update previous values for interpolation
@@ -1974,96 +1872,83 @@ bool Bonus1::update( ParticleInfo *p)
     return true;
 }
 
-void Bonus1::hit( ParticleInfo *p, int /*damage*/, int /*radIndex*/) 
-{
-//    XTRACE();
-    static ParticleGroup *effects = 
-	ParticleGroupManagerS::instance()->getParticleGroup( EFFECTS_GROUP2);
+void Bonus1::hit(ParticleInfo* p, int /*damage*/, int /*radIndex*/) {
+    //    XTRACE();
+    static ParticleGroup* effects = ParticleGroupManagerS::instance()->getParticleGroup(EFFECTS_GROUP2);
 
-    static ParticleGroup *bonus =
-	ParticleGroupManagerS::instance()->getParticleGroup( BONUS_GROUP);
+    static ParticleGroup* bonus = ParticleGroupManagerS::instance()->getParticleGroup(BONUS_GROUP);
 
     p->tod = 0;
 
-    int newValue = ScoreKeeperS::instance()->addToCurrentScore( _value);
+    int newValue = ScoreKeeperS::instance()->addToCurrentScore(_value);
     ScoreKeeperS::instance()->incGoodiesCaught();
 
     ParticleInfo pi;
     pi.position = p->position;
     char buf[10];
-    sprintf( buf, "%d", newValue);
+    sprintf(buf, "%d", newValue);
     pi.text = buf;
 
-    if( newValue < 1000)
-    {
-	AudioS::instance()->playSample( "sounds/pop.wav");
-	if( GameState::horsePower > 90.0)
-	{
-	    pi.color.x = 1.0f;
-	    pi.color.y = 1.0f;
-	    pi.color.z = 1.0f;
+    if (newValue < 1000) {
+        AudioS::instance()->playSample("sounds/pop.wav");
+        if (GameState::horsePower > 90.0) {
+            pi.color.x = 1.0f;
+            pi.color.y = 1.0f;
+            pi.color.z = 1.0f;
 
-	    effects->newParticle( "ScoreHighlight", pi);
-	}
+            effects->newParticle("ScoreHighlight", pi);
+        }
+    } else {
+        AudioS::instance()->playSample("sounds/bonus.wav");
+
+        pi.color.x = 1.0f;
+        pi.color.y = 0.2f;
+        pi.color.z = 0.2f;
+
+        effects->newParticle("ScoreHighlight", pi);
+
+        if ((_random.random() & 0xff) < 0x80) {
+            bonus->newParticle("ShieldBoost", p->position.x, 50.0f, p->position.z);
+        } else {
+            bonus->newParticle("EnergyBlob", p->position.x, 50.0f, p->position.z);
+        }
     }
-    else
-    {
-	AudioS::instance()->playSample( "sounds/bonus.wav");
-
-	pi.color.x = 1.0f;
-	pi.color.y = 0.2f;
-	pi.color.z = 0.2f;
-
-	effects->newParticle( "ScoreHighlight", pi);
-
-	if( (Random::random() & 0xff) < 0x80)
-	    bonus->newParticle(
-		"ShieldBoost", p->position.x, 50.0f, p->position.z);
-	else
-	    bonus->newParticle(
-		"EnergyBlob", p->position.x, 50.0f, p->position.z);
-    }
-//	LOG_INFO << "Bonus: " << newValue << endl;
+    //	LOG_INFO << "Bonus: " << newValue << endl;
 }
 
-void Bonus1::draw( ParticleInfo *p)
-{
-//    XTRACE();
+void Bonus1::draw(ParticleInfo* p) {
+    //    XTRACE();
     ParticleInfo pi;
-    interpolate( p, pi);
+    interpolate(p, pi);
 
-    glPushMatrix();
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
+    modelview = glm::rotate(modelview, glm::radians(pi.extra.x), glm::vec3(0., 1., 1.));
 
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
-    glRotatef( pi.extra.x, 0,1,1);
     _bonus->draw();
 
-    glPopMatrix();
+    MatrixStack::model.pop();
 }
 
 //------------------------------------------------------------------------------
 
-ScoreHighlight::ScoreHighlight( void):
-    ParticleType( "ScoreHighlight")
-{
+ScoreHighlight::ScoreHighlight(void) :
+    ParticleType("ScoreHighlight") {
     _font = FontManagerS::instance()->getFont("bitmaps/arial-small");
-    if( !_font)
-    {
-	LOG_ERROR << "Unable to get font... (arial-small)" << endl;
+    if (!_font) {
+        LOG_ERROR << "Unable to get font... (arial-small)" << endl;
     }
 }
 
-ScoreHighlight::~ScoreHighlight()
-{
-}
+ScoreHighlight::~ScoreHighlight() {}
 
-void ScoreHighlight::init( ParticleInfo *p)
-{
-    p->velocity.x = (float)((Random::random()&0xff)-168)*0.003f* GAME_STEP_SCALE;
-    p->velocity.y = (float)((Random::random()&0xff)-128)*0.002f* GAME_STEP_SCALE;
-    p->velocity.z = (float)((Random::random()&0xff)-128)*0.002f* GAME_STEP_SCALE;
+void ScoreHighlight::init(ParticleInfo* p) {
+    p->velocity.x = (float)((int)(_random.random() & 0xff) - 128) * 0.003f * GAME_STEP_SCALE;
+    p->velocity.y = (float)((int)(_random.random() & 0xff) - 128) * 0.002f * GAME_STEP_SCALE;
+    p->velocity.z = (float)((int)(_random.random() & 0xff) - 128) * 0.002f * GAME_STEP_SCALE;
 
-    p->extra.x = Random::rangef0_1()*40.0f-20.0f;
+    p->extra.x = _random.rangef0_1() * 40.0f - 20.0f;
     p->extra.y = 0.05f;
     p->extra.z = 0.8f;
 
@@ -2073,15 +1958,16 @@ void ScoreHighlight::init( ParticleInfo *p)
     updatePrevs(p);
 }
 
-bool ScoreHighlight::update( ParticleInfo *p)
-{
-//    XTRACE();
+bool ScoreHighlight::update(ParticleInfo* p) {
+    //    XTRACE();
     //update previous values for interpolation
     updatePrevs(p);
 
     p->extra.z -= 0.02f * GAME_STEP_SCALE;
     //if alpha reaches 0, we can die
-    if( p->extra.z < 0) return false;
+    if (p->extra.z < 0) {
+        return false;
+    }
 
     p->extra.x += 1.00f * GAME_STEP_SCALE;
     p->extra.y += 0.005f * GAME_STEP_SCALE;
@@ -2093,30 +1979,36 @@ bool ScoreHighlight::update( ParticleInfo *p)
     return true;
 }
 
-void ScoreHighlight::draw( ParticleInfo *p)
-{
-//    XTRACE();
-    ParticleInfo pi;
-    interpolate( p, pi);
+#include <glm/gtx/string_cast.hpp>
 
-    glDisable(GL_LIGHTING);
+void ScoreHighlight::draw(ParticleInfo* p) {
+    //    XTRACE();
+    ParticleInfo pi;
+    interpolate(p, pi);
+
     glDisable(GL_DEPTH_TEST);
 
-    glPushMatrix();
-
-    glTranslatef( pi.position.x, pi.position.y, pi.position.z);
+    MatrixStack::model.push(MatrixStack::model.top());
+    glm::mat4& modelview = MatrixStack::model.top();
+    glm::mat4& projection = MatrixStack::projection.top();
+    modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
 
     //rotate towards the camera
-    CameraS::instance()->billboard();
+    CameraS::instance()->billboard(modelview);
 
-//    glRotatef( pi.extra.x, 0,0,1);
+    //    glRotatef( pi.extra.x, 0,0,1);
 
-    glColor4f( p->color.x, p->color.y, p->color.z, pi.extra.z);
-    _font->DrawString( p->text.c_str(), 0, 0, pi.extra.y, pi.extra.y);
-    glPopMatrix();
+    Program* prog = ProgramManagerS::instance()->getProgram("texture");
+    prog->use();  //needed to set uniforms
+    GLint modelViewMatrixLoc = glGetUniformLocation(prog->id(), "modelViewMatrix");
+    glUniformMatrix4fv(modelViewMatrixLoc, 1, GL_FALSE, glm::value_ptr(projection * modelview));
+
+    _font->setColor(p->color.x, p->color.y, p->color.z, pi.extra.z);
+    _font->DrawString(p->text.c_str(), 0, 0, pi.extra.y, pi.extra.y);
+
+    MatrixStack::model.pop();
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
 }
 
 //------------------------------------------------------------------------------

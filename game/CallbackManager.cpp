@@ -22,32 +22,28 @@
 
 using namespace std;
 
-CallbackManager::CallbackManager( void)
-{
+CallbackManager::CallbackManager(void) {
     XTRACE();
 }
 
-CallbackManager::~CallbackManager()
-{
+CallbackManager::~CallbackManager() {
     XTRACE();
 
-    hash_map< string, Callback*, hash<string> >::const_iterator ci;
-    for( ci=_actionMap.begin(); ci!=_actionMap.end(); ci++)
-    {
+    hash_map<string, Callback*, hash<string>>::const_iterator ci;
+    for (ci = _actionMap.begin(); ci != _actionMap.end(); ci++) {
         delete ci->second;
     }
 
     _actionMap.clear();
 }
 
-void CallbackManager::init( void)
-{
+void CallbackManager::init(void) {
     XTRACE();
 
     //actions will add themselves to the CallbackManager
-    new WeaponFireAction( Hero::PRIMARY_WEAPON, "PrimaryFire", "MOUSEBUTTON1");
-    new WeaponFireAction( Hero::SECONDARY_WEAPON, "SecondaryFire", "MOUSEBUTTON2");
-    new WeaponFireAction( Hero::TERTIARY_WEAPON, "TertiaryFire", "MOUSEBUTTON3");
+    new WeaponFireAction(Hero::PRIMARY_WEAPON, "PrimaryFire", "MOUSEBUTTON1");
+    new WeaponFireAction(Hero::SECONDARY_WEAPON, "SecondaryFire", "MOUSEBUTTON2");
+    new WeaponFireAction(Hero::TERTIARY_WEAPON, "TertiaryFire", "MOUSEBUTTON3");
     new SnapshotAction();
 
     new MotionAction();
@@ -62,23 +58,19 @@ void CallbackManager::init( void)
     new CritterBoard();
 }
 
-void CallbackManager::addCallback( Callback *cb)
-{
+void CallbackManager::addCallback(Callback* cb) {
     XTRACE();
-    LOG_INFO << "Adding callback for action [" 
-             << cb->getActionName() << "]" << endl;
-    _actionMap[ cb->getActionName()] = cb;
+    LOG_INFO << "Adding callback for action [" << cb->getActionName() << "]" << endl;
+    _actionMap[cb->getActionName()] = cb;
 }
 
-Callback *CallbackManager::getCallback( string actionString)
-{
+Callback* CallbackManager::getCallback(string actionString) {
     XTRACE();
-    Callback * cb = findHash( actionString, _actionMap);
-    if( !cb)
-    {
+    Callback* cb = findHash(actionString, _actionMap);
+    if (!cb) {
         LOG_ERROR << "Unable to find callback for " << actionString << endl;
         string dummyAction = "TertiaryFire";
-        cb = findHash( dummyAction, _actionMap);
+        cb = findHash(dummyAction, _actionMap);
     }
     return cb;
 }

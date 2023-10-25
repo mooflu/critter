@@ -13,48 +13,48 @@
 // ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
 //
+#include "SDL.h"
+
 #include <string>
 
-#include <GLTexture.hpp>
-#include <GLBitmapFont.hpp>
-#include <TextInput.hpp>
+#include "GLTexture.hpp"
+#include "GLBitmapFont.hpp"
+#include "TextInput.hpp"
+#include "Singleton.hpp"
 
-#include <Singleton.hpp>
+const int VIDEO_DEFAULT_WIDTH = 640;
+const int VIDEO_DEFAULT_HEIGHT = 480;
 
-const int VIDEO_DEFAULT_WIDTH=640;
-const int VIDEO_DEFAULT_HEIGHT=480;
+const int VIDEO_ORTHO_WIDTH = 1000;
+const int VIDEO_ORTHO_HEIGHT = 750;
 
-const int VIDEO_ORTHO_WIDTH=1000;
-const int VIDEO_ORTHO_HEIGHT=750;
+class Video {
+    friend class Singleton<Video>;
 
-class Video
-{
-friend class Singleton<Video>;
 public:
-    bool init( void);
-    bool update( void);
-    void updateLogic( void);
+    bool init(void);
+    bool update(void);
+    void updateLogic(void);
 
-    int getWidth( void) { return _width;}
-    int getHeight( void) { return _height;}
+    int getWidth(void) { return _width; }
 
-    void toggleCritterBoard( void)
-    {
-	_boardVisible = !_boardVisible;
-    }
+    int getHeight(void) { return _height; }
 
-    void takeSnapshot( void);
+    void toggleCritterBoard(void) { _boardVisible = !_boardVisible; }
+
+    void takeSnapshot(void);
 
 private:
     ~Video();
-    Video( void);
-    Video( const Video&);
-    Video &operator=(const Video&);
+    Video(void);
+    Video(const Video&);
+    Video& operator=(const Video&);
 
-    void reset( void);
-    void reload( void);
-    bool updateSettings( void);
-    bool setVideoMode( void);
+    void reset(void);
+    void reload(void);
+    bool updateSettings(void);
+    bool setVideoMode(void);
+    void initGL3Test(void);
 
     bool _isFullscreen;
     bool _showStarfield;
@@ -67,11 +67,17 @@ private:
     int _width;
     int _height;
 
-    GLBitmapFont *_smallFont;
-    GLBitmapFont *_scoreFont;
-    GLBitmapFont *_gameOFont;
+    int _prevWidth;
+    int _prevHeight;
 
-    GLBitmapCollection *_board;
+    SDL_Window* _windowHandle;
+    SDL_GLContext _glContext;
+
+    GLBitmapFont* _smallFont;
+    GLBitmapFont* _scoreFont;
+    GLBitmapFont* _gameOFont;
+
+    GLBitmapCollection* _board;
     int _boardIndex;
     bool _boardVisible;
     float _boardPosX;
@@ -81,8 +87,8 @@ private:
     float _statusMsgWidth;
     float _statusMsgPos;
 
-    GLTexture *_titleA;
-    GLTexture *_titleB;
+    GLTexture* _titleA;
+    GLTexture* _titleB;
 
     float _angle;
     float _prevAngle;

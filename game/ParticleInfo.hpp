@@ -19,8 +19,7 @@
 
 class ParticleType;
 
-struct ParticleInfo
-{
+struct ParticleInfo {
     //values for current game step position
     vec3 position;
     vec3 velocity;
@@ -33,17 +32,17 @@ struct ParticleInfo
     vec3 prevColor;
     vec3 prevExtra;
 
-    Point3D points[4]; //E.g.: Bezier curve data
+    Point3D points[4];  //E.g.: Bezier curve data
 
     float tod;     //time of death
     float radius;  //radius for collision detection
 
-    int damage;    //damage the particle inflicts
+    int damage;  //damage the particle inflicts
 
-    std::string text;   //some text associated with the particle
+    std::string text;  //some text associated with the particle
 
-    ParticleInfo *next;
-    ParticleType *particle;
+    ParticleInfo* next;
+    ParticleType* particle;
 
-    ParticleInfo *related; //used for swarm leader
+    ParticleInfo* related;  //used for swarm leader
 };

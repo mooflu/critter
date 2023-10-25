@@ -17,26 +17,26 @@
 #include <BaseEnemy.hpp>
 
 class Model;
-class Boss1Enemy: public BaseEnemy
-{
+
+class Boss1Enemy : public BaseEnemy {
 public:
-    Boss1Enemy( LEnemy *le);
+    Boss1Enemy(LEnemy* le);
     virtual ~Boss1Enemy();
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void draw( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, ParticleInfo *p2, int /*radIndex*/);
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void draw(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, ParticleInfo* p2, int /*radIndex*/);
 
     virtual int getRadiiCount(void);
     virtual float getRadius(int radIndex);
     virtual vec3 getOffset(int radIndex);
 
 private:
-    Model *_model[6];
+    Model* _model[6];
     float _radii[6];
-    vec3  _offsets[6];
+    vec3 _offsets[6];
 
-    ParticleInfo *_lastLeft;
-    ParticleInfo *_lastRight;
+    ParticleInfo* _lastLeft;
+    ParticleInfo* _lastRight;
 };

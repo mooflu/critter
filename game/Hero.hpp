@@ -24,91 +24,73 @@
 
 class Weapon;
 
-class Hero: public ParticleType
-{
-friend class Singleton<Hero>;
+class Hero : public ParticleType {
+    friend class Singleton<Hero>;
+
 public:
-    enum MountedWeapon
-    {
-       PRIMARY_WEAPON,
-       SECONDARY_WEAPON,
-       TERTIARY_WEAPON,
-       MAX_WEAPONS
+    enum MountedWeapon {
+        PRIMARY_WEAPON,
+        SECONDARY_WEAPON,
+        TERTIARY_WEAPON,
+        MAX_WEAPONS
     };
 
-    bool init( void);
-    void reset( void);
+    bool init(void);
+    void reset(void);
 
+    virtual void init(ParticleInfo* p);
+    virtual bool update(ParticleInfo* p);
+    virtual void hit(ParticleInfo* p, ParticleInfo* p2, int /*radIndex*/);
 
-    virtual void init( ParticleInfo *p);
-    virtual bool update( ParticleInfo *p);
-    virtual void hit( ParticleInfo *p, ParticleInfo *p2, int /*radIndex*/);
-    virtual void draw( ParticleInfo *){ /* not used, see other draw */; }
-    virtual void draw( void);
-    void drawWeapon( unsigned int weapNum);
+    virtual void draw(ParticleInfo*) { /* not used, see other draw */
+        ;
+    }
 
-    void move( float dx, float dy);
-    void move( Direction::DirectionEnum d, bool isDown);
+    virtual void draw(void);
+    void drawWeapon(unsigned int weapNum);
+
+    void move(float dx, float dy);
+    void move(Direction::DirectionEnum d, bool isDown);
     void allowVerticalMovement(bool allow);
 
-    bool weaponLoaded( int weapNum);
-    void weaponFire( bool isDown, int weapNum=0);
+    bool weaponLoaded(int weapNum);
+    void weaponFire(bool isDown, int weapNum = 0);
 
-    bool alive( void)
-    {
-        return _isAlive;
-    }
+    bool alive(void) { return _isAlive; }
 
-    void alive( bool a)
-    {
-        _isAlive = a;
-    }
+    void alive(bool a) { _isAlive = a; }
 
-    void addEnergy( int val);
-    void addShield( int val);
+    void addEnergy(int val);
+    void addShield(int val);
 
-    float getEnergy( void)
-    {
-        return (float)_energy;
-    }
+    float getEnergy(void) { return (float)_energy; }
 
-    float getShieldEnergy( void)
-    {
-        return (float)_shieldEnergy;
-    }
+    float getShieldEnergy(void) { return (float)_shieldEnergy; }
 
-    float getWeaponEnergy( void)
-    {
-        return _weaponEnergy;
-    }
-    
-    float getMaxWeaponEnergy( void)
-    {
-        return _maxWeaponEnergy;
-    }
-    
-    void setArmorPierce( float damageMultiplier);
-    float getArmorPierce( void)
-    {
-	return _damageMultiplier;
-    }
+    float getWeaponEnergy(void) { return _weaponEnergy; }
 
-    void assignWeapons( Skill::SkillEnum skill);
+    float getMaxWeaponEnergy(void) { return _maxWeaponEnergy; }
+
+    void setArmorPierce(float damageMultiplier);
+
+    float getArmorPierce(void) { return _damageMultiplier; }
+
+    void assignWeapons(Skill::SkillEnum skill);
 
     float lastXPos;
     float lastYPos;
 
 private:
     virtual ~Hero();
-    Hero( void);
+    Hero(void);
 
-    Hero( const Hero&);
-    Hero &operator=(const Hero&);
+    Hero(const Hero&);
+    Hero& operator=(const Hero&);
 
-    void spawnSparks( int spawnCount, float r, ParticleInfo &pi);
+    void spawnSparks(int spawnCount, float r, ParticleInfo& pi);
 
-    Model *_model;
-    ParticleInfo *pInfo;
+    Model* _model;
+    ParticleInfo* pInfo;
 
     float _moveLeft;
     float _moveRight;
@@ -126,11 +108,11 @@ private:
 
     int _weaponPowerup;
     int _bonusStreak;
-    
-    float _weaponReload[ MAX_WEAPONS];
-    bool _weaponAutofire[ MAX_WEAPONS];
-    Weapon *_weapon[ MAX_WEAPONS];
-    int _weaponAmmo[ MAX_WEAPONS];
+
+    float _weaponReload[MAX_WEAPONS];
+    bool _weaponAutofire[MAX_WEAPONS];
+    Weapon* _weapon[MAX_WEAPONS];
+    int _weaponAmmo[MAX_WEAPONS];
     float _damageMultiplier;
     bool _autofireOn;
 

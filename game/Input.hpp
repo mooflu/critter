@@ -4,16 +4,6 @@
 //
 // Copyright (C) 2007 Frank Becker
 //
-// This program is free software; you can redistribute it and/or modify it under
-// the terms of the GNU General Public License as published by the Free Software
-// Foundation;  either version 2 of the License,  or (at your option) any  later
-// version.
-//
-// This program is distributed in the hope that it will be useful,  but  WITHOUT
-// ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
-//
-
 #include <string>
 
 #include "Trace.hpp"
@@ -25,105 +15,91 @@
 #include "CallbackManager.hpp"
 #include "InterceptorI.hpp"
 
+#include <vmmlib/vector.hpp>
+using namespace vmml;
+
 class Callback;
 
-namespace HASH_NAMESPACE
-{
-    template<>
-	struct hash<Trigger>
-    {
-	//a simple hash function for Trigger
-	int operator()(const Trigger &t) const
-	{
-	    int hashval;
-	    
-	    if( t.type == eMotionTrigger)
-	    {
-		hashval = t.type*1000;
-	    }
-	    else
-	    {
-		hashval = t.type*1000+t.data1;
-	    }
+#if defined(EMSCRIPTEN)
+#define ESCAPE_KEY SDLK_BACKSPACE
+#else
+#define ESCAPE_KEY SDLK_ESCAPE
+#endif
 
-	    return hashval;
-	}
-    };
-}
+namespace HASH_NAMESPACE {
+template <>
+struct hash<Trigger> {
+    //a simple hash function for Trigger
+    int operator()(const Trigger& t) const {
+        int hashval;
 
-class Input: public ConfigHandler
-{
-friend class Singleton<Input>;
+        if (t.type == eMotionTrigger) {
+            hashval = t.type * 1000;
+        } else {
+            hashval = t.type * 1000 + t.data1;
+        }
+
+        return hashval;
+    }
+};
+}  // namespace HASH_NAMESPACE
+
+class Input : public ConfigHandler {
+    friend class Singleton<Input>;
+
 public:
-    bool init( void);
-    bool update( void);
+    bool init(void);
+    bool update(void);
 
     //used for loading/saving bindings
-    virtual void handleLine( const std::string line);
-    virtual void save( std::ofstream &of);
+    virtual void handleLine(const std::string line);
+    virtual void save(std::ostream& of);
 
     //Input takes ownership of callback
-    void bindNextTrigger( const std::string &action)
-    {
+    void bindNextTrigger(const std::string& action) {
         _bindMode = true;
         _action = action;
         LOG_INFO << "bindNextTrigger -> " << _action << "\n";
     }
 
-    bool waitingForBind( void)
-    {
-        return _bindMode;
-    }
+    bool waitingForBind(void) { return _bindMode; }
 
-    void addCallback( Callback *cb);
-    
-    std::string getTriggerName( std::string &action);
+    void addCallback(Callback* cb);
 
-    void enableInterceptor( InterceptorI *i)
-    {
-	_interceptor = i;
-    }
+    std::string getTriggerName(std::string& action);
 
-    void disableInterceptor( void)
-    {
-	_interceptor = 0;
-    }
+    void enableInterceptor(InterceptorI* i) { _interceptor = i; }
+
+    void disableInterceptor(void) { _interceptor = 0; }
+
+    const vec2f& mousePos(void);
+    void resetMousePosition();
 
 private:
     virtual ~Input();
-    Input( void);
-    Input( const Input&);
-    Input &operator=(const Input&);
+    Input(void);
+    Input(const Input&);
+    Input& operator=(const Input&);
 
-    void bind( Trigger &t, Callback *action);
-    bool tryGetTrigger( Trigger &trigger, bool &isDown);
-    void updateMouseSettings( void);
-bool _bindMode;
+    void bind(Trigger& t, Callback* action);
+    bool tryGetTrigger(Trigger& trigger, bool& isDown);
+    void updateMouseSettings(void);
+    bool _bindMode;
     std::string _action;
     CallbackManager _callbackManager;
     Keys _keys;
 
-	typedef  hash_map< std::string, Trigger*, hash<std::string>, std::equal_to<std::string> > ATMap;
+    typedef hash_map<std::string, Trigger*, hash<std::string>, std::equal_to<std::string>> ATMap;
     ATMap _actionTriggerMap;
 
-	hash_map< Trigger, Callback*, hash<Trigger>, std::equal_to<Trigger> > _callbackMap;
+    hash_map<Trigger, Callback*, hash<Trigger>, std::equal_to<Trigger>> _callbackMap;
 
-    //stuff for mouse smoothing
-    float _memoryDX;
-    float _memoryDY;
-    float _valDX;
-    float _valDY;
-    float _dampVal;
-    float feedbackFilter( float value, float damp, float &memory)
-    {
-	//damp of 0 means no filtering
-	//damp of 1 means input value is filtered out completely
-	return memory = value*(1.0f-damp) + memory*damp;
-    }   
-    float _sensitivity;
+    //mouse position [0..1]
+    vec2f _mousePos;
+    vec2f _mouseDelta;
 
     //intercept raw input
-    InterceptorI *_interceptor;
+    InterceptorI* _interceptor;
 };
 
 typedef Singleton<Input> InputS;

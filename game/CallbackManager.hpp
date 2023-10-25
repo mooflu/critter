@@ -21,19 +21,18 @@
 
 class Callback;
 
-class CallbackManager
-{
+class CallbackManager {
 public:
-    CallbackManager( void);
+    CallbackManager(void);
     ~CallbackManager();
-    void init( void);
+    void init(void);
 
-    Callback *getCallback( std::string actionString);
-    void addCallback( Callback *cb);
+    Callback* getCallback(std::string actionString);
+    void addCallback(Callback* cb);
 
 private:
-    CallbackManager( const CallbackManager&);
-    CallbackManager &operator=(const CallbackManager&);
+    CallbackManager(const CallbackManager&);
+    CallbackManager& operator=(const CallbackManager&);
 
-	hash_map< std::string, Callback*, hash<std::string>, std::equal_to<std::string> > _actionMap;
+    hash_map<std::string, Callback*, hash<std::string>, std::equal_to<std::string>> _actionMap;
 };

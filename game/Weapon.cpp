@@ -29,338 +29,280 @@ using namespace std;
 
 //------------------------------------------------------------------------------
 
-Weapon::Weapon( float energyRequired, 
-                float reloadTime, 
-		string name, 
-		string desc):
-    _energyRequired( energyRequired),
-    _reloadTime( reloadTime),
-    _damageMultiplier( 1.0f),
-    _name( name),
-    _description( desc)
-{
+Weapon::Weapon(float energyRequired, float reloadTime, string name, string desc) :
+    _energyRequired(energyRequired),
+    _reloadTime(reloadTime),
+    _damageMultiplier(1.0f),
+    _name(name),
+    _description(desc) {
     XTRACE();
 }
 
-Weapon::~Weapon()
-{
+Weapon::~Weapon() {
     XTRACE();
 }
 
-float Weapon::energyRequired( void)
-{
-    return( _energyRequired);
+float Weapon::energyRequired(void) {
+    return (_energyRequired);
 }
 
-float Weapon::reloadTime( void)
-{
-    return( _reloadTime);
+float Weapon::reloadTime(void) {
+    return (_reloadTime);
 }
 
-void Weapon::setDamageMultiplier( float damageMultiplier)
-{
+void Weapon::setDamageMultiplier(float damageMultiplier) {
     _damageMultiplier = damageMultiplier;
 }
 
 //------------------------------------------------------------------------------
 
-GuardDog::GuardDog( void):
-    Weapon( 0, 5, 
-            WeaponDOG, 
-	    "This dog may bite!")
-{
+GuardDog::GuardDog(void) :
+    Weapon(0, 5, WeaponDOG, "This dog may bite!") {
     XTRACE();
 }
 
-GuardDog::~GuardDog()
-{
+GuardDog::~GuardDog() {
     XTRACE();
 }
 
-void GuardDog::launch( float /*x*/, float /*y*/, float /*z*/)
-{
+void GuardDog::launch(float /*x*/, float /*y*/, float /*z*/) {
     XTRACE();
-    AudioS::instance()->playSample( "sounds/bark.wav");
+    AudioS::instance()->playSample("sounds/bark.wav");
     LOG_INFO << "...<Bark>... :-)" << endl;
 }
 
 //------------------------------------------------------------------------------
 
-Stinger::Stinger( void):
-    Weapon( 30.0f, 0.20f,
-	    WeaponSTINGER,
-	    "Not much punch, but keep your hamster out of the way!")
-{
+Stinger::Stinger(void) :
+    Weapon(30.0f, 0.20f, WeaponSTINGER, "Not much punch, but keep your hamster out of the way!") {
     XTRACE();
     _stinger = ModelManagerS::instance()->getModel("models/Stinger");
 }
 
-Stinger::~Stinger()
-{
+Stinger::~Stinger() {
     XTRACE();
 }
 
-void Stinger::launch( float x, float y, float z)
-{
+void Stinger::launch(float x, float y, float z) {
     XTRACE();
-    AudioS::instance()->playSample( "sounds/laser.wav");
-//        LOG_INFO << "Launching stinger..." << endl;
-    static ParticleGroup *bullets =
-	ParticleGroupManagerS::instance()->getParticleGroup( 
-	    HERO_BULLETS_GROUP);
-    bullets->newParticle( name(), x, y, z);
+    AudioS::instance()->playSample("sounds/laser.wav");
+    //        LOG_INFO << "Launching stinger..." << endl;
+    static ParticleGroup* bullets = ParticleGroupManagerS::instance()->getParticleGroup(HERO_BULLETS_GROUP);
+    bullets->newParticle(name(), x, y, z);
 }
 
-void Stinger::draw( void)
-{
+void Stinger::draw(void) {
     _stinger->draw();
 }
 
 //------------------------------------------------------------------------------
 
-FlankBurster::FlankBurster( void):
-    Weapon( 80.0, 2.0,
-	    WeaponFLANKBURST,
-	    "Mr Proper says: it cleans your flanks, too!")
-{
+FlankBurster::FlankBurster(void) :
+    Weapon(80.0, 2.0, WeaponFLANKBURST, "Mr Proper says: it cleans your flanks, too!") {
     XTRACE();
     _flankBurster = ModelManagerS::instance()->getModel("models/FlankBurster");
 }
 
-FlankBurster::~FlankBurster()
-{
+FlankBurster::~FlankBurster() {
     XTRACE();
 }
 
-void FlankBurster::launch( float x, float y, float z)
-{
+void FlankBurster::launch(float x, float y, float z) {
     XTRACE();
-    AudioS::instance()->playSample( "sounds/ieow.wav");
-    static ParticleGroup *bullets =
-	ParticleGroupManagerS::instance()->getParticleGroup( 
-	    HERO_BULLETS_GROUP);
+    AudioS::instance()->playSample("sounds/ieow.wav");
+    static ParticleGroup* bullets = ParticleGroupManagerS::instance()->getParticleGroup(HERO_BULLETS_GROUP);
     string left = name() + "Left";
-//    LOG_INFO << "Launching Flank Bursters.." << left << endl;
-    bullets->newParticle( left, x, y, z);
+    //    LOG_INFO << "Launching Flank Bursters.." << left << endl;
+    bullets->newParticle(left, x, y, z);
 
     string right = name() + "Right";
-//    LOG_INFO << "Launching Flank Bursters.." << right << endl;
-    bullets->newParticle( right, x, y, z);
+    //    LOG_INFO << "Launching Flank Bursters.." << right << endl;
+    bullets->newParticle(right, x, y, z);
 }
 
-void FlankBurster::draw( void)
-{
+void FlankBurster::draw(void) {
     _flankBurster->draw();
 }
 
 //------------------------------------------------------------------------------
 
-IceSpray::IceSpray( void):
-    Weapon( 45.0f, 0.4f,
-	    WeaponICESPRAY,
-	    "Shiver! Beware any shrinkage...")
-{
+IceSpray::IceSpray(void) :
+    Weapon(45.0f, 0.4f, WeaponICESPRAY, "Shiver! Beware any shrinkage...") {
     XTRACE();
     _iceSpray = ModelManagerS::instance()->getModel("models/IceSpray");
     _iceSprayPierce = ModelManagerS::instance()->getModel("models/IceSprayPierce");
 }
 
-IceSpray::~IceSpray()
-{
+IceSpray::~IceSpray() {
     XTRACE();
 }
 
-void IceSpray::launch( float x, float y, float z)
-{
+void IceSpray::launch(float x, float y, float z) {
     XTRACE();
 
-    static ParticleGroup *bullets =
-	ParticleGroupManagerS::instance()->getParticleGroup( 
-	    HERO_BULLETS_GROUP);
+    static ParticleGroup* bullets = ParticleGroupManagerS::instance()->getParticleGroup(HERO_BULLETS_GROUP);
 
-    for( int i=0; i<5; i++)
-    {
-	ParticleInfo pi;
-	pi.position.x = x;
-	pi.position.y = y;
-	pi.position.z = z;
+    for (int i = 0; i < 5; i++) {
+        ParticleInfo pi;
+        pi.position.x = x;
+        pi.position.y = y;
+        pi.position.z = z;
 
-	pi.velocity.z = 0.0f * GAME_STEP_SCALE;
+        pi.velocity.z = 0.0f * GAME_STEP_SCALE;
 
-        switch( i)
-	{
-	    case 0:
-		pi.velocity.x =  0.0f * GAME_STEP_SCALE;
-		pi.velocity.y =  2.0f * GAME_STEP_SCALE;
-		break;
+        switch (i) {
+            case 0:
+                pi.velocity.x = 0.0f * GAME_STEP_SCALE;
+                pi.velocity.y = 2.0f * GAME_STEP_SCALE;
+                break;
 
-	    case 1:
-		pi.velocity.x =  1.0f   * GAME_STEP_SCALE;
-		pi.velocity.y =  1.732f * GAME_STEP_SCALE;
-		break;
+            case 1:
+                pi.velocity.x = 1.0f * GAME_STEP_SCALE;
+                pi.velocity.y = 1.732f * GAME_STEP_SCALE;
+                break;
 
-	    case 2:
-		pi.velocity.x = -1.0f   * GAME_STEP_SCALE;
-		pi.velocity.y =  1.732f * GAME_STEP_SCALE;
-		break;
+            case 2:
+                pi.velocity.x = -1.0f * GAME_STEP_SCALE;
+                pi.velocity.y = 1.732f * GAME_STEP_SCALE;
+                break;
 
-	    case 3:
-		pi.velocity.x =  1.732f * GAME_STEP_SCALE;
-		pi.velocity.y =  1.0f   * GAME_STEP_SCALE;
-		break;
+            case 3:
+                pi.velocity.x = 1.732f * GAME_STEP_SCALE;
+                pi.velocity.y = 1.0f * GAME_STEP_SCALE;
+                break;
 
-	    case 4:
-		pi.velocity.x = -1.732f * GAME_STEP_SCALE;
-		pi.velocity.y =  1.0f   * GAME_STEP_SCALE;
-		break;
+            case 4:
+                pi.velocity.x = -1.732f * GAME_STEP_SCALE;
+                pi.velocity.y = 1.0f * GAME_STEP_SCALE;
+                break;
 
             default:
-		break;
-	}
+                break;
+        }
 
-	pi.damage = (int)(50.0f*_damageMultiplier);
+        pi.damage = (int)(50.0f * _damageMultiplier);
 
-        if( pi.damage < 100)
-	{
-	    _energyRequired = 45.0;
-	    bullets->newParticle( "BallOfIce", pi);
-	}
-	else
-	{
-	    _energyRequired = 60.0;
-	    bullets->newParticle( "BallOfPoison", pi);
-	}
+        if (pi.damage < 100) {
+            _energyRequired = 45.0;
+            bullets->newParticle("BallOfIce", pi);
+        } else {
+            _energyRequired = 60.0;
+            bullets->newParticle("BallOfPoison", pi);
+        }
     }
 
-    AudioS::instance()->playSample( "sounds/chrblub.wav");
+    AudioS::instance()->playSample("sounds/chrblub.wav");
 }
 
-void IceSpray::draw( void)
-{
-    if( _damageMultiplier > 1.0f)
-	_iceSprayPierce->draw();
-    else
-	_iceSpray->draw();
+void IceSpray::draw(void) {
+    if (_damageMultiplier > 1.0f) {
+        _iceSprayPierce->draw();
+    } else {
+        _iceSpray->draw();
+    }
 }
 
 //------------------------------------------------------------------------------
 
-WingPhaser::WingPhaser( void):
-    Weapon( 35.0f, 0.3f,
-	    WeaponWINGPHASER,
-	    "A wing-mounted double blow.")
-{
+WingPhaser::WingPhaser(void) :
+    Weapon(35.0f, 0.3f, WeaponWINGPHASER, "A wing-mounted double blow.") {
     XTRACE();
     _wingPhaser = ModelManagerS::instance()->getModel("models/WingPhaser");
     _wingPhaserPierce = ModelManagerS::instance()->getModel("models/WingPhaserPierce");
 }
 
-WingPhaser::~WingPhaser()
-{
+WingPhaser::~WingPhaser() {
     XTRACE();
 }
 
-void WingPhaser::launch( float x, float y, float z)
-{
+void WingPhaser::launch(float x, float y, float z) {
     XTRACE();
 
-    static ParticleGroup *bullets =
-	ParticleGroupManagerS::instance()->getParticleGroup( 
-	    HERO_BULLETS_GROUP);
+    static ParticleGroup* bullets = ParticleGroupManagerS::instance()->getParticleGroup(HERO_BULLETS_GROUP);
 
     ParticleInfo pi;
-    pi.damage = (int)(50.0f*_damageMultiplier);
+    pi.damage = (int)(50.0f * _damageMultiplier);
 
-    if( pi.damage < 100)
-    {
-	pi.color.x = 0.0f;
-	pi.color.y = 1.0f;
-	pi.color.z = 1.0f;
+    if (pi.damage < 100) {
+        pi.color.x = 0.0f;
+        pi.color.y = 1.0f;
+        pi.color.z = 1.0f;
 
-	_energyRequired = 25.0f;
-	_reloadTime = 0.2f;
-    }
-    else
-    {
-	pi.color.x = 1.0f;
-	pi.color.y = 0.2f;
-	pi.color.z = 0.2f;
+        _energyRequired = 25.0f;
+        _reloadTime = 0.2f;
+    } else {
+        pi.color.x = 1.0f;
+        pi.color.y = 0.2f;
+        pi.color.z = 0.2f;
 
-	_energyRequired = 35.0f;
-	_reloadTime = 0.3f;
+        _energyRequired = 35.0f;
+        _reloadTime = 0.3f;
     }
 
-    pi.position.x = x+4.2f;
+    pi.position.x = x + 4.2f;
     pi.position.y = y;
     pi.position.z = z;
-    bullets->newParticle( "WingPhaser1", pi);
+    bullets->newParticle("WingPhaser1", pi);
 
-    pi.position.x = x-4.2f;
+    pi.position.x = x - 4.2f;
     pi.position.y = y;
     pi.position.z = z;
-    bullets->newParticle( "WingPhaser1", pi);
+    bullets->newParticle("WingPhaser1", pi);
 
-    AudioS::instance()->playSample( "sounds/phaser1.wav");
+    AudioS::instance()->playSample("sounds/phaser1.wav");
 }
 
-void WingPhaser::draw( void)
-{
-    if( _damageMultiplier > 1.0f)
-	_wingPhaserPierce->draw();
-    else
-	_wingPhaser->draw();
+void WingPhaser::draw(void) {
+    if (_damageMultiplier > 1.0f) {
+        _wingPhaserPierce->draw();
+    } else {
+        _wingPhaser->draw();
+    }
 }
 
 //------------------------------------------------------------------------------
 
-TripplePhaser::TripplePhaser( void):
-Weapon( 30.0f, 0.2f,
-       WeaponTRIPPLEPHASER,
-       "A wing and cockpit mounted tripple blow.")
-{
+TripplePhaser::TripplePhaser(void) :
+    Weapon(30.0f, 0.2f, WeaponTRIPPLEPHASER, "A wing and cockpit mounted tripple blow.") {
     XTRACE();
     _tripplePhaser = ModelManagerS::instance()->getModel("models/WingPhaser");
 }
 
-TripplePhaser::~TripplePhaser()
-{
+TripplePhaser::~TripplePhaser() {
     XTRACE();
 }
 
-void TripplePhaser::launch( float x, float y, float z)
-{
+void TripplePhaser::launch(float x, float y, float z) {
     XTRACE();
-    
-    static ParticleGroup *bullets =
-    ParticleGroupManagerS::instance()->getParticleGroup( HERO_BULLETS_GROUP);
-    
+
+    static ParticleGroup* bullets = ParticleGroupManagerS::instance()->getParticleGroup(HERO_BULLETS_GROUP);
+
     ParticleInfo pi;
-    pi.damage = (int)(100.0f*_damageMultiplier);
-    
+    pi.damage = (int)(100.0f * _damageMultiplier);
+
     pi.color.x = 1.0f;
     pi.color.y = 1.0f;
     pi.color.z = 0.2f;
-    
-    pi.position.x = x+4.2f;
+
+    pi.position.x = x + 4.2f;
     pi.position.y = y;
     pi.position.z = z;
-    bullets->newParticle( "WingPhaser1", pi);
-    
+    bullets->newParticle("WingPhaser1", pi);
+
     pi.position.x = x;
-    pi.position.y = y+4.5f;
+    pi.position.y = y + 4.5f;
     pi.position.z = z;
-    bullets->newParticle( "WingPhaser1", pi);
-    
-    pi.position.x = x-4.2f;
+    bullets->newParticle("WingPhaser1", pi);
+
+    pi.position.x = x - 4.2f;
     pi.position.y = y;
     pi.position.z = z;
-    bullets->newParticle( "WingPhaser1", pi);
-    
-    AudioS::instance()->playSample( "sounds/phaser1");
+    bullets->newParticle("WingPhaser1", pi);
+
+    AudioS::instance()->playSample("sounds/phaser1");
 }
 
-void TripplePhaser::draw( void)
-{
+void TripplePhaser::draw(void) {
     _tripplePhaser->draw();
 }
 
