@@ -373,7 +373,8 @@ bool Video::setVideoMode(void) {
     LOG_INFO << "  Context : " << major << "." << minor << endl;
     LOG_INFO << "  GLEW : " << glewGetString(GLEW_VERSION) << endl;
 
-#if defined(DEBUG_OPENGL) && !defined(EMSCRIPTEN)
+#if defined(DEBUG_OPENGL) && !defined(EMSCRIPTEN) && !defined(__APPLE__)
+    // Not supported in gles and crashes on mac...
     // During init, enable debug output
     glEnable(GL_DEBUG_OUTPUT);
     glDebugMessageCallback(MessageCallback, 0);
