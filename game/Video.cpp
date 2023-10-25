@@ -916,20 +916,23 @@ bool Video::update(void) {
 void Video::takeSnapshot(void) {
     static int count = 0;
 
-    int width = VideoS::instance()->getWidth();
-    int height = VideoS::instance()->getHeight();
     char filename[128];
     sprintf(filename, "snap%02d.png", count++);
     SDL_Surface* img;
 
-    img = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 24, 0xFF000000, 0x00FF0000, 0x0000FF00, 0);
+    img = SDL_CreateRGBSurface(0, _width, _height, 24, 0x00FF0000, 0x0000FF00, 0x000000FF, 0);
 
-    glReadPixels(0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, img->pixels);
+    if (img) {
+        glReadPixels(0, 0, _width, _height, GL_RGB, GL_UNSIGNED_BYTE, img->pixels);
 
-    LOG_INFO << "Writing snapshot: " << filename << endl;
-    if (!PNG::Snapshot(img, filename)) {
-        LOG_ERROR << "Failed to save snapshot." << endl;
+        LOG_INFO << "Writing snapshot: " << filename << endl;
+        if (!PNG::Snapshot(img, filename)) {
+            LOG_ERROR << "Failed to save snapshot." << endl;
+        }
+        SDL_FreeSurface(img);
     }
-
-    SDL_FreeSurface(img);
+    else {
+        LOG_ERROR << "Failed to create surface for snapshot." << endl;
+        LOG_ERROR << "SDL: " << SDL_GetError() << "\n";
+    }
 }

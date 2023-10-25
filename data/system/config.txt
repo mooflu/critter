@@ -31,5 +31,5 @@ binds:
   MotionRight: RIGHT
   MotionLeft: LEFT
   ChangeContext: c
-  Snapshot: F12
+  Snapshot: F6
   PauseGame: p
