@@ -4,8 +4,6 @@ project(critter C CXX)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/mooflu.common/utilscmake")
 
-set(VERSION "2.1") # TODO: add git tag and remove this line
-
 if (NOT VERSION)
     find_package (Git)
     if (GIT_FOUND)

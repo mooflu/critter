@@ -1,0 +1,153 @@
+name: Critter build
+
+# scripts/build.sh needs
+# bash, wget, zip, tar, coreutils
+
+on:
+  push:
+    tags:
+      - "[1-9].[0-9]+.[0-9]+"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  BUILD_SCRIPT: ./scripts/build.sh
+
+permissions:
+  contents: read
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+    - name: Do not convert line endings on checkout
+      run: git config --global core.autocrlf input
+
+    - uses: actions/checkout@v3
+      with:
+        ref: main
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1
+
+    - uses: cygwin/cygwin-install-action@master
+      with:
+        packages: >-
+          bash
+          wget
+          zip
+          tar
+          coreutils
+
+    - name: Build
+      working-directory: ${{github.workspace}}
+      run: |
+        C:\cygwin\bin\bash.exe ${{env.BUILD_SCRIPT}}
+        mkdir -p critter-${{ github.ref_name }}
+        cp build.oem.Release\game\Release\critter.exe critter-${{ github.ref_name }}
+        cp resource.dat critter-${{ github.ref_name }}
+        zip -9r critter-${{ github.ref_name }}-windows.zip critter-${{ github.ref_name }}
+
+    # upload artifacts so the publish job below can download and then update latest release via Linux
+    - uses: actions/upload-artifact@v3
+      with:
+        name: critter-win-build
+        path: critter-${{ github.ref_name }}-windows.zip
+
+  build-mac:
+    runs-on: macos-11
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: main
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Setup Macos dependencies
+      run: |
+        brew install bash coreutils
+
+    - name: Build
+      working-directory: ${{github.workspace}}
+      run: |
+        bash ${{env.BUILD_SCRIPT}}
+        mkdir -p critter-${{ github.ref_name }}
+        cp -a build.oem.Release/game/critter.app critter-${{ github.ref_name }}
+        zip -9r critter-${{ github.ref_name }}-mac.zip critter-${{ github.ref_name }}
+
+    # upload artifacts so the publish job below can download and then update latest release via Linux
+    - uses: actions/upload-artifact@v3
+      with:
+        name: critter-mac-build
+        path: critter-${{ github.ref_name }}-mac.zip
+
+  build-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: main
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Setup Linux dependencies
+      run: |
+        sudo apt-get update
+        sudo apt install -y --fix-missing \
+          wget zip libgl1-mesa-dev libglu1-mesa-dev libdrm-dev \
+          libxrandr-dev libxcursor-dev libxcb-xinput-dev libudev-dev libdbus-1-dev \
+          libasound2-dev libjack-dev libpulse-dev libsndio-dev
+
+    - name: Build
+      working-directory: ${{github.workspace}}
+      run: |
+        bash ${{env.BUILD_SCRIPT}}
+        mkdir -p critter-${{ github.ref_name }}
+        cp -a build.oem.Release/game/critter critter-${{ github.ref_name }}
+        cp resource.dat critter-${{ github.ref_name }}
+        zip -9r critter-${{ github.ref_name }}-linux.zip critter-${{ github.ref_name }}
+
+    # upload artifacts so the publish job below can download and then update latest release via Linux
+    - uses: actions/upload-artifact@v3
+      with:
+        name: critter-linux-build
+        path: critter-${{ github.ref_name }}-linux.zip
+
+  publish:
+    needs: [build-windows, build-mac, build-linux]
+
+    # one of the steps uses container action which is Linux only
+    runs-on: ubuntu-latest
+
+    permissions: write-all
+
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: critter-win-build
+
+    - uses: actions/download-artifact@v3
+      with:
+        name: critter-mac-build
+
+    - uses: actions/download-artifact@v3
+      with:
+        name: critter-linux-build
+
+    - name: Publish release
+      # see https://github.com/pyTooling/Actions/tree/main/releaser
+      uses: pyTooling/Actions/releaser@main
+      with:
+        tag: ${{ github.ref_name }}
+        rm: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+        files: |
+          critter-${{ github.ref_name }}-windows.zip
+          critter-${{ github.ref_name }}-mac.zip
+          critter-${{ github.ref_name }}-linux.zip
