@@ -400,6 +400,8 @@ void GLBitmapCollection::_DrawC(const BitmapInfo& bitmapInfo, const float& x, co
 }
 
 void GLBitmapCollection::_Draw(GLfloat squareVertices[], GLfloat squareTexCoords[]) {
+    bind();
+
     Program* prog = ProgramManagerS::instance()->getProgram("texture");
     prog->use();  //needed to set uniforms
 
