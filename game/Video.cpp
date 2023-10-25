@@ -104,11 +104,6 @@ Video::~Video() {
     SkillS::cleanup();
     CameraS::cleanup();
 
-#ifdef __APPLE__
-    //Workaround for non-working minimize buttons on exit
-    SDL_SetVideoMode(_width, _height, _bpp, 0);
-#endif
-
     SDL_QuitSubSystem(SDL_INIT_VIDEO);
     SDL_Quit();
 }
