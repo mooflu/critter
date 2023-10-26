@@ -103,31 +103,48 @@
             Text="-=<[ Critical Mass (aka Critter) ]>=-"
             Info="Have you used your bike lately? Why not?"
             Size="1.2"
-            Position="500.0 440.0"/>
+            Position="500.0 460.0"/>
         <TextItem
             Text="Copyright (C) 2004-2023 Frank Becker"
+            Info="Visit https://github.com/mooflu"
             Size="0.85"
-            Position="500.0 400.0" />
-        <TextItem
-            Text="Visit https://github.com/mooflu/critter"
-            Info="Older versions on http://criticalmass.sourceforge.net"
-            Position="500.0 320.0" />
+            Position="500.0 420.0" />
         <TextItem
             Text="Special thanks to:"
             Info="Danke schoen. Muchas gracias. Merci."
-            Position="500.0 220.0" />
+            Position="500.0 370.0" />
         <TextItem
             Text="-- SDL folks --"
             Info="Goto libsdl.org for details."
-            Position="500.0 190.0" />
+            Position="500.0 330.0" />
         <TextItem
             Text="-- Lee Thomason (TinyXml) --"
             Info="Goto https://github.com/leethomason for details."
-            Position="500.0 160.0" />
+            Position="500.0 300.0" />
         <TextItem
             Text="-- Lunar Gravity & Burkey (Soundtrack) --"
             Info="Critical: Lunar Gravity's Millennium Remake"
-            Position="500.0 130.0" />
+            Position="500.0 270.0" />
+        <TextItem
+            Text="-- PhysicsFS --"
+            Info="Goto https://github.com/icculus/physfs for details."
+            Position="500.0 240.0" />
+        <TextItem
+            Text="-- mini-yaml --"
+            Info="Goto https://github.com/jimmiebergmann/mini-yaml for details."
+            Position="500.0 210.0" />
+        <TextItem
+            Text="-- vmmlib --"
+            Info="Goto https://github.com/VMML/vmmlib for details."
+            Position="500.0 180.0" />
+        <TextItem
+            Text="-- glew --"
+            Info="Goto https://github.com/nigels-com/glew for details."
+            Position="500.0 150.0" />
+        <TextItem
+            Text="-- glm --"
+            Info="Goto https://github.com/g-truc/glm for details."
+            Position="500.0 120.0" />
     </Menu>
 
     <Menu
@@ -213,7 +230,7 @@
                 Info="Change mouse speed."
                 Position="220.0 220.0"
                 Variable="mouseSensitivity"
-                Range="0.1 0.5"
+                Range="0.1 3.0"
                 SliderOffset="100"/>
         </Menu>
 

@@ -375,6 +375,12 @@ void FloatSelectable::draw(const Point2Di& offset) {
                   1.6f, 0.4f);
     _icons->DrawC(_doubleArrow, _boundingBox.min.x + offset.x + 112 + _sliderOffset + _xPos,
                   _boundingBox.min.y + offset.y + 15, 0.8f, 0.8f);
+
+    float curVal = _min + _xPos * (_max - _min) / 140.0f;
+    char valStr[10];
+    sprintf(valStr, "%2.2f", curVal);
+    _fontWhite->DrawString(valStr, _boundingBox.max.x + offset.x,
+        _boundingBox.min.y + offset.y + 5, 0.5f, 0.5f);
 }
 
 //------------------------------------------------------------------------------
@@ -461,12 +467,10 @@ void EnumSelectable::input(const Trigger& trigger, const bool& isDown, const Poi
             break;
 
         case eButtonTrigger: {
-            if (trigger.data1 == SDL_MOUSEWHEEL) {
-                if (trigger.data3 > 0) {
-                    nextEnum();
-                } else {
-                    prevEnum();
-                }
+            if ((trigger.data1 != SDL_MOUSEWHEEL) || trigger.data3 > 0) {
+                nextEnum();
+            } else {
+                prevEnum();
             }
         } break;
 
@@ -872,12 +876,10 @@ void ResolutionSelectable::input(const Trigger& trigger, const bool& isDown, con
                     (mouseY >= (_bRect.min.y + offset.y)) && (mouseY <= (_bRect.max.y + offset.y))) {
                     applyResolution();
                 } else {
-                    if (trigger.data1 == SDL_MOUSEWHEEL) {
-                        if (trigger.data3 > 0) {
-                            nextResolution();
-                        } else {
-                            prevResolution();
-                        }
+                    if ((trigger.data1 != SDL_MOUSEWHEEL) || trigger.data3 > 0) {
+                        nextResolution();
+                    } else {
+                        prevResolution();
                     }
                 }
             }

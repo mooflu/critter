@@ -49,6 +49,7 @@ Input::Input(void) :
     _callbackManager(),
     _mousePos(0, 0),
     _mouseDelta(0, 0),
+    _mouseSensitivity(1.0f),
     _interceptor(0) {
     XTRACE();
 }
@@ -109,7 +110,10 @@ bool Input::init(void) {
     return true;
 }
 
-void Input::updateMouseSettings(void) {}
+void Input::updateMouseSettings(void) {
+    ConfigS::instance()->getFloat( "mouseSensitivity", _mouseSensitivity);
+    Clampf(_mouseSensitivity, 0.1f, 3.0f);
+}
 
 
 // Returns false, if there are no more events available.
@@ -175,8 +179,8 @@ bool Input::tryGetTrigger(Trigger& trigger, bool& isDown) {
 
         case SDL_MOUSEMOTION:
             trigger.type = eMotionTrigger;
-            trigger.fData1 = (float)event.motion.xrel;
-            trigger.fData2 = (float)-event.motion.yrel;
+            trigger.fData1 = (float)event.motion.xrel * _mouseSensitivity;
+            trigger.fData2 = (float)-event.motion.yrel * _mouseSensitivity;
             break;
 
         case SDL_MOUSEWHEEL:

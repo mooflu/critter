@@ -14,6 +14,7 @@ config:
   developer: false
   debug: false
   autofireOn: 1
+  mouseSensitivity: 1
 
 binds:
   CritterBoard: TAB
