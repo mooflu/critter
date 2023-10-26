@@ -109,23 +109,26 @@ Video::~Video() {
 }
 
 void Video::reset(void) {
-    ModelManagerS::instance()->reset();
-}
-
-void Video::reload(void) {
     BitmapManagerS::instance()->reset();
     FontManagerS::instance()->reset();
     ModelManagerS::instance()->reset();
 
+    _titleA->reset();
+    _titleB->reset();
+
+    ProgramManagerS::instance()->reset();
+}
+
+void Video::reload(void) {
+    initGL3Test(); // re-creates shaders
+
     BitmapManagerS::instance()->reload();
     FontManagerS::instance()->reload();
     ModelManagerS::instance()->reload();
+    MenuManagerS::instance()->reload();
 
     _titleA->reload();
     _titleB->reload();
-
-    ProgramManagerS::instance()->reset();
-    initGL3Test();
 }
 
 void Video::initGL3Test() {
@@ -138,8 +141,6 @@ void Video::initGL3Test() {
 
     MatrixStack::model.push(glm::mat4(1.0f));
     MatrixStack::projection.push(glm::mat4(1.0f));
-
-    ProgramManagerS::instance()->reset();
 
     Program* progLight = ProgramManagerS::instance()->createProgram("lighting");
     progLight->use();
@@ -374,8 +375,8 @@ bool Video::setVideoMode(void) {
     LOG_INFO << "  GLEW : " << glewGetString(GLEW_VERSION) << endl;
 
 #if defined(DEBUG_OPENGL) && !defined(EMSCRIPTEN) && !defined(__APPLE__)
-    // Not supported in gles and crashes on mac...
-    // During init, enable debug output
+    glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+    // Not supported in webgl (es 3.0) - needs 4.3+ or ES 3.2+
     glEnable(GL_DEBUG_OUTPUT);
     glDebugMessageCallback(MessageCallback, 0);
 #endif
