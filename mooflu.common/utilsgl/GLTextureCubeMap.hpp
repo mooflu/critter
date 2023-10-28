@@ -43,6 +43,7 @@ public:
 
     void unbind(void) { glBindTexture(GL_TEXTURE_CUBE_MAP_ARB, 0); }
 
+    void reset(void);
     void reload(void);
 
 private:

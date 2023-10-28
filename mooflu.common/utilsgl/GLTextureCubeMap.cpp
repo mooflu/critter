@@ -94,7 +94,10 @@ void GLTextureCubeMap::init(void) {
 #endif
 }
 
-void GLTextureCubeMap::reload(void) {
+void GLTextureCubeMap::reset(void) {
     TextureManagerS::instance()->removeTexture(this);
+}
+
+void GLTextureCubeMap::reload(void) {
     init();
 }
