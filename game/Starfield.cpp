@@ -122,6 +122,13 @@ void Starfield::draw(bool showStars, bool showNebulas) {
     //    XTRACE();
 
     if (showStars) {
+        glm::mat4& modelview = MatrixStack::model.top();
+        glm::mat4& projection = MatrixStack::projection.top();
+        Program* prog = ProgramManagerS::instance()->getProgram("texture");
+        prog->use();  //needed to set uniforms
+        GLint modelViewMatrixLoc = glGetUniformLocation(prog->id(), "modelViewMatrix");
+        glUniformMatrix4fv(modelViewMatrixLoc, 1, GL_FALSE, glm::value_ptr(projection * modelview));
+
         GLfloat starVertices[NUM_STARS * 3];
         GLfloat starColors[NUM_STARS * 4];
 

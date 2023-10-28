@@ -9,6 +9,7 @@ out vec4 v_color;
 
 void main()
 {
+    gl_PointSize = 1.0;
     v_uv = uv;
     v_color = color;
     gl_Position = modelViewMatrix * vertex;
