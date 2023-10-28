@@ -47,6 +47,7 @@ public:
     bool Exit(bool delayed = false);
     void Goto(Selectable* s);
 
+    void reset(void);
     void reload(void);
 
 private:

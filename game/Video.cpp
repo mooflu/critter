@@ -112,6 +112,7 @@ void Video::reset(void) {
     BitmapManagerS::instance()->reset();
     FontManagerS::instance()->reset();
     ModelManagerS::instance()->reset();
+    MenuManagerS::instance()->reset();
 
     _titleA->reset();
     _titleB->reset();

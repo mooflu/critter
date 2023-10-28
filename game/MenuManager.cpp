@@ -105,28 +105,24 @@ bool MenuManager::init(void) {
     }
 
     GLExtensionTextureCubeMap _nextGenShippyExt;
-    if (_nextGenShippyExt.isSupported()) {
-        SDL_Surface* images[6];
-        for (int i = 0; i < 6; i++) {
-            char buf[128];
-            sprintf(buf, "bitmaps/cubemap_%d.png", i);
-            string fileName = buf;
-            std::unique_ptr<ziStream> infileP(ResourceManagerS::instance()->getInputStream(fileName));
-            if (infileP) {
-                ziStream& bminfile1 = *infileP;
-                SDL_RWops* src = RWops_from_ziStream(bminfile1);
-                images[i] = IMG_LoadPNG_RW(src);
-                SDL_RWclose(src);
-            } else {
-                LOG_ERROR << "Could not load cubemap image\n";
-                images[i] = 0;
-            }
+    SDL_Surface* images[6];
+    for (int i = 0; i < 6; i++) {
+        char buf[128];
+        sprintf(buf, "bitmaps/cubemap_%d.png", i);
+        string fileName = buf;
+        std::unique_ptr<ziStream> infileP(ResourceManagerS::instance()->getInputStream(fileName));
+        if (infileP) {
+            ziStream& bminfile1 = *infileP;
+            SDL_RWops* src = RWops_from_ziStream(bminfile1);
+            images[i] = IMG_LoadPNG_RW(src);
+            SDL_RWclose(src);
+        } else {
+            LOG_ERROR << "Could not load cubemap image\n";
+            images[i] = 0;
         }
-
-        _nextGenShippyCubeMap = new GLTextureCubeMap(images);
-    } else {
-        LOG_WARNING << "ARB_texture_cube_map not supported\n";
     }
+
+    _nextGenShippyCubeMap = new GLTextureCubeMap(images);
 
     _burst.init();
 
@@ -316,6 +312,10 @@ bool MenuManager::draw(void) {
     icons->Draw(_pointer, interpMouseX, interpMouseY, 0.5, 0.5);
 
     return true;
+}
+
+void MenuManager::reset(void) {
+    _nextGenShippyCubeMap->reset();
 }
 
 void MenuManager::reload(void) {
