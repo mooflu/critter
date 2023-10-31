@@ -85,6 +85,18 @@ public:
         return false;
     }
 
+    std::vector<std::string> split(char delim) {
+        std::vector<std::string> result;
+        std::stringstream ss(_str);
+        std::string item;
+
+        while (getline(ss, item, delim)) {
+            result.push_back(item);
+        }
+
+        return result;
+    }
+
     std::string& str() { return _str; }
 
     operator std::string() const { return _str; }
