@@ -25,16 +25,3 @@ _ValT* findHash(_KeyT& trigger, hash_map<_KeyT, _ValT*, hash<_KeyT>, std::equal_
 
     return ci->second;
 }
-
-#ifdef VCPP
-template <class _KeyT, class _ValT>
-_ValT* findHash(const _KeyT& trigger, hash_map<_KeyT, _ValT*, hash<_KeyT>, std::equal_to<_KeyT>>& hashMap) {
-    typename hash_map<const _KeyT, _ValT*, hash<const _KeyT>>::const_iterator ci;
-    ci = hashMap.find(trigger);
-    if (ci == hashMap.end()) {
-        return 0;
-    }
-
-    return ci->second;
-}
-#endif
