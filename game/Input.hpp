@@ -5,13 +5,13 @@
 // Copyright (C) 2007 Frank Becker
 //
 #include <string>
+#include <vector>
 
 #include "Trace.hpp"
 #include "hashMap.hpp"
 #include "Singleton.hpp"
 #include "Trigger.hpp"
 #include "Keys.hpp"
-#include "ConfigHandler.hpp"
 #include "CallbackManager.hpp"
 #include "InterceptorI.hpp"
 
@@ -44,16 +44,12 @@ struct hash<Trigger> {
 };
 }  // namespace HASH_NAMESPACE
 
-class Input : public ConfigHandler {
+class Input {
     friend class Singleton<Input>;
 
 public:
     bool init(void);
     bool update(void);
-
-    //used for loading/saving bindings
-    virtual void handleLine(const std::string line);
-    virtual void save(std::ostream& of);
 
     //Input takes ownership of callback
     void bindNextTrigger(const std::string& action) {
@@ -89,7 +85,7 @@ private:
     CallbackManager _callbackManager;
     Keys _keys;
 
-    typedef hash_map<std::string, Trigger*, hash<std::string>, std::equal_to<std::string>> ATMap;
+    typedef hash_map<std::string, std::vector<Trigger*>, hash<std::string>, std::equal_to<std::string>> ATMap;
     ATMap _actionTriggerMap;
 
     hash_map<Trigger, Callback*, hash<Trigger>, std::equal_to<Trigger>> _callbackMap;

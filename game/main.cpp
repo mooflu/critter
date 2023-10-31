@@ -86,11 +86,7 @@ void init(int argc, char* argv[]) {
 
     if (!ResourceManagerS::instance()->addResourceBundle(getDataPath() + resourceFilePath, "/")) {
         LOG_WARNING << "resource.dat not found. Trying data directory." << endl;
-#ifdef VCPP
-        ResourceManagerS::instance()->addResourceDirectory("../../data");
-#else
         ResourceManagerS::instance()->addResourceBundle("data", "/");
-#endif
         if (ResourceManagerS::instance()->getResourceSize("system/config.txt") < 0) {
             LOG_ERROR << "Sorry, unable to find game data!" << endl;
             return;

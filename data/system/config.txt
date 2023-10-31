@@ -20,12 +20,9 @@ binds:
   CritterBoard: TAB
   Confirm: RETURN
   EscapeAction: ESCAPE
-  PrimaryFire: SPACE
-  PrimaryFire: MOUSEBUTTON1
-  SecondaryFire: LALT
-  SecondaryFire: MOUSEBUTTON2
-  TertiaryFire: LCTRL
-  TertiaryFire: MOUSEBUTTON3
+  PrimaryFire: MOUSEBUTTON1,SPACE
+  SecondaryFire: MOUSEBUTTON2,LALT
+  TertiaryFire: MOUSEBUTTON3,LCTRL
   Motion: MOTION
   MotionUp: UP
   MotionDown: DOWN
