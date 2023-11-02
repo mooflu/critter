@@ -1,249 +1,5 @@
 <LevelPack Name="CritterPack" Author="Frank Becker" Version="1.0">
 
-    <Level Name="Mouse or Bug?" Author="FB" Version="1.0">
-
-        <Enemy spawnTime="0.0">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
-            <Home x="45.0" y="40.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac6" />
-            <RetreatPath Name="paths/retreat/dc6" />
-            <EntryPath Name="paths/entry/ec12a" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="0.3">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
-            <Home x="35.0" y="40.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac6" />
-            <RetreatPath Name="paths/retreat/dc6" />
-            <EntryPath Name="paths/entry/ec12a" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="0.6">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
-            <Home x="25.0" y="40.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac6" />
-            <RetreatPath Name="paths/retreat/dc6" />
-            <EntryPath Name="paths/entry/ec12a" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="0.9">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
-            <Home x="15.0" y="40.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac6" />
-            <RetreatPath Name="paths/retreat/dc6" />
-            <EntryPath Name="paths/entry/ec12a" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="1.2">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
-            <Home x="5.0" y="40.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac6" />
-            <RetreatPath Name="paths/retreat/dc6" />
-            <EntryPath Name="paths/entry/ec12a" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="3.0">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
-            <Home x="-45.0" y="40.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8" />
-            <RetreatPath Name="paths/retreat/dc6" />
-            <EntryPath Name="paths/entry/ec12" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="3.3">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
-            <Home x="-35.0" y="40.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8" />
-            <RetreatPath Name="paths/retreat/dc6" />
-            <EntryPath Name="paths/entry/ec12" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="3.6">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
-            <Home x="-25.0" y="40.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8" />
-            <RetreatPath Name="paths/retreat/dc6" />
-            <EntryPath Name="paths/entry/ec12" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="3.9">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
-            <Home x="-15.0" y="40.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8" />
-            <RetreatPath Name="paths/retreat/dc6" />
-            <EntryPath Name="paths/entry/ec12" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="4.2">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
-            <Home x="-5.0" y="40.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8" />
-            <RetreatPath Name="paths/retreat/dc6" />
-            <EntryPath Name="paths/entry/ec12" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="6.0">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
-            <Home x="-45.0" y="30.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8a" />
-            <RetreatPath Name="paths/retreat/dc6a" />
-            <EntryPath Name="paths/entry/ec13a" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="6.3">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
-            <Home x="-35.0" y="30.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8a" />
-            <RetreatPath Name="paths/retreat/dc6a" />
-            <EntryPath Name="paths/entry/ec13a" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="6.6">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
-            <Home x="-25.0" y="30.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8a" />
-            <RetreatPath Name="paths/retreat/dc6a" />
-            <EntryPath Name="paths/entry/ec13a" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="6.9">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
-            <Home x="-15.0" y="30.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8a" />
-            <RetreatPath Name="paths/retreat/dc6a" />
-            <EntryPath Name="paths/entry/ec13a" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="7.2">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
-            <Home x="-5.0" y="30.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8a" />
-            <RetreatPath Name="paths/retreat/dc6a" />
-            <EntryPath Name="paths/entry/ec13a" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="9.0">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
-            <Home x="45.0" y="30.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8a" />
-            <RetreatPath Name="paths/retreat/dc6a" />
-            <EntryPath Name="paths/entry/ec13" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="9.3">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
-            <Home x="35.0" y="30.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8a" />
-            <RetreatPath Name="paths/retreat/dc6a" />
-            <EntryPath Name="paths/entry/ec13" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="9.6">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
-            <Home x="25.0" y="30.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8a" />
-            <RetreatPath Name="paths/retreat/dc6a" />
-            <EntryPath Name="paths/entry/ec13" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="9.9">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
-            <Home x="15.0" y="30.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8a" />
-            <RetreatPath Name="paths/retreat/dc6a" />
-            <EntryPath Name="paths/entry/ec13" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-        <Enemy spawnTime="10.2">
-            <Model Name="MouseBug"/>
-
-            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
-            <Home x="5.0" y="30.0" z="-100.0" />
-
-            <AttackPath Name="paths/attack/ac8a" />
-            <RetreatPath Name="paths/retreat/dc6a" />
-            <EntryPath Name="paths/entry/ec13" />
-            <IdlePath Name="paths/idle/idle16" />
-        </Enemy>
-
-    </Level>
-
     <Level Name="Dark Angel" Author="FB" Version="1.0">
 
         <Enemy spawnTime="0.0">
@@ -4364,6 +4120,250 @@
             <AttackPath Name="paths/attack/ac10a" />
             <EntryPath Name="paths/entry/ec3" />
             <IdlePath Name="paths/idle/idle4" />
+        </Enemy>
+
+    </Level>
+
+    <Level Name="Mouse or Bug?" Author="FB" Version="1.0">
+
+        <Enemy spawnTime="0.0">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac6" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="0.3">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac6" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="0.6">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac6" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="0.9">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac6" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="1.2">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac6" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="3.0">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-45.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="3.3">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-35.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="3.6">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-25.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="3.9">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-15.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="4.2">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="-5.0" y="40.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8" />
+            <RetreatPath Name="paths/retreat/dc6" />
+            <EntryPath Name="paths/entry/ec12" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="6.0">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="6.3">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="6.6">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="6.9">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="7.2">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="67.0" y="10.0" z="-100.0" />
+            <Home x="-5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13a" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="9.0">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="45.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="9.3">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="35.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="9.6">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="25.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="9.9">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="15.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle16" />
+        </Enemy>
+
+        <Enemy spawnTime="10.2">
+            <Model Name="MouseBug"/>
+
+            <SpawnPoint x="-67.0" y="10.0" z="-100.0" />
+            <Home x="5.0" y="30.0" z="-100.0" />
+
+            <AttackPath Name="paths/attack/ac8a" />
+            <RetreatPath Name="paths/retreat/dc6a" />
+            <EntryPath Name="paths/entry/ec13" />
+            <IdlePath Name="paths/idle/idle16" />
         </Enemy>
 
     </Level>
