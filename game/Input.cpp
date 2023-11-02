@@ -91,7 +91,7 @@ bool Input::init(void) {
         vector<string> keynames = StringUtils(bind.value).split(',');
 #if defined(EMSCRIPTEN)
         if (action == "EscapeAction") {
-            keyname = "BACKSPACE";
+            keynames[0] = "BACKSPACE";
         }
 #endif
         LOG_INFO << "action [" << action << "], "
