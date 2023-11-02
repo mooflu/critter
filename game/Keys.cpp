@@ -38,8 +38,9 @@ bool Keys::convertStringToTrigger(string& keyname, Trigger& trigger) {
 
     trigger.type = eKeyTrigger;
     unsigned int i;
+    string keyUpper = StringUtils(keyname).toUpper();
     for (i = 0; i < SDL_NUM_SCANCODES; i++) {
-        if (_symmap[i] == keyname) {
+        if (_symmap[i] == keyUpper) {
             break;
         }
     }

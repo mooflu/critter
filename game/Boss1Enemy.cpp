@@ -33,6 +33,7 @@
 #include "gl3/ProgramManager.hpp"
 #include "gl3/MatrixStack.hpp"
 #include "glm/ext.hpp"
+#include "GLVertexBufferObject.hpp"
 
 static RandomKnuth _random;
 
@@ -207,18 +208,6 @@ void Boss1Enemy::draw(ParticleInfo* p) {
         glm::mat4& projection = MatrixStack::projection.top();
         modelview = glm::translate(modelview, glm::vec3(pi.position.x, pi.position.y, pi.position.z));
 
-#if 0
-	if( _moveState != eIdle)
-	{
-    	    float gf = GameState::frameFraction;
-	    Point3D _dirInterp;
-	    _dirInterp.x = _prevDir.x + (_dir.x - _prevDir.x) * gf;
-	    _dirInterp.y = _prevDir.y + (_dir.y - _prevDir.y) * gf;
-	    _dirInterp.z = _prevDir.z + (_dir.z - _prevDir.z) * gf;
-
-	    alignWith( _dirInterp);
-	}
-#endif
         glEnable(GL_DEPTH_TEST);
         for (int i = 0; i < 6; i++) {
             MatrixStack::model.push(MatrixStack::model.top());
@@ -230,6 +219,32 @@ void Boss1Enemy::draw(ParticleInfo* p) {
             MatrixStack::model.pop();
         }
         glDisable(GL_DEPTH_TEST);
+
+        float health = _energy / 1000.0f;
+        float maxHealth = 10.0f;
+        float tx = -5;
+        float ty = 24;
+        {
+            GLVBO vbo;
+
+            vec4f v2[4] = {
+                vec4f(tx, ty + 2, 0, 1),
+                vec4f(tx + maxHealth, ty + 2, 0, 1),
+                vec4f(tx + maxHealth, ty + 3, 0, 1),
+                vec4f(tx, ty + 3, 0, 1),
+            };
+            vbo.setColor(0.5f, 0.5f, 0.5f, 0.5f);
+            vbo.DrawQuad(v2);
+
+            vec4f v[4] = {
+                vec4f(tx, ty + 2, 0, 1),
+                vec4f(tx + health, ty + 2, 0, 1),
+                vec4f(tx + health, ty + 3, 0, 1),
+                vec4f(tx, ty + 3, 0, 1),
+            };
+            vbo.setColor(1.0f, 0.1f, 0.1f, 1.0f);
+            vbo.DrawQuad(v);
+        }
 
         MatrixStack::model.pop();
     }
