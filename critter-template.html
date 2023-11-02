@@ -31,6 +31,11 @@
     <div id="progress"></div>
     <button id="startButton" onclick="Module.onStart()">Start Critter</button>
     <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+    <div>Use mouse (or arrow keys) to move</div>
+    <div>Left button (or space) to shoot main weapon</div>
+    <div>Middle button (or left alt) to shoot secondary weapon</div>
+    <div>Right button (or left ctrl) to shoot tertiary weapon (only in expert and insane)</div>
+    <div>p to pause</div>
 	<script>
 		var Module = {
             readyToStart: 0,
