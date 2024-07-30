@@ -1,4 +1,4 @@
-# Play
+# Play <img src="https://github.com/user-attachments/assets/a52793dd-f444-48bf-bffa-49b743897988" width="40px">
 https://mooflu.github.io/critter/critter.html
 
 Use `mouse` (or `arrow keys`) to move
