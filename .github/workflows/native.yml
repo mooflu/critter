@@ -25,14 +25,14 @@ jobs:
     - name: Do not convert line endings on checkout
       run: git config --global core.autocrlf input
 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         ref: main
         submodules: recursive
         fetch-depth: 0
 
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1
+      uses: microsoft/setup-msbuild@v2
 
     - uses: cygwin/cygwin-install-action@master
       with:
@@ -53,7 +53,7 @@ jobs:
         zip -9r critter-${{ github.ref_name }}-windows.zip critter-${{ github.ref_name }}
 
     # upload artifacts so the publish job below can download and then update latest release via Linux
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: critter-win-build
         path: critter-${{ github.ref_name }}-windows.zip
@@ -62,7 +62,7 @@ jobs:
     runs-on: macos-11
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         ref: main
         submodules: recursive
@@ -81,7 +81,7 @@ jobs:
         zip -9r critter-${{ github.ref_name }}-mac.zip critter-${{ github.ref_name }}
 
     # upload artifacts so the publish job below can download and then update latest release via Linux
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: critter-mac-build
         path: critter-${{ github.ref_name }}-mac.zip
@@ -90,7 +90,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         ref: main
         submodules: recursive
@@ -114,7 +114,7 @@ jobs:
         zip -9r critter-${{ github.ref_name }}-linux.zip critter-${{ github.ref_name }}
 
     # upload artifacts so the publish job below can download and then update latest release via Linux
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: critter-linux-build
         path: critter-${{ github.ref_name }}-linux.zip
@@ -128,15 +128,15 @@ jobs:
     permissions: write-all
 
     steps:
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: critter-win-build
 
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: critter-mac-build
 
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: critter-linux-build
 
