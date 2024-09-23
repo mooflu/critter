@@ -59,7 +59,7 @@ jobs:
         path: critter-${{ github.ref_name }}-windows.zip
 
   build-mac:
-    runs-on: macos-11
+    runs-on: macos-12
 
     steps:
     - uses: actions/checkout@v4
