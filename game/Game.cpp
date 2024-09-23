@@ -177,6 +177,7 @@ void Game::reset(void) {
 void Game::startNewGame(void) {
     GameS::instance()->reset();
     GameState::context = Context::eInGame;
+    SDL_SetRelativeMouseMode(SDL_TRUE);
     InputS::instance()->disableInterceptor();
     AudioS::instance()->playSample("sounds/voiceGo.wav");
 

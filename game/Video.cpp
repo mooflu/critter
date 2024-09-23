@@ -334,7 +334,10 @@ bool Video::setVideoMode(void) {
     InputS::instance()->resetMousePosition();
 
 #if 1
-    SDL_SetRelativeMouseMode(SDL_TRUE);
+    // don't grab mouse when windowed and in menu so it's possible to move the window
+    bool grabMouse = _isFullscreen || GameState::context != Context::eMenu;
+    SDL_SetRelativeMouseMode(grabMouse ? SDL_TRUE : SDL_FALSE);
+    SDL_ShowCursor(FALSE);
 #else
     // SDL_SetRelativeMouseMode used to only work on Mac
     SDL_ShowCursor(SDL_DISABLE);

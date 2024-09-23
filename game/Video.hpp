@@ -40,6 +40,8 @@ public:
 
     int getHeight(void) { return _height; }
 
+    bool isFullscreen(void) { return _isFullscreen; }
+
     void toggleCritterBoard(void) { _boardVisible = !_boardVisible; }
 
     void takeSnapshot(void);
