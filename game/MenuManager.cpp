@@ -31,6 +31,8 @@
 #include <ResourceManager.hpp>
 #include <zrwops.hpp>
 
+#include <memory>
+
 using namespace std;
 
 MenuManager::MenuManager() :
